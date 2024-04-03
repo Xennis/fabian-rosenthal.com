@@ -5,6 +5,7 @@ import "./globals.css"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { classNames } from "@/lib/tw"
+import { host } from "@/lib/links"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,11 +18,15 @@ export const metadata: Metadata = {
     title: "Fabian Rosenthal",
     type: "website",
   },
+  metadataBase: new URL(`https://${host}`),
   robots: {
     index: true,
     follow: true,
   },
-  title: "Fabian Rosenthal",
+  title: {
+    default: "Fabian Rosenthal",
+    template: "%s - Fabian Rosenthal",
+  },
 }
 
 export const viewport: Viewport = {

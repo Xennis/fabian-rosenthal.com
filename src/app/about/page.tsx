@@ -1,4 +1,9 @@
+import { type Metadata } from "next"
 import { AuthorHeader } from "@/components/author-header"
+
+export const metadata: Metadata = {
+  title: "About",
+}
 
 const projects = [
   {

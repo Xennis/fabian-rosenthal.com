@@ -1,7 +1,15 @@
+import type { Metadata } from "next"
+
+const title = "Legal Notice"
+
+export const metadata: Metadata = {
+  title: title,
+}
+
 export default function LegalNoticePage() {
   return (
     <>
-      <h2>Legal Notice</h2>
+      <h2>{title}</h2>
       <p>Last updated: April 3, 2024</p>
       <h3>Legal Notice</h3>
       <p>
