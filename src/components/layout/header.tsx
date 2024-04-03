@@ -1,7 +1,7 @@
 import NextLink from "next/link"
 import NextImage from "next/image"
 
-import authorImage from "@/images/author.png"
+import authorImage from "@/images/author-75x75.png"
 import { aboutPage, homePage } from "@/lib/links"
 
 const navLinks = [

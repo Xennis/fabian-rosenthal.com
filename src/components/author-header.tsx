@@ -1,7 +1,7 @@
 import NextImage from "next/image"
 
 import { SocialLink } from "@/components/social-links"
-import authorLargeImage from "@/images/author-large.png"
+import authorLargeImage from "@/images/author-large-350x383.webp"
 import threadsIcon from "@/images/social/threads.svg"
 import youtubeIcon from "@/images/social/youtube.svg"
 import instagramIcon from "@/images/social/instagram.svg"
