@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     title: "Fabian Rosenthal",
     type: "website",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   title: "Fabian Rosenthal",
 }
 
