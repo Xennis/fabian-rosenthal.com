@@ -7,6 +7,7 @@ import youtubeIcon from "@/images/social/youtube.svg"
 import instagramIcon from "@/images/social/instagram.svg"
 import githubIcon from "@/images/social/github.svg"
 import linkedinIcon from "@/images/social/linkedin.svg"
+import { Dot } from "@/components/dot"
 
 const socialLinks = [
   {
@@ -42,9 +43,7 @@ export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean })
       <div className="pb-8 text-center md:pb-0">
         <h1>
           Ahoi, I&apos;m Fabian
-          <span aria-hidden={true} className="text-7xl text-[#18b83d]">
-            .
-          </span>
+          <Dot />
         </h1>
         <div>I 💚 travelling, software development & hiking.</div>
         {!hideSocialLinks && (
