@@ -55,12 +55,14 @@ export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean })
           </div>
         )}
       </div>
+      {/* Priority is set to fix the Lighthouse error: "Largest Contentful Paint image was lazily loaded" */}
       <NextImage
         className="mx-auto rounded-xl shadow-xl md:mx-0"
         width={350}
         src={authorLargeImage}
         alt="Picture of Fabian"
         unoptimized
+        priority
       />
     </div>
   )
