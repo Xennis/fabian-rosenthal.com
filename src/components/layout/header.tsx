@@ -19,7 +19,9 @@ function Logo() {
         <div className="ps-3">
           <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">Fabian Rosenthal</span>
           <br />
-          <span>The Enthusiastic Software Engineer</span>
+          <span>
+            <span className="hidden sm:inline">The Enthusiastic </span>Software Engineer
+          </span>
         </div>
       </NextLink>
     </div>

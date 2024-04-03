@@ -38,8 +38,8 @@ const socialLinks = [
 
 export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean }) {
   return (
-    <div className="flex items-center justify-center space-x-16">
-      <div>
+    <div className="md:flex md:items-center md:justify-center md:space-x-16">
+      <div className="pb-8 text-center md:pb-0">
         <h1>
           Ahoi, I&apos;m Fabian
           <span aria-hidden={true} className="text-7xl text-[#18b83d]">
@@ -48,7 +48,7 @@ export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean })
         </h1>
         <div>I 💚 travelling, software development & hiking.</div>
         {!hideSocialLinks && (
-          <div className="flex space-x-4 pt-8">
+          <div className="flex justify-center space-x-4 pt-8">
             {socialLinks.map((l, index) => (
               <SocialLink key={index} {...l} className="grayscale group-hover:grayscale-0" />
             ))}
@@ -56,7 +56,7 @@ export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean })
         )}
       </div>
       <NextImage
-        className="rounded-xl shadow-xl"
+        className="mx-auto rounded-xl shadow-xl md:mx-0"
         width={350}
         src={authorLargeImage}
         alt="Picture of Fabian"

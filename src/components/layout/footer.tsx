@@ -38,13 +38,13 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="pxcontent flex justify-between border-t-[1px] border-gray-100 py-6">
+    <footer className="pxcontent border-t-[1px] border-gray-100 py-6 md:flex md:justify-between">
       <div className="flex items-center space-x-4">
         {socialLinks.map((l, index) => (
           <SocialLink key={index} {...l} className="group-hover:grayscale" />
         ))}
       </div>
-      <div className="text-end text-slate-700">
+      <div className="pt-4 text-start text-slate-700 md:pt-0 md:text-end">
         <span className="text-sm">© 2024 Fabian Rosenthal</span>
         <br />
         <span className="text-xs">
