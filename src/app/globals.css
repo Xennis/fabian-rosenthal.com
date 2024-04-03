@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pxcontent {
+  @apply px-4;
+}
+
+main a {
+  @apply font-semibold underline decoration-[#18b83d] decoration-2 underline-offset-2 hover:no-underline;
+}
+main h1 {
+  @apply text-5xl font-semibold tracking-tight;
+}
+main h2 {
+  @apply pb-5 text-3xl font-semibold tracking-tight sm:pb-6 sm:text-4xl;
+}
+main h3 {
+  @apply pb-2 pt-7 text-2xl font-semibold tracking-tight sm:text-3xl;
+}
+main h4 {
+  @apply pb-1 pt-4 text-xl font-semibold tracking-tight sm:text-lg;
+}
+/*main hr {*/
+/*    @apply mb-20 mt-16 border-gray-300 sm:mb-24 sm:mt-20;*/
+/*}*/
+main p {
+  @apply py-2 leading-7 text-gray-700;
+}
+main ul {
+  @apply ms-6 list-outside list-disc py-1 leading-7 text-gray-700;
+}
+main ul li {
+  @apply pt-2;
+}
