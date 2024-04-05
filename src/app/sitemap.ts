@@ -1,12 +1,16 @@
 import { MetadataRoute } from "next"
 
-import { aboutPage, host, legalNoticePage } from "@/lib/links"
+import { aboutPage, host, legalNoticePage, newsletterPage } from "@/lib/links"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: `https://${host}`,
       priority: 1,
+    },
+    {
+      url: `https://${host}${newsletterPage}`,
+      priority: 0.8,
     },
     {
       url: `https://${host}${aboutPage}`,

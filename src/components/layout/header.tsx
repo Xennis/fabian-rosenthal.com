@@ -2,13 +2,13 @@ import NextLink from "next/link"
 import NextImage from "next/image"
 
 import authorImage from "@/images/author-75x75.png"
-import { aboutPage, homePage } from "@/lib/links"
+import { aboutPage, homePage, newsletterPage } from "@/lib/links"
 
 const navLinks = [
-  // {label: "Newsletter", href: "/newsletter", target: "_blank"},
+  { label: "Newsletter", href: newsletterPage },
   // {label: "Articles", href: "/newsletter", target: "_blank"},
-  { label: "About", href: aboutPage, target: undefined },
-  // {label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank"},
+  { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
+  { label: "About", href: aboutPage },
 ]
 
 function Logo() {
@@ -38,7 +38,11 @@ function NavLink({
   children: React.ReactNode
 }) {
   return (
-    <NextLink href={href} target={target} className="px-2 py-1 text-slate-700 hover:text-[#18b83d]">
+    <NextLink
+      href={href}
+      target={target}
+      className="py-1 font-semibold text-slate-700 underline decoration-[#18b83d] decoration-2 hover:no-underline"
+    >
       {children}
     </NextLink>
   )
@@ -47,9 +51,9 @@ function NavLink({
 export function Header() {
   return (
     <header className="w-full bg-gray-100">
-      <nav className="pxcontent mx-auto flex max-w-screen-xl items-center justify-between py-7">
+      <nav className="pxcontent mx-auto max-w-screen-xl py-7 md:flex md:items-center md:justify-between">
         <Logo />
-        <div>
+        <div className="flex justify-center space-x-6 pt-5 md:justify-normal md:space-x-4 md:pt-0">
           {navLinks.map((l, index) => (
             <NavLink key={index} href={l.href} target={l.target}>
               {l.label}
