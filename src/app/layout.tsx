@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={classNames("h-full bg-white", inter.className)} suppressHydrationWarning>
-      <body className="h-full border-t-8 border-[#18b83d]" suppressHydrationWarning>
+      <body className="h-full min-w-[280px] border-t-8 border-[#18b83d]" suppressHydrationWarning>
         <Header />
         <div className="mx-auto max-w-screen-xl">
           <main className="pxcontent py-7">{children}</main>
