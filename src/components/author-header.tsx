@@ -45,11 +45,16 @@ export function AuthorHeader({ hideSocialLinks }: { hideSocialLinks?: boolean })
           Ahoi, I&apos;m Fabian
           <Dot />
         </h1>
-        <div>I <span aria-hidden="true">💚</span><span className="sr-only">love</span> travelling, software development & hiking.</div>
+        <div>
+          I <span aria-hidden={true}>💚</span>
+          <span className="sr-only">love</span> travelling, software development & hiking.
+        </div>
         {!hideSocialLinks && (
-          <div className="flex justify-center space-x-4 pt-8">
+          <div role="list" aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
             {socialLinks.map((l, index) => (
-              <SocialLink key={index} {...l} className="grayscale group-hover:grayscale-0" />
+              <span key={index} role="listitem">
+                <SocialLink {...l} className="grayscale group-hover:grayscale-0" />
+              </span>
             ))}
           </div>
         )}

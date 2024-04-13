@@ -60,11 +60,14 @@ function ProjectItem({
       <a href={href} target="_blank">
         {name}
       </a>{" "}
-      {tags.map((t, index) => (
-        <span className="ps-1" key={index}>
-          #{t}
-        </span>
-      ))}
+      <span aria-label="Tags" role="list">
+        {tags.map((t, index) => (
+          <span role="listitem" className="ps-1" key={index}>
+            <span aria-hidden={true}>#</span>
+            {t}
+          </span>
+        ))}
+      </span>
       <br />
       {shortDescription}
     </>
@@ -75,7 +78,7 @@ export default function AboutPage() {
   return (
     <>
       <AuthorHeader />
-      <h3>Current Projects</h3>
+      <h2 className="pb-2 pt-7 text-2xl font-semibold tracking-tight sm:text-3xl">Current Projects</h2>
       <ul>
         {projects.map((p, index) => (
           <li key={index}>
