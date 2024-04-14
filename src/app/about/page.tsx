@@ -60,7 +60,8 @@ function ProjectItem({
       <a href={href} target="_blank">
         {name}
       </a>{" "}
-      <span aria-label="Tags" role="list">
+      <span className="sr-only" id={`${name}-tags`}>Tags: </span>
+      <span aria-labelledby={`${name}-tags`} role="list">
         {tags.map((t, index) => (
           <span role="listitem" className="ps-1" key={index}>
             <span aria-hidden={true}>#</span>
