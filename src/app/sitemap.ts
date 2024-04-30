@@ -8,10 +8,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://${host}`,
       priority: 1,
     },
-    {
-      url: `https://${host}${newsletterPage}`,
-      priority: 0.8,
-    },
+    // {
+    //   url: `https://${host}${newsletterPage}`,
+    //   priority: 0.8,
+    // },
     {
       url: `https://${host}${aboutPage}`,
       priority: 0.7,

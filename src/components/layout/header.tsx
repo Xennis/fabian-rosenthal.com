@@ -5,7 +5,7 @@ import authorImage from "@/images/author-75x75.png"
 import { aboutPage, homePage, newsletterPage } from "@/lib/links"
 
 const navLinks = [
-  { label: "Newsletter", href: newsletterPage },
+  // { label: "Newsletter", href: newsletterPage },
   // {label: "Articles", href: "/newsletter", target: "_blank"},
   { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
   { label: "About", href: aboutPage },
