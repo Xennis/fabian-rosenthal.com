@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
 
-import { aboutPage, homePage, host, legalPage } from "@/lib/links"
+import { aboutPage, homePage, host, legalPage, newsletterPage } from "@/lib/links"
 import { i18n } from "@/content/i18n/config"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -14,6 +14,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
         {
           url: `https://${host}${aboutPage(lang)}`,
+          priority: 0.7,
+        },
+        {
+          url: `https://${host}${newsletterPage(lang)}`,
           priority: 0.7,
         },
         {

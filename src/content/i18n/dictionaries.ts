@@ -14,6 +14,13 @@ const dictionaries = {
         headline: "Current Projects",
         tagsSrLabel: "Tags",
       },
+      newsletter: {
+        headline: "Subscribe to My Newsletter",
+        subtitle: "Read about my insights and learning journey",
+      },
+      gdprIframe: {
+        consentButtonLabel: "Load external content",
+      },
     },
     footer: {
       copyright: "© 2024 Fabian Rosenthal",
@@ -39,6 +46,9 @@ const dictionaries = {
       legalNotice: {
         title: "Legal Notice",
       },
+      newsletter: {
+        title: "Newsletter",
+      },
       notFound: {
         title: "Not Found",
         headline: "Page Not Found",
@@ -59,6 +69,13 @@ const dictionaries = {
       projects: {
         headline: "Aktuelle Projekte",
         tagsSrLabel: "Tags",
+      },
+      newsletter: {
+        headline: "Abonniere meinen Newsletter",
+        subtitle: "Meine Einblicke und Erkenntnisse aus der Software-Welt",
+      },
+      gdprIframe: {
+        consentButtonLabel: "Externe Inhalte laden",
       },
     },
     footer: {
@@ -83,6 +100,9 @@ const dictionaries = {
       },
       legalNotice: {
         title: "Impressum",
+      },
+      newsletter: {
+        title: "Newsletter",
       },
       // Won't be translated anyway
       notFound: {

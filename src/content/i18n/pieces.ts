@@ -6,7 +6,7 @@ import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
-import { aboutPage, legalPage } from "@/lib/links"
+import { aboutPage, legalPage, newsletterPage } from "@/lib/links"
 
 const socialLinks = [
   {
@@ -41,8 +41,18 @@ const pieces = {
     footer: {
       navLinks: [{ label: "Legal Notice", href: legalPage("en") }],
     },
+    gdprIframe: {
+      substack: {
+        firstLine: "I use the external service Substack for my newsletter.",
+        secondLine: "By clicking the button, you consent to the use of cookies by Substack.",
+        gdprLinkPrefix: "For details, please see their",
+        gdprLinkLabel: "privacy policy",
+        gdprLinkHref: "https://substack.com/privacy",
+      },
+    },
     header: {
       navLinks: [
+        { label: "Newsletter", href: newsletterPage("en") },
         { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
         { label: "About", href: aboutPage("en") },
       ],
@@ -91,8 +101,18 @@ const pieces = {
     footer: {
       navLinks: [{ label: "Impressum", href: legalPage("de") }],
     },
+    gdprIframe: {
+      substack: {
+        firstLine: "Für meinen Newsletter verwende ich den externen Dienst Substack.",
+        secondLine: "Durch einen Klicken auf den Button, stimmst du der Verwendung von Cookies durch Substack zu.",
+        gdprLinkPrefix: "Für Details, schaue in ihre",
+        gdprLinkLabel: "Datenschutzerklärung",
+        gdprLinkHref: "https://substack.com/privacy",
+      },
+    },
     header: {
       navLinks: [
+        { label: "Newsletter", href: newsletterPage("de") },
         { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
         { label: "Über", href: aboutPage("de") },
       ],
