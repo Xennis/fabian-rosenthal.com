@@ -5,7 +5,7 @@
 // const host = headersList.get("host")!
 export const host = "fabian-rosenthal.com"
 
-export const aboutPage = "/about"
-export const homePage = "/"
-export const legalNoticePage = "/legal-notice"
-export const newsletterPage = "/newsletter"
+export const aboutPage = (lang: string) => `/${lang}/about`
+export const homePage = (lang: string) => `/${lang}`
+export const legalNoticePage = (lang: string) => `/${lang}/legal-notice`
+// export const newsletterPage = "/newsletter"
