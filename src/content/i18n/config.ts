@@ -4,3 +4,18 @@ export const i18n = {
 } as const
 
 // export type Locale = (typeof i10n)["locales"][number];
+
+export const toggledLangMetadata = (lang: string) => {
+  // The srLabels are not in the dictionary because they are in the local language.
+  return lang === "en"
+    ? {
+        label: "🇩🇪",
+        srLabel: "Wechsel zur deutschen Sprache",
+        lang: "de",
+      }
+    : {
+        label: "🇺🇸",
+        srLabel: "Switch to English language",
+        lang: "en",
+      }
+}

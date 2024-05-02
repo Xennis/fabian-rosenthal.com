@@ -2,6 +2,7 @@ import { type Metadata } from "next"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { legalNoticePage } from "@/lib/links"
 import { createAlternativeUrls } from "@/lib/next"
+import { i18n } from "@/content/i18n/config"
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
   const dictionary = getDictionary(params.lang)
@@ -12,10 +13,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 }
 
 export default function LegalNoticePage({ params }: { params: { lang: string } }) {
-  if (params.lang === "de") {
+  if (params.lang === i18n.defaultLocale) {
     return (
       <>
-        <h2>Impressum</h2>
+        <h2>Legal Notice</h2>
         <p>
           Fabian Rosenthal
           <br />
@@ -23,10 +24,11 @@ export default function LegalNoticePage({ params }: { params: { lang: string } }
           <br />
           20255 Hamburg
           <br />
-          Deutschland
+          Germany
+          <br />
         </p>
         <p>
-          <span className="font-semibold">Kontakt</span>
+          <span className="font-semibold">Contact</span>
           <br />
           E-Mail: code [at] xennis.org
           <br />
@@ -39,7 +41,7 @@ export default function LegalNoticePage({ params }: { params: { lang: string } }
 
   return (
     <>
-      <h2>Legal Notice</h2>
+      <h2>Impressum</h2>
       <p>
         Fabian Rosenthal
         <br />
@@ -47,11 +49,10 @@ export default function LegalNoticePage({ params }: { params: { lang: string } }
         <br />
         20255 Hamburg
         <br />
-        Germany
-        <br />
+        Deutschland
       </p>
       <p>
-        <span className="font-semibold">Contact</span>
+        <span className="font-semibold">Kontakt</span>
         <br />
         E-Mail: code [at] xennis.org
         <br />

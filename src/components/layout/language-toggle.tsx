@@ -3,7 +3,9 @@
 import { useParams, usePathname } from "next/navigation"
 import NextLink from "next/link"
 
-export function LanguageSwitcher() {
+import { toggledLangMetadata } from "@/content/i18n/config"
+
+export function LanguageToggle() {
   const { lang } = useParams() as { lang?: string }
   const pathname = usePathname()
 
@@ -12,21 +14,9 @@ export function LanguageSwitcher() {
     return <></>
   }
 
-  // The srLabels are not in the dictionary because they are in the local language.
-  const targetLang =
-    lang === "de"
-      ? {
-          label: "🇺🇸",
-          srLabel: "Switch to English language",
-          lang: "en",
-        }
-      : {
-          label: "🇩🇪",
-          srLabel: "Wechsel zur deutsch Sprache",
-          lang: "de",
-        }
-
+  const targetLang = toggledLangMetadata(lang)
   const href = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
+
   return (
     <NextLink className="border-s-2 ps-6 text-lg hover:grayscale md:ps-3" href={href} hrefLang={targetLang.lang}>
       <span className="sr-only" lang={targetLang.lang}>

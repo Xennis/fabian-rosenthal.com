@@ -2,7 +2,7 @@ import NextLink from "next/link"
 import NextImage from "next/image"
 
 import authorImage from "@/content/images/author-75x75.png"
-import { LanguageSwitcher } from "@/components/layout/language-switcher"
+import { LanguageToggle } from "@/components/layout/language-toggle"
 
 type Dictionary = { logo: { title: string; subtitle: string; subtitlePrefix: string; ariaLabel: string } }
 
@@ -63,7 +63,7 @@ export function Header({
               {l.label}
             </NavLink>
           ))}
-          <LanguageSwitcher />
+          <LanguageToggle />
         </div>
       </nav>
     </header>
