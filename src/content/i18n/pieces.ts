@@ -81,7 +81,7 @@ const pieces = {
       },
       {
         name: "EpiDoc Parser",
-        href: "https://github.com/Xennis/epidoc-parser/",
+        href: "https://xennis.github.io/epidoc-parser/",
         tags: ["PythonLibrary"],
         shortDescription: "Python parser for EpiDoc (epigraphic documents in TEI XML).",
       },
@@ -131,7 +131,7 @@ const pieces = {
       },
       {
         name: "EpiDoc Parser",
-        href: "https://github.com/Xennis/epidoc-parser/",
+        href: "https://xennis.github.io/epidoc-parser/",
         tags: ["PythonLibrary"],
         shortDescription: "Python-Parser für EpiDoc (epigraphisch Dokumente in TEI XML).",
       },
