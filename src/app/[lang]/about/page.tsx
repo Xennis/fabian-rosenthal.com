@@ -4,7 +4,7 @@ import { AuthorHeader } from "@/components/author-header"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { getPiece } from "@/content/i18n/pieces"
 import { Projects } from "@/components/projects"
-import { aboutPage } from "@/lib/links"
+import { aboutPage, host } from "@/lib/links"
 import { createAlternativeUrls } from "@/lib/next"
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
@@ -21,7 +21,11 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
 
   return (
     <>
-      <AuthorHeader socialLinks={piece.socialLinks} dictionary={dictionary.component.authorHeader} />
+      <AuthorHeader
+        socialLinks={piece.socialLinks}
+        dictionary={dictionary.component.authorHeader}
+        includeJsonLd={true}
+      />
       <Projects projects={piece.projects} dictionary={dictionary.component.projects} />
     </>
   )

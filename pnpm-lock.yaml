@@ -49,6 +49,9 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.5.13
     version: 0.5.13(prettier@3.2.5)
+  schema-dts:
+    specifier: ^1.1.2
+    version: 1.1.2(typescript@5.4.3)
   sharp:
     specifier: ^0.33.3
     version: 0.33.3
@@ -3835,6 +3838,17 @@ packages:
     dependencies:
       loose-envify: 1.4.0
     dev: false
+
+  /schema-dts@1.1.2(typescript@5.4.3):
+    resolution:
+      {
+        integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==,
+      }
+    peerDependencies:
+      typescript: ">=4.1.0"
+    dependencies:
+      typescript: 5.4.3
+    dev: true
 
   /semver@6.3.1:
     resolution:
