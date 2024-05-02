@@ -2,6 +2,7 @@ import NextLink from "next/link"
 import NextImage from "next/image"
 
 import authorImage from "@/content/images/author-75x75.png"
+import { LanguageSwitcher } from "@/components/layout/language-switcher"
 
 type Dictionary = { logo: { title: string; subtitle: string; subtitlePrefix: string; ariaLabel: string } }
 
@@ -56,12 +57,13 @@ export function Header({
     <header className="w-full bg-gray-100">
       <nav className="pxcontent mx-auto max-w-screen-xl py-7 md:flex md:items-center md:justify-between">
         <Logo homeHref={homeHref} dictionary={dictionary.logo} />
-        <div className="flex justify-center space-x-6 pt-5 md:justify-normal md:space-x-4 md:pt-0">
+        <div className="flex items-center justify-center space-x-6 pt-5 md:justify-normal md:space-x-4 md:pt-0">
           {navLinks.map((l, index) => (
             <NavLink key={index} href={l.href} target={l.target}>
               {l.label}
             </NavLink>
           ))}
+          <LanguageSwitcher />
         </div>
       </nav>
     </header>
