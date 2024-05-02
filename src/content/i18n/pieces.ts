@@ -52,7 +52,7 @@ const pieces = {
     },
     header: {
       navLinks: [
-        { label: "Newsletter", href: newsletterPage("en") },
+        // { label: "Newsletter", href: newsletterPage("en") },
         { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
         { label: "About", href: aboutPage("en") },
       ],
@@ -112,7 +112,7 @@ const pieces = {
     },
     header: {
       navLinks: [
-        { label: "Newsletter", href: newsletterPage("de") },
+        // { label: "Newsletter", href: newsletterPage("de") },
         { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
         { label: "Über", href: aboutPage("de") },
       ],
