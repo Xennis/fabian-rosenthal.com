@@ -57,7 +57,7 @@ const pieces = {
       },
       {
         name: "Green Walking: Walk & Hike Map",
-        href: "https://fabian-rosenthal.com/green-walking/",
+        href: "https://xennis.github.io/green-walking/",
         tags: ["AndroidApp", "Flutter"],
         shortDescription: "The map shows all kinds of trails for walking and hiking.",
       },
@@ -75,13 +75,13 @@ const pieces = {
       },
       {
         name: "Hamburg Stairs Map",
-        href: "https://fabian-rosenthal.com/hamburg-stairs-map/",
+        href: "https://xennis.github.io/hamburg-stairs-map/",
         tags: ["Mapbox", "OverpassAPI"],
         shortDescription: "A map to visualize the stairs in Hamburg, Germany.",
       },
       {
         name: "EpiDoc Parser",
-        href: "https://fabian-rosenthal.com/epidoc-parser/",
+        href: "https://github.com/Xennis/epidoc-parser/",
         tags: ["PythonLibrary"],
         shortDescription: "Python parser for EpiDoc (epigraphic documents in TEI XML).",
       },
@@ -107,7 +107,7 @@ const pieces = {
       },
       {
         name: "Green Walking: Walk & Hike Map",
-        href: "https://fabian-rosenthal.com/green-walking/",
+        href: "https://xennis.github.io/green-walking/",
         tags: ["AndroidApp", "Flutter"],
         shortDescription: "Die Karte zeigt allerlei Wege zum Wandern und Spazieren.",
       },
@@ -125,13 +125,13 @@ const pieces = {
       },
       {
         name: "Hamburg Treppenkarte",
-        href: "https://fabian-rosenthal.com/hamburg-stairs-map/",
+        href: "https://xennis.github.io/hamburg-stairs-map/",
         tags: ["Mapbox", "OverpassAPI"],
         shortDescription: "Die interaktive Karte visualisiert die Treppen in der Stadt Hamburg.",
       },
       {
         name: "EpiDoc Parser",
-        href: "https://fabian-rosenthal.com/epidoc-parser/",
+        href: "https://github.com/Xennis/epidoc-parser/",
         tags: ["PythonLibrary"],
         shortDescription: "Python-Parser für EpiDoc (epigraphisch Dokumente in TEI XML).",
       },
