@@ -4,15 +4,11 @@ import { AuthorHeader } from "@/components/author-header"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { getPiece } from "@/content/i18n/pieces"
 import { homePage } from "@/lib/links"
+import { createAlternativeUrls } from "@/lib/next"
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
   return {
-    alternates: {
-      languages: {
-        en: homePage("en"),
-        de: homePage("de"),
-      },
-    },
+    alternates: createAlternativeUrls(homePage),
   }
 }
 

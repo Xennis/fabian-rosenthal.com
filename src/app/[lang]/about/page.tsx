@@ -5,17 +5,13 @@ import { getDictionary } from "@/content/i18n/dictionaries"
 import { getPiece } from "@/content/i18n/pieces"
 import { Projects } from "@/components/projects"
 import { aboutPage } from "@/lib/links"
+import { createAlternativeUrls } from "@/lib/next"
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
   const dictionary = getDictionary(params.lang)
   return {
     title: dictionary.pages.about.title,
-    alternates: {
-      languages: {
-        en: aboutPage("en"),
-        de: aboutPage("de"),
-      },
-    },
+    alternates: createAlternativeUrls(aboutPage),
   }
 }
 
