@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
 
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { getPiece } from "@/content/i18n/pieces"
@@ -21,6 +22,7 @@ export function RootLayout({ children, lang }: { children: React.ReactNode; lang
           <main className="pxcontent py-7">{children}</main>
           <Footer socialLinks={piece.socialLinks} navLinks={piece.footer.navLinks} dictionary={dictionary.footer} />
         </div>
+        <Analytics />
       </body>
     </html>
   )
