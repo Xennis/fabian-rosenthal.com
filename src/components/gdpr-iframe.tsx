@@ -48,7 +48,7 @@ export function GdprIframe({
   }
 
   if (enabled === true) {
-    return <>{children}</>
+    return <div className="min-h-[500px]">{children}</div>
   }
   if (enabled === "loading") {
     return <div className="h-[500px] w-full animate-pulse rounded bg-gray-100"></div>

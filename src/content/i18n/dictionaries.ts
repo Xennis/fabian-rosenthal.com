@@ -18,6 +18,10 @@ const dictionaries = {
         headline: "Subscribe to My Newsletter",
         subtitle: "Read about my insights and learning journey",
       },
+      voluntarySupport: {
+        headline: "Voluntary Software Support",
+        subtitle: "For nonprofit clubs, volunteers, private individuals, ...",
+      },
       gdprIframe: {
         consentButtonLabel: "Load external content",
       },
@@ -49,6 +53,9 @@ const dictionaries = {
       newsletter: {
         title: "Newsletter",
       },
+      voluntarySupport: {
+        title: "Voluntary Software Support",
+      },
       notFound: {
         title: "Not Found",
         headline: "Page Not Found",
@@ -73,6 +80,10 @@ const dictionaries = {
       newsletter: {
         headline: "Abonniere meinen Newsletter",
         subtitle: "Meine Einblicke und Erkenntnisse aus der Software-Welt",
+      },
+      voluntarySupport: {
+        headline: "Ehrenamtlicher Software-Support",
+        subtitle: "Für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
       },
       gdprIframe: {
         consentButtonLabel: "Externe Inhalte laden",
@@ -103,6 +114,9 @@ const dictionaries = {
       },
       newsletter: {
         title: "Newsletter",
+      },
+      voluntarySupport: {
+        title: "Ehrenamtlicher Software-Support",
       },
       // Won't be translated anyway
       notFound: {

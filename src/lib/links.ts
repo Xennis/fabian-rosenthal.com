@@ -9,3 +9,4 @@ export const aboutPage = (lang: string) => `/${lang}/about`
 export const homePage = (lang: string) => `/${lang}`
 export const legalPage = (lang: string) => `/${lang}/legal`
 export const newsletterPage = (lang: string) => `/${lang}/newsletter`
+export const voluntarySupport = (lang: string) => `/${lang}/voluntary-support`

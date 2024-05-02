@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  "@calcom/embed-react":
+    specifier: ^1.4.0
+    version: 1.4.0(react-dom@18.2.0)(react@18.2.0)
   "@vercel/analytics":
     specifier: ^1.2.2
     version: 1.2.2(next@14.1.4)(react@18.2.0)
@@ -82,6 +85,37 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.1
     dev: true
+
+  /@calcom/embed-core@1.4.0:
+    resolution:
+      {
+        integrity: sha512-2UKrUZkyyS0JxSj0uMNKk5JZ7wmdGNw4ki2K8pW71LnNxe52d7r//jtsRvJ2tJuQdrh+XRdbFy35SrmEjCFrAw==,
+      }
+    dev: false
+
+  /@calcom/embed-react@1.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-ZHiTYbNk3GVUAUaGClS/GcYSoaHMRtx0OvzjpXDMCo8Up+v9cj4V8b3zb3vmAaJQsYpheVCwdmaZiB20L/WxHA==,
+      }
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      "@calcom/embed-core": 1.4.0
+      "@calcom/embed-snippet": 1.2.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@calcom/embed-snippet@1.2.0:
+    resolution:
+      {
+        integrity: sha512-GbqxIkhKDdVafyEovz95HvMONIxcyF3CSFIadOpKtKXnRPkro95V8vIIJWqRVm+eYpCYOCSjXPt31iMpFiA/6A==,
+      }
+    dependencies:
+      "@calcom/embed-core": 1.4.0
+    dev: false
 
   /@emnapi/runtime@1.1.1:
     resolution:

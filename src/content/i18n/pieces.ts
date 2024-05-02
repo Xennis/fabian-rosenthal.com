@@ -42,6 +42,13 @@ const pieces = {
       navLinks: [{ label: "Legal Notice", href: legalPage("en") }],
     },
     gdprIframe: {
+      calcom: {
+        firstLine: "I use the external calendar from Cal.com for scheduling calls.",
+        secondLine: "By clicking the button, you consent to the use of cookies by Cal.com.",
+        gdprLinkPrefix: "For details, please see their",
+        gdprLinkLabel: "privacy policy",
+        gdprLinkHref: "https://cal.com/privacy",
+      },
       substack: {
         firstLine: "I use the external service Substack for my newsletter.",
         secondLine: "By clicking the button, you consent to the use of cookies by Substack.",
@@ -102,6 +109,13 @@ const pieces = {
       navLinks: [{ label: "Impressum", href: legalPage("de") }],
     },
     gdprIframe: {
+      calcom: {
+        firstLine: "Für Terminbuchungen verwende ich den externen Kalendar Cal.com.",
+        secondLine: "Durch einen Klicken auf den Button, stimmst du der Verwendung von Cookies durch Cal.com zu.",
+        gdprLinkPrefix: "Für Details, schaue in ihre",
+        gdprLinkLabel: "Datenschutzerklärung",
+        gdprLinkHref: "https://cal.com/privacy",
+      },
       substack: {
         firstLine: "Für meinen Newsletter verwende ich den externen Dienst Substack.",
         secondLine: "Durch einen Klicken auf den Button, stimmst du der Verwendung von Cookies durch Substack zu.",
