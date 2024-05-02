@@ -1,9 +1,7 @@
-import { AuthorHeader } from "@/components/author-header"
+import { redirect } from "next/navigation"
 
-export default function Home() {
-  return (
-    <>
-      <AuthorHeader hideSocialLinks={true} />
-    </>
-  )
+import { i18n } from "@/content/i18n/config"
+
+export default function HomePage() {
+  redirect(`/${i18n.defaultLocale}`)
 }
