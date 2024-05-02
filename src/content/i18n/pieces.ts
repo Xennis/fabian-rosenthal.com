@@ -6,7 +6,7 @@ import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
-import { aboutPage, legalNoticePage } from "@/lib/links"
+import { aboutPage, legalPage } from "@/lib/links"
 
 const socialLinks = [
   {
@@ -39,7 +39,7 @@ const socialLinks = [
 const pieces = {
   en: {
     footer: {
-      navLinks: [{ label: "Legal Notice", href: legalNoticePage("en") }],
+      navLinks: [{ label: "Legal Notice", href: legalPage("en") }],
     },
     header: {
       navLinks: [
@@ -89,7 +89,7 @@ const pieces = {
   },
   de: {
     footer: {
-      navLinks: [{ label: "Impressum", href: legalNoticePage("de") }],
+      navLinks: [{ label: "Impressum", href: legalPage("de") }],
     },
     header: {
       navLinks: [

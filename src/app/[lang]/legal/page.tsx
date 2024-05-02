@@ -1,24 +1,25 @@
 import { type Metadata } from "next"
 import { getDictionary } from "@/content/i18n/dictionaries"
-import { legalNoticePage } from "@/lib/links"
+import { legalPage } from "@/lib/links"
 import { createAlternativeUrls } from "@/lib/next"
 import { i18n } from "@/content/i18n/config"
+import {Dot} from "@/components/dot";
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
   const dictionary = getDictionary(params.lang)
   return {
     title: dictionary.pages.legalNotice.title,
-    alternates: createAlternativeUrls(legalNoticePage),
+    alternates: createAlternativeUrls(legalPage),
   }
 }
 
-export default function LegalNoticePage({ params }: { params: { lang: string } }) {
+export default function LegalPage({ params }: { params: { lang: string } }) {
   if (params.lang === i18n.defaultLocale) {
     return (
       <>
-        <h2>Legal Notice</h2>
+        <h2>Legal Notice<Dot /></h2>
         <p>
-          Fabian Rosenthal
+          <span className="font-semibold">Fabian Rosenthal</span>
           <br />
           Methfesselstraße 96
           <br />
@@ -41,10 +42,10 @@ export default function LegalNoticePage({ params }: { params: { lang: string } }
 
   return (
     <>
-      <h2>Impressum</h2>
+      <h2>Impressum<Dot /></h2>
       <p>
-        Fabian Rosenthal
-        <br />
+        <span className="font-semibold">Fabian Rosenthal</span>
+        <br/>
         Methfesselstraße 96
         <br />
         20255 Hamburg
