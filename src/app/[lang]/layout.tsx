@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       description: dictionary.description,
       title: dictionary.title,
       type: "website",
+      siteName: dictionary.title,
     },
     metadataBase: new URL(`https://${host}`),
     robots: {
