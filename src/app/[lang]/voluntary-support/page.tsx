@@ -66,7 +66,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
           <p>
             Ich wollte immer schon ein Ehrenamt machen. Meine Freundin arbeitet ehrenamtlich in einem Zuhör-Kiosk, wo
             Menschen ein offenes Ohr finden. Ein guter Freund fragte mich, wie er viele Daten für seine Doktorarbeit
-            auslesen kann, und eine Freundin, wie ihr Verein eine Webseite erstellen kann.
+            auslesen kann, und eine Freundin, wie ihr Förderverein eine Webseite erstellen kann.
           </p>
           <p>
             Damit stand die Idee: Ich biete pro Woche bis zu eine Stunde kostenlose Support für Software (Webseiten,
