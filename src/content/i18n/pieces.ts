@@ -110,7 +110,7 @@ const pieces = {
     },
     gdprIframe: {
       calcom: {
-        firstLine: "Für Terminbuchungen verwende ich den externen Kalendar Cal.com.",
+        firstLine: "Für Terminbuchungen verwende ich den externen Kalender Cal.com.",
         secondLine: "Durch einen Klicken auf den Button, stimmst du der Verwendung von Cookies durch Cal.com zu.",
         gdprLinkPrefix: "Für Details, schaue in ihre",
         gdprLinkLabel: "Datenschutzerklärung",
