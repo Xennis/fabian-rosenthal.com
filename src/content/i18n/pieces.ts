@@ -6,7 +6,7 @@ import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
-import { aboutPage, legalPage, newsletterPage } from "@/lib/links"
+import { aboutPage, legalPage, newsletterPage, voluntarySupport } from "@/lib/links"
 
 const socialLinks = [
   {
@@ -60,7 +60,7 @@ const pieces = {
     header: {
       navLinks: [
         { label: "Newsletter", href: newsletterPage("en") },
-        { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
+        { label: "Support", href: voluntarySupport("en") },
         { label: "About", href: aboutPage("en") },
       ],
     },
@@ -127,7 +127,7 @@ const pieces = {
     header: {
       navLinks: [
         { label: "Newsletter", href: newsletterPage("de") },
-        { label: "YouTube", href: "https://www.youtube.com/@fabian.rosenthal", target: "_blank" },
+        { label: "Support", href: voluntarySupport("de") },
         { label: "Über", href: aboutPage("de") },
       ],
     },

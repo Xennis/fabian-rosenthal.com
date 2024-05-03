@@ -20,7 +20,11 @@ const dictionaries = {
       },
       voluntarySupport: {
         headline: "Voluntary Software Support",
-        subtitle: "For nonprofit clubs, volunteers, private individuals, ...",
+        subtitle: "Free software help for nonprofit clubs, volunteers, private individuals, ...",
+        bookingHeadline: "Book Your Appointment",
+        bookingInfoPrefix: "What do I need to do?",
+        bookingInfo:
+          "Simply book a 15, 30, or 45 minute appointment in the calendar below. Once I confirm the appointment, you will be invited to a video call.",
       },
       gdprIframe: {
         consentButtonLabel: "Load external content",
@@ -83,7 +87,11 @@ const dictionaries = {
       },
       voluntarySupport: {
         headline: "Ehrenamtlicher Software-Support",
-        subtitle: "Für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
+        subtitle: "Kostenloser Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
+        bookingHeadline: "Buche Deinen Termin",
+        bookingInfoPrefix: "Was muss ich tun?",
+        bookingInfo:
+          "Buche einfach einen 15-, 30- oder 45-minütigen Termin im Kalender unten. Wenn ich den Termin bestätige, wirst du zu einem Video-Telefonat eingeladen.",
       },
       gdprIframe: {
         consentButtonLabel: "Externe Inhalte laden",
