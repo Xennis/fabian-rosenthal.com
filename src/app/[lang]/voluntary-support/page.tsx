@@ -5,7 +5,7 @@ import { getDictionary } from "@/content/i18n/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
 import { newsletterPage } from "@/lib/links"
 import { GdprIframe } from "@/components/gdpr-iframe"
-import { getPiece } from "@/content/i18n/pieces"
+import { getCollections } from "@/content/i18n/collections"
 import CalComIframe from "@/components/calcom"
 import { Hero } from "@/components/layout/hero"
 import { i18n } from "@/content/i18n/config"
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 
 export default function VoluntarySupportPage({ params }: { params: { lang: string } }) {
   const dictionary = getDictionary(params.lang)
-  const piece = getPiece(params.lang)
+  const collections = getCollections(params.lang)
 
   return (
     <>
@@ -106,7 +106,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
         <GdprIframe
           config={{
             storageKey: "calcom-consent",
-            ...piece.gdprIframe.calcom,
+            ...collections.gdprIframe.calcom,
           }}
           dictionary={dictionary.component.gdprIframe}
         >

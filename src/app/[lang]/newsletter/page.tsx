@@ -5,7 +5,7 @@ import { getDictionary } from "@/content/i18n/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
 import { newsletterPage } from "@/lib/links"
 import { GdprIframe } from "@/components/gdpr-iframe"
-import { getPiece } from "@/content/i18n/pieces"
+import { getCollections } from "@/content/i18n/collections"
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
   const dictionary = getDictionary(params.lang)
@@ -27,7 +27,7 @@ function SubstackIframe() {
 
 export default function NewsletterPage({ params }: { params: { lang: string } }) {
   const dictionary = getDictionary(params.lang)
-  const piece = getPiece(params.lang)
+  const collections = getCollections(params.lang)
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function NewsletterPage({ params }: { params: { lang: string } })
       </div>
       <GdprIframe
         config={{
-          ...piece.gdprIframe.substack,
+          ...collections.gdprIframe.substack,
           storageKey: "substack-consent",
         }}
         dictionary={dictionary.component.gdprIframe}

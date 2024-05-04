@@ -36,7 +36,7 @@ const socialLinks = [
   },
 ]
 
-const pieces = {
+const collections = {
   en: {
     footer: {
       navLinks: [{ label: "Legal Notice", href: legalPage("en") }],
@@ -173,9 +173,9 @@ const pieces = {
   },
 }
 
-export const getPiece = (locale: string | null) => {
-  if (locale && locale in pieces) {
-    return pieces[locale as keyof typeof pieces]
+export const getCollections = (locale: string | null) => {
+  if (locale && locale in collections) {
+    return collections[locale as keyof typeof collections]
   }
-  return pieces.en
+  return collections.en
 }
