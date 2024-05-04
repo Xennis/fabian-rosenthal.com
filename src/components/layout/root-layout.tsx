@@ -20,7 +20,11 @@ export function RootLayout({ children, lang }: { children: React.ReactNode; lang
         <Header homeHref={homePage(lang)} navLinks={collections.header.navLinks} dictionary={dictionary.header} />
         <div className="mx-auto max-w-screen-xl">
           <main className="pxcontent py-7">{children}</main>
-          <Footer socialLinks={collections.socialLinks} navLinks={collections.footer.navLinks} dictionary={dictionary.footer} />
+          <Footer
+            socialLinks={collections.socialLinks}
+            navLinks={collections.footer.navLinks}
+            dictionary={dictionary.footer}
+          />
         </div>
         <Analytics />
       </body>

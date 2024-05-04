@@ -1,15 +1,23 @@
 import { type Metadata } from "next"
-import { getDictionary } from "@/content/i18n/dictionaries"
+
 import { legalPage } from "@/lib/links"
 import { createAlternativeUrls } from "@/lib/next"
 import { i18n } from "@/content/i18n/config"
 import { Dot } from "@/components/dot"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
-  const dictionary = getDictionary(params.lang)
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
+  const data: Metadata =
+    params.lang === i18n.defaultLocale
+      ? {
+          title: "Legal Notice",
+        }
+      : {
+          title: "Impressum",
+        }
+
   return {
-    title: dictionary.pages.legalNotice.title,
     alternates: createAlternativeUrls(legalPage),
+    ...data,
   }
 }
 

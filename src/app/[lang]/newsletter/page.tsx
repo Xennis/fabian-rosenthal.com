@@ -6,12 +6,21 @@ import { createAlternativeUrls } from "@/lib/next"
 import { newsletterPage } from "@/lib/links"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { getCollections } from "@/content/i18n/collections"
+import { i18n } from "@/content/i18n/config"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
-  const dictionary = getDictionary(params.lang)
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
+  const data: Metadata =
+    params.lang === i18n.defaultLocale
+      ? {
+          title: "Newsletter",
+        }
+      : {
+          title: "Newsletter",
+        }
+
   return {
-    title: dictionary.pages.newsletter.title,
     alternates: createAlternativeUrls(newsletterPage),
+    ...data,
   }
 }
 

@@ -6,7 +6,7 @@ import { getCollections } from "@/content/i18n/collections"
 import { homePage } from "@/lib/links"
 import { createAlternativeUrls } from "@/lib/next"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   return {
     alternates: createAlternativeUrls(homePage),
   }

@@ -10,11 +10,19 @@ import CalComIframe from "@/components/calcom"
 import { Hero } from "@/components/layout/hero"
 import { i18n } from "@/content/i18n/config"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata | null> {
-  const dictionary = getDictionary(params.lang)
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
+  const data: Metadata =
+    params.lang === i18n.defaultLocale
+      ? {
+          title: "Voluntary Software Support",
+        }
+      : {
+          title: "Ehrenamtlicher Software-Support",
+        }
+
   return {
-    title: dictionary.pages.voluntarySupport.title,
     alternates: createAlternativeUrls(newsletterPage),
+    ...data,
   }
 }
 

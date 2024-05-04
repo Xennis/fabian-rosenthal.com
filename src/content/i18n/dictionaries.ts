@@ -47,26 +47,6 @@ const dictionaries = {
       description:
         "My site features articles and insight about solo software businesses and micro SaaS: Starting a business as a software developer. Finding and validating software ideas.",
     },
-    pages: {
-      about: {
-        title: "About",
-      },
-      legalNotice: {
-        title: "Legal Notice",
-      },
-      newsletter: {
-        title: "Newsletter",
-      },
-      voluntarySupport: {
-        title: "Voluntary Software Support",
-      },
-      notFound: {
-        title: "Not Found",
-        headline: "Page Not Found",
-        messagePrefix: "This page could not be found. Return to",
-        messageLinkLabel: "Home",
-      },
-    },
   },
   de: {
     component: {
@@ -112,27 +92,6 @@ const dictionaries = {
     metadata: {
       title: "Fabian Rosenthal",
       description: "Einblicke über meine Arbeit als Softwareentwickler.",
-    },
-    pages: {
-      about: {
-        title: "Über",
-      },
-      legalNotice: {
-        title: "Impressum",
-      },
-      newsletter: {
-        title: "Newsletter",
-      },
-      voluntarySupport: {
-        title: "Ehrenamtlicher Software-Support",
-      },
-      // Won't be translated anyway
-      notFound: {
-        title: "Not Found",
-        headline: "Page Not Found",
-        messagePrefix: "This page could not be found. Return to",
-        messageLinkLabel: "Home",
-      },
     },
   },
 }
