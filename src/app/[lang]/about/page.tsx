@@ -9,18 +9,26 @@ import { createAlternativeUrls } from "@/lib/next"
 import { i18n } from "@/content/i18n/config"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
-  const data: Metadata =
+  const data =
     params.lang === i18n.defaultLocale
       ? {
+          description:
+            "Ahoy, I'm Fabian. I love love travelling, software development & hiking. Learn more about me and my projects.",
           title: "About",
         }
       : {
+          description:
+            "Ahoi, ich bin Fabian. Ich liebe reisen, Softwareentwicklung & wandern. Lerne mehr über mich und meine Projekte.",
           title: "Über",
         }
 
   return {
-    alternates: createAlternativeUrls(aboutPage),
     ...data,
+    alternates: createAlternativeUrls(aboutPage),
+    openGraph: {
+      description: data.description,
+      title: data.title,
+    },
   }
 }
 

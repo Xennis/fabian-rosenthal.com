@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     description: dictionary.description,
     openGraph: {
       description: dictionary.description,
-      title: dictionary.title,
+      title: {
+        default: dictionary.title,
+        template: `%s - ${dictionary.title}`,
+      },
       type: "website",
       siteName: dictionary.title,
     },

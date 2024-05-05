@@ -9,18 +9,24 @@ import { getCollections } from "@/content/i18n/collections"
 import { i18n } from "@/content/i18n/config"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
-  const data: Metadata =
+  const data =
     params.lang === i18n.defaultLocale
       ? {
+          description: "Subscribe to My Newsletter. Read about my insights and learning journey.",
           title: "Newsletter",
         }
       : {
+          description: "Abonniere meinen Newsletter. Meine Einblicke und Erkenntnisse aus der Software-Welt.",
           title: "Newsletter",
         }
 
   return {
-    alternates: createAlternativeUrls(newsletterPage),
     ...data,
+    alternates: createAlternativeUrls(newsletterPage),
+    openGraph: {
+      description: data.description,
+      title: data.title,
+    },
   }
 }
 

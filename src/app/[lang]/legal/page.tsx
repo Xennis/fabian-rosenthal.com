@@ -6,18 +6,24 @@ import { i18n } from "@/content/i18n/config"
 import { Dot } from "@/components/dot"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
-  const data: Metadata =
+  const data =
     params.lang === i18n.defaultLocale
       ? {
+          description: "Legal notice of the website.",
           title: "Legal Notice",
         }
       : {
+          description: "Impressum der Website.",
           title: "Impressum",
         }
 
   return {
-    alternates: createAlternativeUrls(legalPage),
     ...data,
+    alternates: createAlternativeUrls(legalPage),
+    openGraph: {
+      description: data.description,
+      title: data.title,
+    },
   }
 }
 

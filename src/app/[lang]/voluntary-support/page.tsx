@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Dot } from "@/components/dot"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
-import { newsletterPage } from "@/lib/links"
+import { voluntarySupport } from "@/lib/links"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { getCollections } from "@/content/i18n/collections"
 import CalComIframe from "@/components/calcom"
@@ -11,18 +11,26 @@ import { Hero } from "@/components/layout/hero"
 import { i18n } from "@/content/i18n/config"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
-  const data: Metadata =
+  const data =
     params.lang === i18n.defaultLocale
       ? {
+          description:
+            "Free software help for nonprofit clubs, volunteers, and private individuals. I offer one hour per week of free software support (websites, apps, data processing, scripts, programming, etc.).",
           title: "Voluntary Software Support",
         }
       : {
+          description:
+            "Kostenloser Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche und Privatpersonen. Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten, Apps, Datenverarbeitung, Skripte, Programmierung, ...) an.",
           title: "Ehrenamtlicher Software-Support",
         }
 
   return {
-    alternates: createAlternativeUrls(newsletterPage),
     ...data,
+    alternates: createAlternativeUrls(voluntarySupport),
+    openGraph: {
+      description: data.description,
+      title: data.title,
+    },
   }
 }
 
@@ -47,7 +55,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             friend asked how her non-profit association can create a website.
           </p>
           <p>
-            So, the idea came about: I offer up to one hour of free support per week for software (websites, apps, data
+            So, the idea came about: I offer one hour per week of free software support (websites, apps, data
             processing, scripts, programming, etc.).
           </p>
           <p>
