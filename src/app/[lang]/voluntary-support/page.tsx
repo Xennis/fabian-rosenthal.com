@@ -77,7 +77,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             auslesen kann, und eine Freundin, wie ihr Förderverein eine Webseite erstellen kann.
           </p>
           <p>
-            Damit stand die Idee: Ich biete pro Woche bis zu eine Stunde kostenlose Support für Software (Webseiten,
+            Damit stand die Idee: Ich biete pro Woche bis zu eine Stunde kostenlosen Support für Software (Webseiten,
             Apps, Datenverarbeitung, Skripte, Programmierung, ...) an.
           </p>
           <p>
