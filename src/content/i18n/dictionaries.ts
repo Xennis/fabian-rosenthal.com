@@ -24,7 +24,7 @@ const dictionaries = {
         bookingHeadline: "Book Your Appointment",
         bookingInfoPrefix: "What do I need to do?",
         bookingInfo:
-          "Simply book a 15, 30, or 45 minute appointment in the calendar below. Once I confirm the appointment, you will be invited to a video call.",
+          "Simply book a 15, 30, or 45-minute appointment on the calendar below. Once I confirm the appointment, you will be invited to a video call.",
       },
       gdprIframe: {
         consentButtonLabel: "Load external content",

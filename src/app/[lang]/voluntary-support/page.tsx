@@ -61,16 +61,16 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
           <div>
             <p>
               I&apos;ve always wanted to do volunteer work. My girlfriend volunteers at a kiosk, where people can find a
-              sympathetic ear. A good friend asked me how to process a large amount of data for his dissertation, and a
+              sympathetic ear. A good friend asked me how to analyze a large amount of data for his dissertation, and a
               friend asked how her non-profit association can create a website.
             </p>
             <p>
-              So, the idea came about: I offer one hour per week of free software support (websites, apps, data
-              processing, scripts, programming, etc.).
+              So, the idea came about: I offer one hour per week of free software support (websites, apps, databases,
+              data processing, scripts, programming, etc.).
             </p>
             <p>
-              <b>What can you expect?</b> Definitely a nice conversation. Whether I can really help you depends heavily
-              on your matter. Here are a few examples of what I&apos;m familiar with and what I&apos;m not:
+              <b>What can you expect?</b> Definitely a nice conversation. Whether I can actually help you depends
+              heavily on your matter. Here are a few examples of what I&apos;m familiar with and what I&apos;m not:
             </p>
             <SkillList skills={collections.voluntarySkills} />
             <p>Additionally, the time usually suffices for a tip or advice, but not for a complete solution.</p>
@@ -80,11 +80,11 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             <p>
               Ich wollte immer schon ein Ehrenamt machen. Meine Freundin arbeitet ehrenamtlich in einem Zuhör-Kiosk, wo
               Menschen ein offenes Ohr finden. Ein guter Freund fragte mich, wie er viele Daten für seine Doktorarbeit
-              auslesen kann, und eine Freundin, wie ihr Förderverein eine Webseite erstellen kann.
+              analysieren kann, und eine Freundin, wie ihr Förderverein eine Webseite erstellen kann.
             </p>
             <p>
-              Damit stand die Idee: Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten, Apps,
-              Datenverarbeitung, Skripte, Programmierung, ...) an.
+              Damit entstand die Idee: Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten,
+              Apps, Datenbanken, Datenverarbeitung, Skripte, Programmierung, ...) an.
             </p>
             <p>
               <b>Was kannst du erwarten?</b> Auf jeden Fall ein nettes Gespräch. Ob ich dir wirklich helfen kann, hängt
