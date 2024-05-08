@@ -6,16 +6,19 @@ function ProjectItem({
   tags,
   shortDescription,
   tagsSrLabel,
+  id,
 }: Project & {
   tagsSrLabel: string
+  id: string
 }) {
+  const ariaTagsId = `project-tags-${id}`
   return (
     <>
       <a href={href} target="_blank">
         {name}
       </a>{" "}
-      <span className="sr-only" id={`${name}-tags`}>{`${tagsSrLabel}: `}</span>
-      <span aria-labelledby={`${name}-tags`} role="list">
+      <span className="sr-only" id={ariaTagsId}>{`${tagsSrLabel}: `}</span>
+      <span aria-labelledby={ariaTagsId} role="list">
         {tags.map((t, index) => (
           <span role="listitem" className="ps-1" key={index}>
             <span aria-hidden={true}>#</span>
@@ -42,7 +45,7 @@ export function Projects({
       <ul>
         {projects.map((p, index) => (
           <li key={index}>
-            <ProjectItem {...p} tagsSrLabel={dictionary.tagsSrLabel} />
+            <ProjectItem {...p} tagsSrLabel={dictionary.tagsSrLabel} id={index.toString()} />
           </li>
         ))}
       </ul>
