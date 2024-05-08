@@ -37,13 +37,13 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
   const collections = getCollections(params.lang)
 
   return (
-    <>
+    <div className="max-width-regular">
       <AuthorHeader
         socialLinks={collections.socialLinks}
         dictionary={dictionary.component.authorHeader}
         includeJsonLd={true}
       />
       <Projects projects={collections.projects} dictionary={dictionary.component.projects} />
-    </>
+    </div>
   )
 }

@@ -6,6 +6,10 @@
   @apply px-4;
 }
 
+.max-width-regular {
+  @apply max-w-screen-lg mx-auto;
+}
+
 main a {
   @apply font-semibold underline decoration-[#18b83d] decoration-2 underline-offset-2 hover:no-underline;
 }

@@ -31,10 +31,10 @@ export default function LegalPage({ params }: { params: { lang: string } }) {
   if (params.lang === i18n.defaultLocale) {
     return (
       <>
-        <h2>
+        <h1 className="pb-6">
           Legal Notice
           <Dot />
-        </h2>
+        </h1>
         <p>
           <span className="font-semibold">Fabian Rosenthal</span>
           <br />
@@ -50,7 +50,7 @@ export default function LegalPage({ params }: { params: { lang: string } }) {
           <br />
           E-Mail: code [at] xennis.org
           <br />
-          Internet: www.fabian-rosenthal.com
+          Internet: fabian-rosenthal.com
           <br />
         </p>
       </>
@@ -59,10 +59,10 @@ export default function LegalPage({ params }: { params: { lang: string } }) {
 
   return (
     <>
-      <h2>
+      <h1 className="pb-6">
         Impressum
         <Dot />
-      </h2>
+      </h1>
       <p>
         <span className="font-semibold">Fabian Rosenthal</span>
         <br />
@@ -77,7 +77,7 @@ export default function LegalPage({ params }: { params: { lang: string } }) {
         <br />
         E-Mail: code [at] xennis.org
         <br />
-        Internet: www.fabian-rosenthal.com
+        Internet: fabian-rosenthal.com
         <br />
       </p>
     </>
