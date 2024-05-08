@@ -125,7 +125,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
           }}
           dictionary={dictionary.component.gdprIframe}
         >
-          <CalComIframe />
+          <CalComIframe calLink="fabian.rosenthal/voluntary-support" />
         </GdprIframe>
       </section>
     </>
