@@ -67,7 +67,7 @@ const dictionaries = {
       },
       voluntarySupport: {
         headline: "Ehrenamtlicher Software-Support",
-        subtitle: "Kostenloser Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
+        subtitle: "Kostenlose Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
         bookingHeadline: "Buche Deinen Termin",
         bookingInfoPrefix: "Was muss ich tun?",
         bookingInfo:

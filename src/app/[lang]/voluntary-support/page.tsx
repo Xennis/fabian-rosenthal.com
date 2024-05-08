@@ -16,12 +16,12 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
     params.lang === i18n.defaultLocale
       ? {
           description:
-            "Free software help for nonprofit clubs, volunteers, and private individuals. I offer one hour per week of free software support (websites, apps, data processing, scripts, programming, etc.).",
+            "Free software help for nonprofit clubs, volunteers, and private individuals. I offer one hour per week of free software support (websites, apps, databases, data processing, scripts, programming, etc.).",
           title: "Voluntary Software Support",
         }
       : {
           description:
-            "Kostenloser Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche und Privatpersonen. Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten, Apps, Datenverarbeitung, Skripte, Programmierung, ...) an.",
+            "Kostenlose Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche und Privatpersonen. Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten, Apps, Datenbanken, Datenverarbeitung, Skripte, Programmierung, ...) an.",
           title: "Ehrenamtlicher Software-Support",
         }
 
@@ -83,8 +83,8 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
               auslesen kann, und eine Freundin, wie ihr Förderverein eine Webseite erstellen kann.
             </p>
             <p>
-              Damit stand die Idee: Ich biete pro Woche bis zu eine Stunde kostenlosen Support für Software (Webseiten,
-              Apps, Datenverarbeitung, Skripte, Programmierung, ...) an.
+              Damit stand die Idee: Ich biete pro Woche eine Stunde kostenlosen Support für Software (Webseiten, Apps,
+              Datenverarbeitung, Skripte, Programmierung, ...) an.
             </p>
             <p>
               <b>Was kannst du erwarten?</b> Auf jeden Fall ein nettes Gespräch. Ob ich dir wirklich helfen kann, hängt
