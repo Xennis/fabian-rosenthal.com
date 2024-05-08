@@ -19,7 +19,7 @@ export function RootLayout({ children, lang }: { children: React.ReactNode; lang
       <body className="h-full min-w-[280px] border-t-8 border-[#18b83d]" suppressHydrationWarning>
         <Header homeHref={homePage(lang)} navLinks={collections.header.navLinks} dictionary={dictionary.header} />
         <div className="mx-auto max-w-screen-xl">
-          <main className="pxcontent pt-8 pb-12">{children}</main>
+          <main className="pxcontent pb-12 pt-8">{children}</main>
           <Footer
             socialLinks={collections.socialLinks}
             navLinks={collections.footer.navLinks}

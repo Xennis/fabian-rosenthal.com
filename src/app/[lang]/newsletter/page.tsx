@@ -7,6 +7,7 @@ import { newsletterPage } from "@/lib/links"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { getCollections } from "@/content/i18n/collections"
 import { i18n } from "@/content/i18n/config"
+import { Headline } from "@/components/layout/headline"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   const data =
@@ -46,13 +47,9 @@ export default function NewsletterPage({ params }: { params: { lang: string } })
 
   return (
     <div className="max-width-regular">
-      <div className="mb-6 text-center">
-        <h1 className="leading-tight">
-          {dictionary.component.newsletter.headline}
-          <Dot/>
-        </h1>
-        <div>{dictionary.component.newsletter.subtitle}</div>
-      </div>
+      <Headline subtitle={dictionary.component.newsletter.subtitle}>
+        {dictionary.component.newsletter.headline}
+      </Headline>
       <GdprIframe
         config={{
           ...collections.gdprIframe.substack,
@@ -60,7 +57,7 @@ export default function NewsletterPage({ params }: { params: { lang: string } })
         }}
         dictionary={dictionary.component.gdprIframe}
       >
-        <SubstackIframe/>
+        <SubstackIframe />
       </GdprIframe>
     </div>
   )

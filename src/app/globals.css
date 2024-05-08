@@ -7,7 +7,7 @@
 }
 
 .max-width-regular {
-  @apply max-w-screen-lg mx-auto;
+  @apply mx-auto max-w-screen-lg;
 }
 
 main a {
