@@ -35,6 +35,18 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
   }
 }
 
+const SkillList = ({ skills }: { skills: Array<{ label: string; included: boolean }> }) => {
+  return (
+    <ul className="grid list-none text-sm sm:grid-cols-2 lg:grid-cols-3">
+      {skills.map((skill, index) => (
+        <li key={index}>
+          {skill.included ? "✅" : "❌"} {skill.label}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function VoluntarySupportPage({ params }: { params: { lang: string } }) {
   const dictionary = getDictionary(params.lang)
   const collections = getCollections(params.lang)
@@ -60,19 +72,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
               <b>What can you expect?</b> Definitely a nice conversation. Whether I can really help you depends heavily
               on your matter. Here are a few examples of what I&apos;m familiar with and what I&apos;m not:
             </p>
-            <ul className="grid list-none text-sm sm:grid-cols-2 lg:grid-cols-3">
-              <li>✅ Software development</li>
-              <li>✅ Websites</li>
-              <li>✅ Automation</li>
-              <li>✅ Programming</li>
-              <li>✅ Data processing</li>
-              <li>✅ Interfaces (APIs)</li>
-              <li>✅ Linux computers</li>
-              <li>✅ Digital maps (Maps, OSM)</li>
-              <li>❌ Windows computers</li>
-              <li>❌ Apple devices (MacOS, iPhone)</li>
-              <li>❌ Microsoft Office (Word, Excel)</li>
-            </ul>
+            <SkillList skills={collections.voluntarySkills} />
             <p>Additionally, the time usually suffices for a tip or advice, but not for a complete solution.</p>
           </div>
         ) : (
@@ -90,19 +90,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
               <b>Was kannst du erwarten?</b> Auf jeden Fall ein nettes Gespräch. Ob ich dir wirklich helfen kann, hängt
               stark von deinem Anliegen ab. Ein paar Beispiele, mit denen ich mich auskenne bzw. es eben nicht tue:
             </p>
-            <ul className="grid list-none text-sm sm:grid-cols-2 lg:grid-cols-3">
-              <li>✅ Software-Entwicklung</li>
-              <li>✅ Webseiten</li>
-              <li>✅ Automatisierung</li>
-              <li>✅ Programmierung</li>
-              <li>✅ Datenverarbeitung</li>
-              <li>✅ Schnittstellen (APIs)</li>
-              <li>✅ Linux Computer</li>
-              <li>✅ Digitale Karten (Maps, OSM)</li>
-              <li>❌ Windows Computer</li>
-              <li>❌ Apple Geräte (MacOS, iPhone)</li>
-              <li>❌ Microsoft Office (Word, Excel)</li>
-            </ul>
+            <SkillList skills={collections.voluntarySkills} />
             <p>
               Zudem reicht die Zeit erfahrungsgemäß für einen Tipp oder Ratschlag, aber nicht für eine vollständige
               Lösung.
