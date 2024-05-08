@@ -45,11 +45,11 @@ export default function NewsletterPage({ params }: { params: { lang: string } })
   const collections = getCollections(params.lang)
 
   return (
-    <>
+    <div className="max-width-regular">
       <div className="mb-6 text-center">
-        <h1 className="text-center leading-tight">
+        <h1 className="leading-tight">
           {dictionary.component.newsletter.headline}
-          <Dot />
+          <Dot/>
         </h1>
         <div>{dictionary.component.newsletter.subtitle}</div>
       </div>
@@ -60,8 +60,8 @@ export default function NewsletterPage({ params }: { params: { lang: string } })
         }}
         dictionary={dictionary.component.gdprIframe}
       >
-        <SubstackIframe />
+        <SubstackIframe/>
       </GdprIframe>
-    </>
+    </div>
   )
 }

@@ -47,6 +47,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
         </h1>
         <div>{dictionary.component.voluntarySupport.subtitle}</div>
       </div>
+      <div className="max-width-regular">
       {params.lang === i18n.defaultLocale ? (
         <div>
           <p>
@@ -73,7 +74,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             <li>✅ Digital maps (Maps, OSM)</li>
             <li>❌ Windows computers</li>
             <li>❌ Apple devices (MacOS, iPhone)</li>
-            <li>❌ Microsoft Office (Word, Excel, ...)</li>
+            <li>❌ Microsoft Office (Word, Excel)</li>
           </ul>
           <p>Additionally, the time usually suffices for a tip or advice, but not for a complete solution.</p>
         </div>
@@ -103,7 +104,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             <li>✅ Digitale Karten (Maps, OSM)</li>
             <li>❌ Windows Computer</li>
             <li>❌ Apple Geräte (MacOS, iPhone)</li>
-            <li>❌ Microsoft Office (Word, Excel, ...)</li>
+            <li>❌ Microsoft Office (Word, Excel)</li>
           </ul>
           <p>
             Zudem reicht die Zeit erfahrungsgemäß für einen Tipp oder Ratschlag, aber nicht für eine vollständige
@@ -111,6 +112,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
           </p>
         </div>
       )}
+      </div>
       <section id="booking" className="pt-10">
         <Hero headline={dictionary.component.voluntarySupport.bookingHeadline}>
           <p className="mt-4 text-lg tracking-tight text-white">
