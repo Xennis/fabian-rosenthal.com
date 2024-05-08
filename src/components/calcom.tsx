@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 import { brandColor } from "@/content/theme"
 
-export default function CalComIframe() {
+export default function CalComIframe({ calLink }: { calLink: string }) {
   useEffect(() => {
     ;(async function () {
       const cal = await getCalApi()
@@ -14,7 +14,7 @@ export default function CalComIframe() {
   }, [])
   return (
     <Cal
-      calLink="fabian.rosenthal/voluntary-support"
+      calLink={calLink}
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
       config={{ layout: "month_view" }}
     />
