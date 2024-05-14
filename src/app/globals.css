@@ -10,6 +10,12 @@
   @apply mx-auto max-w-screen-lg;
 }
 
+/* Select color */
+::selection {
+  color: white;
+  background: black;
+}
+
 main a {
   @apply font-semibold underline decoration-[#18b83d] decoration-2 underline-offset-2 hover:no-underline;
 }
