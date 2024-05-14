@@ -18,11 +18,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: new Date(),
           priority: 0.8,
         },
-        {
-          url: `https://${host}${newsletterPage(lang)}`,
-          lastModified: new Date(),
-          priority: 0.8,
-        },
+        // {
+        //   url: `https://${host}${newsletterPage(lang)}`,
+        //   lastModified: new Date(),
+        //   priority: 0.8,
+        // },
         {
           url: `https://${host}${voluntarySupport(lang)}`,
           lastModified: new Date(),

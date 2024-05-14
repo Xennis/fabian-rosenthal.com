@@ -59,7 +59,6 @@ const collections = {
     },
     header: {
       navLinks: [
-        { label: "Newsletter", href: newsletterPage("en") },
         { label: "Support", href: voluntarySupport("en") },
         { label: "About", href: aboutPage("en") },
       ],
@@ -140,7 +139,6 @@ const collections = {
     },
     header: {
       navLinks: [
-        { label: "Newsletter", href: newsletterPage("de") },
         { label: "Support", href: voluntarySupport("de") },
         { label: "Über", href: aboutPage("de") },
       ],

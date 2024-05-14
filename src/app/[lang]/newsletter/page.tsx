@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 
-import { Dot } from "@/components/dot"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
 import { newsletterPage } from "@/lib/links"
