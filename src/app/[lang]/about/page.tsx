@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
   return {
     ...data,
-    alternates: createAlternativeUrls(aboutPage),
+    alternates: createAlternativeUrls(aboutPage, params.lang),
     openGraph: {
       description: data.description,
       title: data.title,

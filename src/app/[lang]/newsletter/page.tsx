@@ -23,7 +23,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
   return {
     ...data,
-    alternates: createAlternativeUrls(newsletterPage),
+    alternates: createAlternativeUrls(newsletterPage, params.lang),
     openGraph: {
       description: data.description,
       title: data.title,
