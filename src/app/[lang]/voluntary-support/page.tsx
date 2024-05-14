@@ -27,7 +27,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
   return {
     ...data,
-    alternates: createAlternativeUrls(voluntarySupport),
+    alternates: createAlternativeUrls(voluntarySupport, params.lang),
     openGraph: {
       description: data.description,
       title: data.title,
@@ -62,7 +62,7 @@ export default function VoluntarySupportPage({ params }: { params: { lang: strin
             <p>
               I&apos;ve always wanted to do volunteer work. My girlfriend volunteers at a kiosk, where people can find a
               sympathetic ear. A good friend asked me how to analyze a large amount of data for his dissertation, and a
-              friend asked how her non-profit association can create a website.
+              friend asked how her non-profit association could create a website.
             </p>
             <p>
               So, the idea came about: I offer one hour per week of free software support (websites, apps, databases,

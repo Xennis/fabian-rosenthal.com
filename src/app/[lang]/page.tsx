@@ -8,7 +8,7 @@ import { createAlternativeUrls } from "@/lib/next"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   return {
-    alternates: createAlternativeUrls(homePage),
+    alternates: createAlternativeUrls(homePage, params.lang),
   }
 }
 
