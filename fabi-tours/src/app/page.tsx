@@ -1,10 +1,7 @@
-import Mapbox from "@/components/mapbox";
+import { redirect } from "next/navigation"
 
-export default function Home() {
-  return (
-      <>
-        <div>Hello World</div>
-        <Mapbox />
-      </>
-  );
+import { i18n } from "@/content/i18n/config"
+
+export default function HomePage() {
+    redirect(`/${i18n.defaultLocale}`)
 }
