@@ -1,5 +1,10 @@
+import Mapbox from "@/components/mapbox";
+
 export default function Home() {
   return (
-      <>Hello World</>
+      <>
+        <div>Hello World</div>
+        <Mapbox />
+      </>
   );
 }
