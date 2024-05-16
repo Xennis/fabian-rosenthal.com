@@ -7,7 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!;
 
-export default function Mapbox() {
+export default function Mapbox({lang}: {lang: string}) {
     const mapContainer = useRef<HTMLDivElement | null>(null);
     const map = useRef<mapboxgl.Map | null>(null);
 
@@ -17,7 +17,14 @@ export default function Mapbox() {
             container: mapContainer.current!,
             style: 'mapbox://styles/mapbox/streets-v12',
             center: [-70.9, 42.35],
-            zoom: 9
+            zoom: 2
+        });
+
+        map.current.on("load", () => {
+            map.current!.setLayoutProperty('country-label', 'text-field', [
+                'get',
+                `name_${lang}`
+            ]);
         });
 
         map.current.on('move', () => {
