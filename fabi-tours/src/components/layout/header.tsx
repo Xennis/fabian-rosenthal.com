@@ -1,4 +1,6 @@
 import NextLink from "next/link"
+import { Suspense } from "react"
+
 import { homePage, legalPage } from "@/content/config"
 import { LanguageToggle } from "@/components/layout/language-toggle"
 import { i18n } from "@/content/i18n"
@@ -26,7 +28,10 @@ export const Header = ({ lang }: { lang: string }) => {
           <NextLink href={legalPage(lang)} className="pe-3 hover:underline">
             {dictionary.legalLabel}
           </NextLink>
-          <LanguageToggle />
+          {/* TODO: Add fallback */}
+          <Suspense>
+            <LanguageToggle />
+          </Suspense>
         </div>
       </div>
     </header>
