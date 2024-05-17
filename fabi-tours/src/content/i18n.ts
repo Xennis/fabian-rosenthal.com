@@ -9,12 +9,12 @@ export const toggledLangMetadata = (lang: string) => {
   // The srLabels are not in the dictionary because they are in the local language.
   return lang === "en"
     ? {
-        label: "🇩🇪",
+        label: "DE",
         srLabel: "Wechsel zur deutschen Sprache",
         lang: "de",
       }
     : {
-        label: "🇺🇸",
+        label: "EN",
         srLabel: "Switch to English language",
         lang: "en",
       }
