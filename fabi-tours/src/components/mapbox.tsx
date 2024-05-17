@@ -3,6 +3,8 @@
 import { useRef, useEffect } from "react"
 import mapboxgl, { type AnySourceData } from "mapbox-gl"
 
+import { castToPlaceProperties } from "@/lib/places"
+
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./mapbox.css"
 
@@ -35,7 +37,6 @@ export default function Mapbox({
       .addControl(new mapboxgl.NavigationControl())
       .addControl(new mapboxgl.GeolocateControl())
       .addControl(new mapboxgl.ScaleControl())
-      .addControl(new mapboxgl.FullscreenControl())
 
     map.current.on("load", (e) => {
       const map = e.target
@@ -64,10 +65,22 @@ export default function Mapbox({
         if (feature === undefined || feature.geometry.type !== "Point") {
           return
         }
+        const props = castToPlaceProperties(feature.properties)
+        if (props === null) {
+          return
+        }
 
         // Copy coordinates array.
         const coordinates = feature.geometry.coordinates.slice()
-        const description = feature.properties?.description || ""
+        const description = `
+<div class="xpop">
+    <span class="title">${props.title}</span>
+    <ul class="tags">${props.tags.map((p, index) => `<li>#${p}</li>`)}</ul>
+    <ul class="links">
+        ${props.googleMaps && `<li><a href="${props.googleMaps}" target="_blank">Google Maps</a></li>`}
+        ${props.komoot && `<li><a href="${props.komoot}" target="_blank">Komoot</a></li>`}
+    </ul>
+</div>`
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears

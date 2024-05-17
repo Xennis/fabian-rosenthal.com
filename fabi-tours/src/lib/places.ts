@@ -1,23 +1,33 @@
 import { Client, isFullPage, iteratePaginatedAPI } from "@notionhq/client"
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import type { Feature, Position } from "geojson"
+import type { Feature, GeoJsonProperties, Geometry, Position } from "geojson"
 import type { GeoJSONSourceRaw } from "mapbox-gl"
+
+import { propsFirstPlainText, propsMultiSelect, propsUrl } from "@/lib/notion"
+
+export type PlaceProperties = {
+  title: string
+  tags: Array<string>
+  googleMaps: string | null
+  komoot: string | null
+  icon: string
+}
+
+export const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties | null => {
+  if (props === null) {
+    return null
+  }
+  return {
+    ...props,
+    // Convert '["a","b"]' back to an actual array
+    tags: JSON.parse(props.tags),
+  } as PlaceProperties
+}
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
   timeoutMs: 1000 * 10,
 })
-
-const propsFirstPlainText = (properties: PageObjectResponse["properties"], name: string) => {
-  const prop = properties[name]
-  if (prop?.type === "rich_text" && prop.rich_text.length > 0) {
-    return prop.rich_text[0].plain_text
-  }
-  if (prop?.type === "title" && prop.title.length > 0) {
-    return prop.title[0].plain_text
-  }
-  return null
-}
 
 const stringToPosition = (raw: string | null): Position | null => {
   if (!raw) {
@@ -37,8 +47,17 @@ const stringToPosition = (raw: string | null): Position | null => {
   return [lng, lat]
 }
 
+const tagsToIcon = (tags: Array<string>) => {
+  switch (tags[0]) {
+    case "viewpoint":
+      return "viewpoint"
+    default:
+      return "theatre"
+  }
+}
+
 export const fetchPlaces = async (): Promise<GeoJSONSourceRaw> => {
-  const features = []
+  const features: Array<Feature<Geometry, PlaceProperties>> = []
   for await (const block of iteratePaginatedAPI(notionClient.databases.query, {
     database_id: process.env.NOTION_PLACES_DB_ID!,
     page_size: 50,
@@ -59,20 +78,25 @@ export const fetchPlaces = async (): Promise<GeoJSONSourceRaw> => {
   }
 }
 
-const processPage = (page: PageObjectResponse): Feature | null => {
+const processPage = (page: PageObjectResponse): Feature<Geometry, PlaceProperties> | null => {
   const title = propsFirstPlainText(page.properties, "Name")
-  const icon = propsFirstPlainText(page.properties, "Icon")
+  const tags = propsMultiSelect(page.properties, "Tags")
   const position = stringToPosition(propsFirstPlainText(page.properties, "Location"))
-  if (!title || !icon || !position) {
+  if (!title || !tags || !position) {
     console.warn(`page with id=${page.id} has invalid properties`)
     return null
   }
+  const googleMaps = propsUrl(page.properties, "Google Maps")
+  const komoot = propsUrl(page.properties, "Komoot")
 
   return {
     type: "Feature",
     properties: {
-      description: `<strong>${title}</strong><p><a href="https://example.org" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>`,
-      icon: icon,
+      title: title,
+      tags: tags,
+      googleMaps: googleMaps,
+      komoot: komoot,
+      icon: tagsToIcon(tags),
     },
     geometry: {
       type: "Point",
