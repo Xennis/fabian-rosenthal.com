@@ -3,8 +3,6 @@
 import { useRef, useEffect } from "react"
 import mapboxgl, { type AnySourceData } from "mapbox-gl"
 
-import { castToPlaceProperties } from "@/lib/places"
-
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./mapbox.css"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
@@ -44,6 +42,7 @@ export default function Mapbox({
       style: "mapbox://styles/xennis/clwae1a00007001r0cwz1hgqp",
       center: params !== null ? [params.lng, params.lat] : [9.9872, 53.5488],
       zoom: params !== null ? params.z : 12,
+      minZoom: 10,
       maxBounds: [
         [9.53475952, 53.32595198], // southwest
         [10.50979614, 53.77793497], // northeast

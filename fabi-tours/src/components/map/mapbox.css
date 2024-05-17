@@ -14,8 +14,8 @@
   @apply text-base;
 }
 
-.xpop .tags {
-  @apply text-sm;
+.xpop .tags .tag {
+  @apply rounded px-1.5 py-0.5 text-xs text-white;
 }
 
 .xpop .links {

@@ -1,6 +1,6 @@
 import { type ReadonlyURLSearchParams } from "next/navigation"
 import mapboxgl, { AnySourceData } from "mapbox-gl"
-import { castToPlaceProperties } from "@/lib/places"
+import { castToPlaceProperties, tagColors } from "@/lib/places"
 
 export const parseSearchParams = (params: ReadonlyURLSearchParams) => {
   const inZ = params.get("z")
@@ -41,12 +41,16 @@ export const addMarkerLayer = (map: mapboxgl.Map, places: AnySourceData) => {
   map.addSource(sourceId, places)
   map.addLayer({
     id: layerId,
-    type: "symbol",
+    type: "circle",
     source: sourceId,
-    layout: {
-      "icon-image": ["get", "icon"],
-      "icon-allow-overlap": true,
-      "icon-size": 1.2,
+    paint: {
+      // zoom is 5 (or less) -> circle radius will be 7px
+      // zoom is 10 (or greater) -> circle radius will be 10px
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 5, 7, 10, 10],
+      // TODO: Merge with tagColors
+      "circle-color": ["match", ["get", "mainTag"], "viewpoint", "#3bb2d0", "cafe", "#fbb03b", /* other */ "#000000"],
+      "circle-stroke-width": 1,
+      "circle-stroke-color": "#ffffff",
     },
   })
 
@@ -65,7 +69,7 @@ export const addMarkerLayer = (map: mapboxgl.Map, places: AnySourceData) => {
     const description = `
 <div class="xpop">
     <span class="title">${props.title}</span>
-    <ul class="tags">${props.tags.map((p, index) => `<li>#${p}</li>`)}</ul>
+    <ul class="tags">${props.tags.map((p, index) => `<li><span class="tag" style="background-color: ${tagColors[props.mainTag]}">${p}</span></li>`)}</ul>
     <ul class="links">
         ${props.googleMaps && `<li><a href="${props.googleMaps}" target="_blank">Google Maps</a></li>`}
         ${props.komoot && `<li><a href="${props.komoot}" target="_blank">Komoot</a></li>`}
