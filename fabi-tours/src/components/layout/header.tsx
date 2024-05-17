@@ -23,7 +23,7 @@ export const Header = ({ lang }: { lang: string }) => {
           ️
         </NextLink>
         <div>
-          <NextLink href={legalPage(lang)} className="pe-2 hover:underline">
+          <NextLink href={legalPage(lang)} className="pe-3 hover:underline">
             {dictionary.legalLabel}
           </NextLink>
           <LanguageToggle />

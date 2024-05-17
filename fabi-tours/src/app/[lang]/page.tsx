@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
 
-import Mapbox from "@/components/mapbox"
+import Mapbox from "@/components/map/mapbox"
 import { createAlternativeUrls } from "@/lib/next"
 import { homePage } from "@/content/config"
 import { fetchPlaces } from "@/lib/places"
