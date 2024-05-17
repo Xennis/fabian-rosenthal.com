@@ -19,6 +19,10 @@ export default function Mapbox({ lang, className }: { lang: string; className?: 
       center: [9.9872, 53.5488],
       zoom: 12,
     })
+      .addControl(new mapboxgl.NavigationControl())
+      .addControl(new mapboxgl.GeolocateControl())
+      .addControl(new mapboxgl.ScaleControl())
+      .addControl(new mapboxgl.FullscreenControl())
 
     map.current.on("load", () => {
       map.current!.setLayoutProperty("country-label", "text-field", ["get", `name_${lang}`])
