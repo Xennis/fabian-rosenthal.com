@@ -71,8 +71,7 @@ const processPage = (page: PageObjectResponse): Feature | null => {
   return {
     type: "Feature",
     properties: {
-      description:
-        '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+      description: `<strong>${title}</strong><p><a href="https://example.org" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>`,
       icon: icon,
     },
     geometry: {
