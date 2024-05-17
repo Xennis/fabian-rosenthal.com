@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Mapbox */
-.mapboxgl-popup {
-  max-width: 400px;
+main p {
+  @apply py-2 leading-7 text-gray-700;
 }
