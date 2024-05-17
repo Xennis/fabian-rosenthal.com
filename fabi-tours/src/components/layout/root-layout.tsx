@@ -8,7 +8,7 @@ export function RootLayout({ children, lang }: { children: React.ReactNode; lang
   return (
     <html lang={lang} className={`h-full bg-white ${inter.className}`} suppressHydrationWarning>
       <body className="h-full min-w-[280px]" suppressHydrationWarning>
-        <div className="flex h-screen flex-col">
+        <div className="flex h-dvh flex-col">
           <Header lang={lang} />
           {children}
         </div>
