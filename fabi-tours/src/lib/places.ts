@@ -5,12 +5,14 @@ import type { GeoJSONSourceRaw } from "mapbox-gl"
 
 import { propsFirstPlainText, propsMultiSelect, propsUrl } from "@/lib/notion"
 
+export type PlaceTag = "cafe" | "viewpoint" | "unknown"
+
 export type PlaceProperties = {
   title: string
-  tags: Array<string>
+  mainTag: PlaceTag
+  tags: Array<PlaceTag>
   googleMaps: string | null
   komoot: string | null
-  icon: string
 }
 
 export const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties | null => {
@@ -24,10 +26,25 @@ export const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties
   } as PlaceProperties
 }
 
+export const tagColors = {
+  cafe: "#fbb03b",
+  viewpoint: "#3bb2d0",
+  unknown: "#000000",
+}
+
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
   timeoutMs: 1000 * 10,
 })
+
+const stringToTag = (raw: string): PlaceTag => {
+  switch (raw) {
+    case "cafe":
+    case "viewpoint":
+      return raw
+  }
+  return "unknown"
+}
 
 const stringToPosition = (raw: string | null): Position | null => {
   if (!raw) {
@@ -45,15 +62,6 @@ const stringToPosition = (raw: string | null): Position | null => {
     return null
   }
   return [lng, lat]
-}
-
-const tagsToIcon = (tags: Array<string>) => {
-  switch (tags[0]) {
-    case "viewpoint":
-      return "viewpoint"
-    default:
-      return "theatre"
-  }
 }
 
 export const fetchPlaces = async (): Promise<GeoJSONSourceRaw> => {
@@ -89,14 +97,16 @@ const processPage = (page: PageObjectResponse): Feature<Geometry, PlacePropertie
   const googleMaps = propsUrl(page.properties, "Google Maps")
   const komoot = propsUrl(page.properties, "Komoot")
 
+  const typedTags = tags.map((t) => stringToTag(t))
+
   return {
     type: "Feature",
     properties: {
       title: title,
-      tags: tags,
+      mainTag: typedTags[0],
+      tags: typedTags,
       googleMaps: googleMaps,
       komoot: komoot,
-      icon: tagsToIcon(tags),
     },
     geometry: {
       type: "Point",
