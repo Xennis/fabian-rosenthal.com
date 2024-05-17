@@ -7,3 +7,5 @@ export const host = "fabi-tours.vercel.app"
 
 export const homePage = (lang: string) => `/${lang}`
 export const legalPage = (lang: string) => `/${lang}/legal`
+
+export const brandColor = "#10b981"

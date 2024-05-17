@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
 
-import { legalPage } from "@/content/links"
+import { legalPage } from "@/content/config"
 import { createAlternativeUrls } from "@/lib/next"
 import { i18n } from "@/content/i18n"
 import { Headline } from "@/components/layout/headline"
@@ -29,7 +29,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
 export default function LegalPage({ params }: { params: { lang: string } }) {
   return (
-    <div className="max-width-regular text-center">
+    <div className="text-center">
       {params.lang === i18n.defaultLocale ? (
         <>
           <Headline>Legal Notice</Headline>

@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react"
 import mapboxgl, { type AnySourceData } from "mapbox-gl"
 
 import "mapbox-gl/dist/mapbox-gl.css"
+import "./mapbox.css"
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!
 
