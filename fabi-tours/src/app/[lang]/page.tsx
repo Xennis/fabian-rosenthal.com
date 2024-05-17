@@ -1,11 +1,11 @@
 import { type Metadata } from "next"
+import NextLink from "next/link"
 
 import Mapbox from "@/components/mapbox"
 import { LanguageToggle } from "@/components/layout/language-toggle"
 import { createAlternativeUrls } from "@/lib/next"
 import { homePage, legalPage } from "@/content/links"
-import NextLink from "next/link"
-import { places } from "@/content/places"
+import { fetchPlaces } from "@/lib/places"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   return {
@@ -13,7 +13,8 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
   }
 }
 
-export default function LangHomePage({ params }: { params: { lang: string } }) {
+export default async function LangHomePage({ params }: { params: { lang: string } }) {
+  const places = await fetchPlaces()
   return (
     <div className="flex h-screen flex-col">
       <header className="h-[40px]">
