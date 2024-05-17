@@ -5,6 +5,7 @@ import { LanguageToggle } from "@/components/layout/language-toggle"
 import { createAlternativeUrls } from "@/lib/next"
 import { homePage, legalPage } from "@/content/links"
 import NextLink from "next/link"
+import { places } from "@/content/places"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   return {
@@ -22,7 +23,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <LanguageToggle />
         </div>
       </header>
-      <Mapbox lang={params.lang} className="flex-1" />
+      <Mapbox lang={params.lang} places={places} className="flex-1" />
     </div>
   )
 }
