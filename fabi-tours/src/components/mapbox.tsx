@@ -23,9 +23,13 @@ export default function Mapbox({
     if (map.current) return // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current!,
-      style: "mapbox://styles/mapbox/streets-v12",
+      style: "mapbox://styles/xennis/clwae1a00007001r0cwz1hgqp",
       center: [9.9872, 53.5488],
       zoom: 12,
+      maxBounds: [
+        [9.53475952, 53.32595198], // southwest
+        [10.50979614, 53.77793497], // northeast
+      ],
     })
       .addControl(new mapboxgl.NavigationControl())
       .addControl(new mapboxgl.GeolocateControl())
@@ -50,6 +54,7 @@ export default function Mapbox({
         layout: {
           "icon-image": ["get", "icon"],
           "icon-allow-overlap": true,
+          "icon-size": 1.2,
         },
       })
 
