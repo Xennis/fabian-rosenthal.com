@@ -7,7 +7,7 @@ import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>
 
-export type PlaceTag = "cafe" | "viewpoint" | "wildliferefuge" | "unknown"
+export type PlaceTag = "beach" | "cafe" | "naturereserve" | "landmark" | "park" | "streetart" | "viewpoint" | "unknown"
 
 export type PlaceProperties = {
   id: string
@@ -15,31 +15,43 @@ export type PlaceProperties = {
   mainTag: PlaceTag
   tags: Array<PlaceTag>
   address: string
-  rating: number
+  rating: number | null
   googleMaps: string
   komoot: string | null
 }
 
 export const tagColors: Record<PlaceTag, string> = {
-  cafe: "#fbb03b",
+  beach: "#fbb03b",
+  cafe: "#ce34ed",
+  naturereserve: "#2a8408",
+  landmark: "#b6740e",
+  park: "#159e92",
+  streetart: "#000000",
   viewpoint: "#3bb2d0",
-  wildliferefuge: "#2a8408",
   unknown: "#000000",
 }
 
 export const tagLabel = (lang: string): Record<PlaceTag, string> => {
   if (lang === i18n.defaultLocale) {
     return {
+      beach: "beach",
       cafe: "café",
+      naturereserve: "nature reserve",
+      landmark: "landmark",
+      park: "park",
+      streetart: "street art",
       viewpoint: "viewpoint",
-      wildliferefuge: "wildlife refuge",
       unknown: "unknown",
     }
   }
   return {
+    beach: "Strand",
     cafe: "Café",
+    naturereserve: "Naturgebiet",
+    landmark: "Sehenswürdigkeit",
+    park: "Park",
+    streetart: "Street Art",
     viewpoint: "Aussichtspunkt",
-    wildliferefuge: "Naturschutzgebiet",
     unknown: "Unbekannt",
   }
 }
@@ -51,9 +63,13 @@ const notionClient = new Client({
 
 const stringToTag = (raw: string): PlaceTag => {
   switch (raw) {
+    case "beach":
     case "cafe":
+    case "naturereserve":
+    case "landmark":
+    case "park":
+    case "streetart":
     case "viewpoint":
-    case "wildliferefuge":
       return raw
   }
   return "unknown"
@@ -90,6 +106,7 @@ export const fetchPlaces = async (): Promise<Array<Place>> => {
       }
     }
   }
+  console.info(`fetched ${features.length} places from notion`)
   return features
 }
 
@@ -99,13 +116,13 @@ const processPage = (page: PageObjectResponse): Place | null => {
   const tags = propsMultiSelect(page.properties, "Tags")
   const position = stringToPosition(propsFirstPlainText(page.properties, "Location"))
   const address = propsFirstPlainText(page.properties, "Address")
-  const rating = propsNumber(page.properties, "Rating")
   const googleMaps = propsUrl(page.properties, "Google Maps")
-  if (!id || !title || !tags || !position || !address || !rating || !googleMaps) {
-    console.warn(`page with id=${page.id} has invalid properties`)
+  if (!id || !title || !tags || !position || !address || !googleMaps) {
+    console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)
     return null
   }
   // Optional:
+  const rating = propsNumber(page.properties, "Rating")
   const komoot = propsUrl(page.properties, "Komoot")
 
   const typedTags = tags.map((t) => stringToTag(t))
