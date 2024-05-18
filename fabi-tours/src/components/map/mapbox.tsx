@@ -9,7 +9,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { getPopupInfo, placePopupHtml } from "@/components/map/popup"
 import { Place, tagColors } from "@/lib/places"
 import { matchGet } from "@/lib/mapbox-style"
-import { addPlaceToParams, addPositionParams, parseParams, removePlaceFromParams } from "@/components/map/url-params"
+import { addPlaceToParams, addPositionParams, parseParams } from "@/components/map/url-params"
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!
 
@@ -95,7 +95,7 @@ export default function Mapbox({
         }
         const popup = new mapboxgl.Popup().setLngLat(place.lnglat).setHTML(place.html).addTo(map)
         popup.on("close", () => {
-          router.push(`${pathname}?${removePlaceFromParams(searchParams, map).toString()}`)
+          router.push(`${pathname}?${addPositionParams(searchParams, map).toString()}`)
         })
         router.push(`${pathname}?${addPlaceToParams(searchParams, place.id).toString()}`)
       })
@@ -114,7 +114,7 @@ export default function Mapbox({
           .setHTML(placePopupHtml(initPlace.properties, lang))
           .addTo(map)
         popup.on("close", () => {
-          router.push(`${pathname}?${removePlaceFromParams(searchParams, map).toString()}`)
+          router.push(`${pathname}?${addPositionParams(searchParams, map).toString()}`)
         })
       }
     })
