@@ -44,7 +44,7 @@ export const parseParams = (params: ReadonlyURLSearchParams, places: Array<Place
   throw Error("invalid search params")
 }
 
-export const addPositionParams = (params: URLSearchParams, map: Map) => {
+export const addPositionParams = (params: ReadonlyURLSearchParams, map: Map) => {
   // writable-copy
   const res = new URLSearchParams([...params.entries()])
   res.set(paramZoom, `${map.getZoom().toFixed(0)}`)

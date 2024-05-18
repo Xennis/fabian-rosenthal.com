@@ -52,6 +52,8 @@ const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties | null
   }
   return {
     ...props,
+    // null fields are stripped away resulting in undefined
+    komoot: props.komoot || null,
     // Convert '["a","b"]' back to an actual array
     tags: JSON.parse(props.tags),
   } as PlaceProperties
