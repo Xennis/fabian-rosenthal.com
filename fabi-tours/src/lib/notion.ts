@@ -1,6 +1,8 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 
-export const propsFirstPlainText = (properties: PageObjectResponse["properties"], name: string) => {
+type Properties = PageObjectResponse["properties"]
+
+export const propsFirstPlainText = (properties: Properties, name: string) => {
   const prop = properties[name]
   if (prop?.type === "rich_text" && prop.rich_text.length > 0) {
     return prop.rich_text[0].plain_text
@@ -11,7 +13,7 @@ export const propsFirstPlainText = (properties: PageObjectResponse["properties"]
   return null
 }
 
-export const propsMultiSelect = (properties: PageObjectResponse["properties"], name: string) => {
+export const propsMultiSelect = (properties: Properties, name: string) => {
   const prop = properties[name]
   if (prop?.type === "multi_select") {
     return prop.multi_select.map((ms) => ms.name)
@@ -19,10 +21,18 @@ export const propsMultiSelect = (properties: PageObjectResponse["properties"], n
   return null
 }
 
-export const propsUrl = (properties: PageObjectResponse["properties"], name: string) => {
+export const propsUrl = (properties: Properties, name: string) => {
   const prop = properties[name]
   if (prop?.type === "url") {
     return prop.url
+  }
+  return null
+}
+
+export const propsNumber = (properties: Properties, name: string) => {
+  const prop = properties[name]
+  if (prop?.type === "number") {
+    return prop.number
   }
   return null
 }
