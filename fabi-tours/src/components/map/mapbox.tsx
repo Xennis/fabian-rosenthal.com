@@ -47,7 +47,7 @@ export default function Mapbox({
       container: mapContainer.current!,
       style: "mapbox://styles/xennis/clwae1a00007001r0cwz1hgqp",
       center: initConfig !== null ? [initConfig.lng, initConfig.lat] : [9.9872, 53.5488],
-      zoom: initConfig !== null ? initConfig.z : 12,
+      zoom: initConfig !== null ? initConfig.z : 10,
       minZoom: 8,
       maxBounds: [
         [9.53475952, 53.32595198], // southwest
