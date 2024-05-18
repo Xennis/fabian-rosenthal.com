@@ -3,6 +3,7 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 import type { Feature, Point, Position } from "geojson"
 
 import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@/lib/notion"
+import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>
 
@@ -19,11 +20,28 @@ export type PlaceProperties = {
   komoot: string | null
 }
 
-export const tagColors = {
+export const tagColors: Record<PlaceTag, string> = {
   cafe: "#fbb03b",
   viewpoint: "#3bb2d0",
-  wildliferefuge: "#6fdf41",
+  wildliferefuge: "#2a8408",
   unknown: "#000000",
+}
+
+export const tagLabel = (lang: string): Record<PlaceTag, string> => {
+  if (lang === i18n.defaultLocale) {
+    return {
+      cafe: "café",
+      viewpoint: "viewpoint",
+      wildliferefuge: "wildlife refuge",
+      unknown: "unknown",
+    }
+  }
+  return {
+    cafe: "Café",
+    viewpoint: "Aussichtspunkt",
+    wildliferefuge: "Naturschutzgebiet",
+    unknown: "Unbekannt",
+  }
 }
 
 const notionClient = new Client({

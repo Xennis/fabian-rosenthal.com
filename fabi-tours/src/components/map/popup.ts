@@ -1,14 +1,14 @@
 import type { LngLat, LngLatLike, MapboxGeoJSONFeature } from "mapbox-gl"
 import type { GeoJsonProperties } from "geojson"
 
-import { type PlaceProperties, tagColors } from "@/lib/places"
+import { type PlaceProperties, tagColors, tagLabel } from "@/lib/places"
 
-export const placePopupHtml = (props: PlaceProperties) => {
+export const placePopupHtml = (props: PlaceProperties, lang: string) => {
   return `
 <div class="xpop text-base p-2">
     <div class="text-xl pb-2">${props.title}</div>
     <div class="flex space-x-3">
-        <span class="rounded px-1.5 py-0.5 text-sm text-white" style="background-color: ${tagColors[props.mainTag]}">${props.mainTag}</span>
+        <span class="rounded px-1.5 py-0.5 text-sm text-white" style="background-color: ${tagColors[props.mainTag]}">${tagLabel(lang)[props.mainTag]}</span>
         <div class="flex items-center space-x-0.5">
         ${[0, 1, 2, 3, 4]
           .map(
@@ -57,7 +57,7 @@ const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties | null
   } as PlaceProperties
 }
 
-export const getPopupInfo = (features: MapboxGeoJSONFeature[] | undefined, lngLat: LngLat) => {
+export const getPopupInfo = (features: MapboxGeoJSONFeature[] | undefined, lngLat: LngLat, lang: string) => {
   const feature = features !== undefined ? features[0] : undefined
   if (feature === undefined || feature.geometry.type !== "Point") {
     return null
@@ -69,7 +69,7 @@ export const getPopupInfo = (features: MapboxGeoJSONFeature[] | undefined, lngLa
 
   // Copy coordinates array.
   const coordinates = feature.geometry.coordinates.slice()
-  const description = placePopupHtml(props)
+  const description = placePopupHtml(props, lang)
 
   // Ensure that if the map is zoomed out such that multiple
   // copies of the feature are visible, the popup appears
