@@ -62,9 +62,3 @@ export const addPlaceToParams = (params: ReadonlyURLSearchParams, placeId: strin
   res.delete(paramLat)
   return res
 }
-
-export const removePlaceFromParams = (params: ReadonlyURLSearchParams, map: Map) => {
-  const res = new URLSearchParams([...params.entries()])
-  res.delete(paramPlaceId)
-  return addPositionParams(res, map)
-}
