@@ -89,7 +89,7 @@ export default function Mapbox({
         },
       })
       map.on("click", layerId, (e) => {
-        const place = getPopupInfo(e.features, e.lngLat)
+        const place = getPopupInfo(e.features, e.lngLat, lang)
         if (place === null) {
           return
         }
@@ -111,7 +111,7 @@ export default function Mapbox({
       if (initPlace !== null) {
         const popup = new mapboxgl.Popup()
           .setLngLat(initPlace.geometry.coordinates as LngLatLike)
-          .setHTML(placePopupHtml(initPlace.properties))
+          .setHTML(placePopupHtml(initPlace.properties, lang))
           .addTo(map)
         popup.on("close", () => {
           router.push(`${pathname}?${removePlaceFromParams(searchParams, map).toString()}`)
