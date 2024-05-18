@@ -16,8 +16,10 @@ export function LanguageToggle({ className }: { className?: string }) {
   }
 
   const targetLang = toggledLangMetadata(lang)
-  const newPathname = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
-  const href = `${newPathname}?${searchParams.toString()}`
+  let href = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
+  if (searchParams.size > 0) {
+    href += `?${searchParams.toString()}`
+  }
 
   return (
     <NextLink className={className} href={href} hrefLang={targetLang.lang}>
