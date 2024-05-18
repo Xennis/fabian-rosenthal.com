@@ -36,3 +36,11 @@ export const propsNumber = (properties: Properties, name: string) => {
   }
   return null
 }
+
+export const propsUniqueId = (properties: Properties, name: string) => {
+  const prop = properties[name]
+  if (prop?.type === "unique_id") {
+    return prop.unique_id.number
+  }
+  return null
+}

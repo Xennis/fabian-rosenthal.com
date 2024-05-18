@@ -1,13 +1,15 @@
 import { Client, isFullPage, iteratePaginatedAPI } from "@notionhq/client"
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import type { Feature, GeoJsonProperties, Geometry, Position } from "geojson"
-import type { GeoJSONSourceRaw } from "mapbox-gl"
+import type { Feature, Point, Position } from "geojson"
 
-import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUrl } from "@/lib/notion"
+import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@/lib/notion"
+
+export type Place = Feature<Point, PlaceProperties>
 
 export type PlaceTag = "cafe" | "viewpoint" | "wildliferefuge" | "unknown"
 
 export type PlaceProperties = {
+  id: string
   title: string
   mainTag: PlaceTag
   tags: Array<PlaceTag>
@@ -15,17 +17,6 @@ export type PlaceProperties = {
   rating: number
   googleMaps: string
   komoot: string | null
-}
-
-export const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties | null => {
-  if (props === null) {
-    return null
-  }
-  return {
-    ...props,
-    // Convert '["a","b"]' back to an actual array
-    tags: JSON.parse(props.tags),
-  } as PlaceProperties
 }
 
 export const tagColors = {
@@ -68,8 +59,8 @@ const stringToPosition = (raw: string | null): Position | null => {
   return [lng, lat]
 }
 
-export const fetchPlaces = async (): Promise<GeoJSONSourceRaw> => {
-  const features: Array<Feature<Geometry, PlaceProperties>> = []
+export const fetchPlaces = async (): Promise<Array<Place>> => {
+  const features: Array<Place> = []
   for await (const block of iteratePaginatedAPI(notionClient.databases.query, {
     database_id: process.env.NOTION_PLACES_DB_ID!,
     page_size: 50,
@@ -81,23 +72,18 @@ export const fetchPlaces = async (): Promise<GeoJSONSourceRaw> => {
       }
     }
   }
-  return {
-    type: "geojson",
-    data: {
-      type: "FeatureCollection",
-      features: features,
-    },
-  }
+  return features
 }
 
-const processPage = (page: PageObjectResponse): Feature<Geometry, PlaceProperties> | null => {
+const processPage = (page: PageObjectResponse): Place | null => {
+  const id = propsUniqueId(page.properties, "ID")
   const title = propsFirstPlainText(page.properties, "Name")
   const tags = propsMultiSelect(page.properties, "Tags")
   const position = stringToPosition(propsFirstPlainText(page.properties, "Location"))
   const address = propsFirstPlainText(page.properties, "Address")
   const rating = propsNumber(page.properties, "Rating")
   const googleMaps = propsUrl(page.properties, "Google Maps")
-  if (!title || !tags || !position || !address || !rating || !googleMaps) {
+  if (!id || !title || !tags || !position || !address || !rating || !googleMaps) {
     console.warn(`page with id=${page.id} has invalid properties`)
     return null
   }
@@ -109,6 +95,7 @@ const processPage = (page: PageObjectResponse): Feature<Geometry, PlacePropertie
   return {
     type: "Feature",
     properties: {
+      id: id.toString(),
       title: title,
       mainTag: typedTags[0],
       tags: typedTags,
