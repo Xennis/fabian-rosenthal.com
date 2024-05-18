@@ -40,6 +40,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       default: dictionary.title,
       template: `%s - ${dictionary.title}`,
     },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION
+    },
   }
 }
 
