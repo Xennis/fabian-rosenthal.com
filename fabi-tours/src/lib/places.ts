@@ -3,15 +3,17 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 import type { Feature, GeoJsonProperties, Geometry, Position } from "geojson"
 import type { GeoJSONSourceRaw } from "mapbox-gl"
 
-import { propsFirstPlainText, propsMultiSelect, propsUrl } from "@/lib/notion"
+import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUrl } from "@/lib/notion"
 
-export type PlaceTag = "cafe" | "viewpoint" | "unknown"
+export type PlaceTag = "cafe" | "viewpoint" | "wildliferefuge" | "unknown"
 
 export type PlaceProperties = {
   title: string
   mainTag: PlaceTag
   tags: Array<PlaceTag>
-  googleMaps: string | null
+  address: string
+  rating: number
+  googleMaps: string
   komoot: string | null
 }
 
@@ -29,6 +31,7 @@ export const castToPlaceProperties = (props: GeoJsonProperties): PlaceProperties
 export const tagColors = {
   cafe: "#fbb03b",
   viewpoint: "#3bb2d0",
+  wildliferefuge: "#6fdf41",
   unknown: "#000000",
 }
 
@@ -41,6 +44,7 @@ const stringToTag = (raw: string): PlaceTag => {
   switch (raw) {
     case "cafe":
     case "viewpoint":
+    case "wildliferefuge":
       return raw
   }
   return "unknown"
@@ -90,11 +94,14 @@ const processPage = (page: PageObjectResponse): Feature<Geometry, PlacePropertie
   const title = propsFirstPlainText(page.properties, "Name")
   const tags = propsMultiSelect(page.properties, "Tags")
   const position = stringToPosition(propsFirstPlainText(page.properties, "Location"))
-  if (!title || !tags || !position) {
+  const address = propsFirstPlainText(page.properties, "Address")
+  const rating = propsNumber(page.properties, "Rating")
+  const googleMaps = propsUrl(page.properties, "Google Maps")
+  if (!title || !tags || !position || !address || !rating || !googleMaps) {
     console.warn(`page with id=${page.id} has invalid properties`)
     return null
   }
-  const googleMaps = propsUrl(page.properties, "Google Maps")
+  // Optional:
   const komoot = propsUrl(page.properties, "Komoot")
 
   const typedTags = tags.map((t) => stringToTag(t))
@@ -105,6 +112,8 @@ const processPage = (page: PageObjectResponse): Feature<Geometry, PlacePropertie
       title: title,
       mainTag: typedTags[0],
       tags: typedTags,
+      address: address,
+      rating: rating,
       googleMaps: googleMaps,
       komoot: komoot,
     },

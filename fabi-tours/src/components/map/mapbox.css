@@ -2,30 +2,11 @@
   @apply min-w-[300px] max-w-[400px];
 }
 
-/*.mapboxgl-ctrl-group button {*/
-/*  @apply bg-emerald-600 border-0*/
-/*}*/
-
-.xpop {
-  @apply p-2;
-}
-
-.xpop .title {
-  @apply text-base;
-}
-
-.xpop .tags .tag {
-  @apply rounded px-1.5 py-0.5 text-xs text-white;
-}
-
-.xpop .links {
-  @apply text-sm;
-}
-
-.xpop .links li {
-  @apply py-1;
-}
-
 .xpop a {
   @apply underline decoration-emerald-500 decoration-2 hover:no-underline;
+}
+
+.mapboxgl-popup-close-button {
+  /* By default the button is tiny and has no proper padding */
+  @apply pe-2 pt-1 text-xl;
 }
