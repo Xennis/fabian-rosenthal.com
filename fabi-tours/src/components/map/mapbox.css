@@ -3,7 +3,8 @@
 }
 
 .xpop a {
-  @apply underline decoration-emerald-500 decoration-2 hover:no-underline;
+  /* outline-none: Somehow the link is auto-selected if a new page with a place is opened */
+  @apply underline decoration-emerald-500 decoration-2 outline-none hover:no-underline;
 }
 
 .mapboxgl-popup-close-button {
