@@ -4,7 +4,7 @@ import { AuthorHeader } from "@/components/author-header"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { getCollections } from "@/content/i18n/collections"
 import { Projects } from "@/components/projects"
-import { aboutPage } from "@/lib/links"
+import { aboutPage } from "@/content/config"
 import { createAlternativeUrls } from "@/lib/next"
 import { i18n } from "@/content/i18n/config"
 

@@ -1,7 +1,7 @@
 import NextLink from "next/link"
 import { type Metadata } from "next"
 
-import { homePage } from "@/lib/links"
+import { homePage } from "@/content/config"
 import { RootLayout } from "@/components/layout/root-layout"
 import { i18n } from "@/content/i18n/config"
 import { Headline } from "@/components/layout/headline"

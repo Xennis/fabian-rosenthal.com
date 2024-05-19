@@ -6,7 +6,7 @@ import { getCollections } from "@/content/i18n/collections"
 import { classNames } from "@/lib/tw"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { homePage } from "@/lib/links"
+import { homePage } from "@/content/config"
 
 const inter = Inter({ subsets: ["latin"] })
 

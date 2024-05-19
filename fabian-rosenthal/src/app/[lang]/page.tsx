@@ -3,7 +3,7 @@ import { type Metadata } from "next"
 import { AuthorHeader } from "@/components/author-header"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { getCollections } from "@/content/i18n/collections"
-import { homePage } from "@/lib/links"
+import { homePage } from "@/content/config"
 import { createAlternativeUrls } from "@/lib/next"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {

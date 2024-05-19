@@ -6,7 +6,7 @@ import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
-import { aboutPage, legalPage, newsletterPage, voluntarySupport } from "@/lib/links"
+import { aboutPage, legalPage, newsletterPage, voluntarySupport } from "@/content/config"
 
 const socialLinks = [
   {
