@@ -1,4 +1,4 @@
-name: Node CI
+name: CI
 
 on:
   push:
@@ -7,8 +7,11 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  fabian-rosenthal:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./fabian-rosenthal
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
@@ -17,6 +20,7 @@ jobs:
           version: 8
           run_install: |
             - args: [--frozen-lockfile]
+            - cwd: ./fabian-rosenthal
       - name: Check code format
         run: pnpm run format:check
       - name: Build site
