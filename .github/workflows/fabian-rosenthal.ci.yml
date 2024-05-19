@@ -1,10 +1,12 @@
-name: CI
+name: "[fabian-rosenthal] CI"
 
 on:
-  push:
-    branches: ["main"]
+  #push:
+  #  branches: ["main"]
   pull_request:
     branches: ["main"]
+    paths:
+      - "fabian-rosenthal/**"
 
 jobs:
   fabian-rosenthal:
@@ -23,5 +25,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Check code format
         run: pnpm run format:check
-      - name: Build site
-        run: pnpm run build
+      # Vercel builds preview anyway
+      #- name: Build site
+      #  run: pnpm run build

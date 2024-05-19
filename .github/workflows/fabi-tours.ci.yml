@@ -1,0 +1,30 @@
+name: "[fabi-tours] CI"
+
+on:
+  #push:
+  #  branches: ["main"]
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "fabi-tours/**"
+
+jobs:
+  fabi-tours:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./fabi-tours
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+          run_install: false
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check code format
+        run: pnpm run format:check
+      # Vercel builds preview anyway
+      #- name: Build site
+      #  run: pnpm run build
