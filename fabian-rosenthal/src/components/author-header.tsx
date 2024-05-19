@@ -4,7 +4,7 @@ import { type Person, type WithContext } from "schema-dts"
 import { SocialLink } from "@/components/social-links"
 import authorLargeImage from "@/content/images/author-large-350x383.webp"
 import { Dot } from "@/components/dot"
-import { host } from "@/lib/links"
+import { host } from "@/content/config"
 
 export function AuthorHeader({
   socialLinks,

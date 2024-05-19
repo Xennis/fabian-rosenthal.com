@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
 
-import { host } from "@/lib/links"
+import { host } from "@/content/config"
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { RootLayout } from "@/components/layout/root-layout"
 import { i18n } from "@/content/i18n/config"

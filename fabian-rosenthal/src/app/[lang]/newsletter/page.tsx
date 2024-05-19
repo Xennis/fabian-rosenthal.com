@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 import { getDictionary } from "@/content/i18n/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
-import { newsletterPage } from "@/lib/links"
+import { newsletterPage } from "@/content/config"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { getCollections } from "@/content/i18n/collections"
 import { i18n } from "@/content/i18n/config"
