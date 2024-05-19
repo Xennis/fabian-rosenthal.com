@@ -66,6 +66,12 @@ const collections = {
     socialLinks: socialLinks,
     projects: [
       {
+        name: "FabiTours",
+        href: "https://fabi-tours.vercel.app/en",
+        tags: ["Next.js", "PWA", "Mapbox"],
+        shortDescription: "The interactive map shows the most beautiful places in Hamburg, Germany.",
+      },
+      {
         name: "WunderDesk",
         href: "https://wunderdesk.app",
         tags: ["SaaS"],
@@ -88,12 +94,6 @@ const collections = {
         href: "https://play.google.com/store/apps/details?id=org.xennis.apps.lifetime_clock",
         tags: ["AndroidApp", "Flutter"],
         shortDescription: "A clock to visualize your life to encourage making the most out of it.",
-      },
-      {
-        name: "Hamburg Stairs Map",
-        href: "https://xennis.github.io/hamburg-stairs-map/",
-        tags: ["Mapbox", "OverpassAPI"],
-        shortDescription: "A map to visualize the stairs in Hamburg, Germany.",
       },
       {
         name: "EpiDoc Parser",
@@ -146,6 +146,12 @@ const collections = {
     socialLinks: socialLinks,
     projects: [
       {
+        name: "FabiTours",
+        href: "https://fabi-tours.vercel.app/de",
+        tags: ["Next.js", "PWA", "Mapbox"],
+        shortDescription: "Die interaktive Karte zeigt die schönsten Orte in Hamburg.",
+      },
+      {
         name: "WunderDesk",
         href: "https://wunderdesk.app",
         tags: ["SaaS"],
@@ -168,12 +174,6 @@ const collections = {
         href: "https://play.google.com/store/apps/details?id=org.xennis.apps.lifetime_clock",
         tags: ["AndroidApp", "Flutter"],
         shortDescription: "Eine Uhr zum Visualisieren deines Lebens, um das Beste daraus zu machen.",
-      },
-      {
-        name: "Hamburg Treppenkarte",
-        href: "https://xennis.github.io/hamburg-stairs-map/",
-        tags: ["Mapbox", "OverpassAPI"],
-        shortDescription: "Die interaktive Karte visualisiert die Treppen in der Stadt Hamburg.",
       },
       {
         name: "EpiDoc Parser",
