@@ -1,6 +1,6 @@
-import { MetadataRoute } from "next"
+import { type MetadataRoute } from "next"
 
-import { aboutPage, homePage, host, legalPage, newsletterPage, voluntarySupport } from "@/lib/links"
+import { aboutPage, homePage, host, legalPage, voluntarySupport } from "@/lib/links"
 import { i18n } from "@/content/i18n/config"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
