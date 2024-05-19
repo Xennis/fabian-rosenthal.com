@@ -1,6 +1,6 @@
 import { type AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
 
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 
 export const createAlternativeUrls = (pageFn: (lang: string) => string, lang: string): AlternateURLs => {
   const languages: AlternateURLs["languages"] = {}

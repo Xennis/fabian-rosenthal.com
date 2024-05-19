@@ -1,14 +1,14 @@
 import type { Metadata } from "next"
 
 import { Dot } from "@/components/dot"
-import { getDictionary } from "@/content/i18n/dictionaries"
+import { getDictionary } from "@/content/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
 import { voluntarySupport } from "@/content/config"
 import { GdprIframe } from "@/components/gdpr-iframe"
-import { getCollections } from "@/content/i18n/collections"
+import { getCollections } from "@/content/collections"
 import CalComIframe from "@/components/calcom"
 import { Hero } from "@/components/layout/hero"
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 import { Headline } from "@/components/layout/headline"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {

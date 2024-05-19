@@ -10,3 +10,5 @@ export const homePage = (lang: string) => `/${lang}`
 export const legalPage = (lang: string) => `/${lang}/legal`
 export const newsletterPage = (lang: string) => `/${lang}/newsletter`
 export const voluntarySupport = (lang: string) => `/${lang}/voluntary-support`
+
+export const brandColor = "#18b83d"

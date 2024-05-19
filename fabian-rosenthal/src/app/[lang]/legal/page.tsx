@@ -2,7 +2,7 @@ import { type Metadata } from "next"
 
 import { legalPage } from "@/content/config"
 import { createAlternativeUrls } from "@/lib/next"
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 import { Dot } from "@/components/dot"
 import { Headline } from "@/components/layout/headline"
 

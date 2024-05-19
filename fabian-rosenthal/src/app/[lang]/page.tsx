@@ -1,8 +1,8 @@
 import { type Metadata } from "next"
 
 import { AuthorHeader } from "@/components/author-header"
-import { getDictionary } from "@/content/i18n/dictionaries"
-import { getCollections } from "@/content/i18n/collections"
+import { getDictionary } from "@/content/dictionaries"
+import { getCollections } from "@/content/collections"
 import { homePage } from "@/content/config"
 import { createAlternativeUrls } from "@/lib/next"
 

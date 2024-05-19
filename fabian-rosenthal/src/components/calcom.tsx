@@ -3,7 +3,7 @@
 import Cal, { getCalApi } from "@calcom/embed-react"
 import { useEffect } from "react"
 
-import { brandColor } from "@/content/theme"
+import { brandColor } from "@/content/config"
 
 export default function CalComIframe({ calLink }: { calLink: string }) {
   useEffect(() => {
