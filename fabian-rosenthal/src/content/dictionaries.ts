@@ -42,11 +42,6 @@ const dictionaries = {
         ariaLabel: "Home",
       },
     },
-    metadata: {
-      title: "Fabian Rosenthal",
-      description:
-        "My site features articles and insight about solo software businesses and micro SaaS: Starting a business as a software developer. Finding and validating software ideas.",
-    },
   },
   de: {
     component: {
@@ -88,10 +83,6 @@ const dictionaries = {
         subtitlePrefix: "Der begeisterte",
         ariaLabel: "Startseite",
       },
-    },
-    metadata: {
-      title: "Fabian Rosenthal",
-      description: "Einblicke über meine Arbeit als Softwareentwickler.",
     },
   },
 }
