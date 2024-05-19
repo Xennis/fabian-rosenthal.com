@@ -7,6 +7,7 @@ on:
     branches: ["main"]
     paths:
       - "fabian-rosenthal/**"
+      - ".editorconfig" # used by format step (via prettier)
 
 jobs:
   fabian-rosenthal:
