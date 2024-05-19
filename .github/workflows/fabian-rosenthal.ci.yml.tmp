@@ -5,9 +5,8 @@ on:
   #  branches: ["main"]
   pull_request:
     branches: ["main"]
-    paths:
-      - "fabian-rosenthal/**"
-      - ".editorconfig" # used by format step (via prettier)
+    paths-ignore:
+      - "fabi-tours/**"
 
 jobs:
   fabian-rosenthal:
@@ -20,7 +19,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
           run_install: false
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
