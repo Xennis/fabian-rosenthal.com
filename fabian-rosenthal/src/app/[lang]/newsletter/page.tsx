@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 
-import { getDictionary } from "@/content/i18n/dictionaries"
+import { getDictionary } from "@/content/dictionaries"
 import { createAlternativeUrls } from "@/lib/next"
 import { newsletterPage } from "@/content/config"
 import { GdprIframe } from "@/components/gdpr-iframe"
-import { getCollections } from "@/content/i18n/collections"
-import { i18n } from "@/content/i18n/config"
+import { getCollections } from "@/content/collections"
+import { i18n } from "@/content/i18n"
 import { Headline } from "@/components/layout/headline"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {

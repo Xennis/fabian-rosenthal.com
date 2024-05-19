@@ -1,7 +1,7 @@
 import { type MetadataRoute } from "next"
 
 import { aboutPage, homePage, host, legalPage, voluntarySupport } from "@/content/config"
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sites: MetadataRoute.Sitemap = []

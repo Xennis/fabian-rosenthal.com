@@ -3,7 +3,7 @@
 import { useParams, usePathname } from "next/navigation"
 import NextLink from "next/link"
 
-import { toggledLangMetadata } from "@/content/i18n/config"
+import { toggledLangMetadata } from "@/content/i18n"
 
 export function LanguageToggle() {
   const { lang } = useParams() as { lang?: string }

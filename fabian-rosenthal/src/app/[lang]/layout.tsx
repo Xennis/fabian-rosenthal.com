@@ -1,9 +1,9 @@
 import { type Metadata } from "next"
 
 import { host } from "@/content/config"
-import { getDictionary } from "@/content/i18n/dictionaries"
+import { getDictionary } from "@/content/dictionaries"
 import { RootLayout } from "@/components/layout/root-layout"
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))

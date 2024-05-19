@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 
-import { getDictionary } from "@/content/i18n/dictionaries"
-import { getCollections } from "@/content/i18n/collections"
+import { getDictionary } from "@/content/dictionaries"
+import { getCollections } from "@/content/collections"
 import { classNames } from "@/lib/tw"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"

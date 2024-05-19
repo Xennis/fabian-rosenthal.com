@@ -1,7 +1,7 @@
 import { type Viewport } from "next"
 
 import "./globals.css"
-import { brandColor } from "@/content/theme"
+import { brandColor } from "@/content/config"
 
 export const viewport: Viewport = {
   themeColor: brandColor,

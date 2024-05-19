@@ -3,7 +3,7 @@ import { type Metadata } from "next"
 
 import { homePage } from "@/content/config"
 import { RootLayout } from "@/components/layout/root-layout"
-import { i18n } from "@/content/i18n/config"
+import { i18n } from "@/content/i18n"
 import { Headline } from "@/components/layout/headline"
 
 const lang = i18n.defaultLocale
