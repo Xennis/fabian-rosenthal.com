@@ -1,11 +1,29 @@
 import { type Metadata, type Viewport } from "next"
 
 import "./globals.css"
-import { brandColor } from "@/content/config"
-import { getMetadata } from "@/content/metadata"
+import { brandColor, host, pageTitle } from "@/content/config"
 
-export async function generateMetadata(): Promise<Metadata | null> {
-  return getMetadata()
+export const metadata: Metadata = {
+  //description: not set here due to lang
+  openGraph: {
+    //description, type, siteName: not set here due to lang
+    title: {
+      default: pageTitle,
+      template: `%s - ${pageTitle}`,
+    },
+  },
+  metadataBase: new URL(`https://${host}`),
+  robots: {
+    index: true,
+    follow: true,
+  },
+  title: {
+    default: pageTitle,
+    template: `%s - ${pageTitle}`,
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
 }
 
 export const viewport: Viewport = {
