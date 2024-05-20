@@ -15,6 +15,18 @@ export const getMetadata = (lang: string) => {
     description: dictionary.description,
     openGraph: {
       description: dictionary.description,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+        },
+        {
+          url: "/og-image-square.png",
+          width: 400,
+          height: 400,
+        },
+      ],
       // title: Is included as template in the layout
       type: "website",
       siteName: pageTitle,
