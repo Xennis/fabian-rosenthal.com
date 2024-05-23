@@ -13,6 +13,14 @@ export const propsFirstPlainText = (properties: Properties, name: string) => {
   return null
 }
 
+export const propsSelect = (properties: Properties, name: string) => {
+  const prop = properties[name]
+  if (prop?.type === "select" && prop.select !== null) {
+    return prop.select.name
+  }
+  return null
+}
+
 export const propsMultiSelect = (properties: Properties, name: string) => {
   const prop = properties[name]
   if (prop?.type === "multi_select") {

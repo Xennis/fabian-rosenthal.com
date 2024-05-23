@@ -12,7 +12,8 @@ import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>
 
-export type PlaceTag = "beach" | "cafe" | "naturereserve" | "landmark" | "park" | "streetart" | "viewpoint" | "unknown"
+const placeTags = ["beach", "cafe", "naturereserve", "landmark", "park", "streetart", "viewpoint", "unknown"] as const
+export type PlaceTag = (typeof placeTags)[number]
 
 export type PlaceProperties = {
   id: string
@@ -62,17 +63,7 @@ export const tagLabel = (lang: string): Record<PlaceTag, string> => {
 }
 
 const stringToTag = (raw: string): PlaceTag => {
-  switch (raw) {
-    case "beach":
-    case "cafe":
-    case "naturereserve":
-    case "landmark":
-    case "park":
-    case "streetart":
-    case "viewpoint":
-      return raw
-  }
-  return "unknown"
+  return placeTags.find((t) => t.toString() === raw) ?? "unknown"
 }
 
 const stringToPosition = (raw: string | null): Position | null => {

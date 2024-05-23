@@ -1,0 +1,50 @@
+import { type Metadata } from "next"
+
+import { Headline } from "@/components/layout/headline"
+import { getCachedPage, getCachedPages } from "@/lib/cms/fetchers"
+import { notFound } from "next/navigation"
+
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
+  return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string; slug: string }
+}): Promise<Metadata | null> {
+  const page = await getCachedPage(params)
+  if (page === null) {
+    return {
+      robots: {
+        index: false,
+      },
+    }
+  }
+
+  return {
+    description: page.description,
+    alternates: {
+      canonical: page.canonical,
+      languages: page.languages,
+    },
+    openGraph: {
+      description: page.description,
+      title: page.title,
+    },
+    title: page.title,
+  }
+}
+
+export default async function SlugPage({ params }: { params: { lang: string; slug: string } }) {
+  const page = await getCachedPage(params)
+  if (page === null) {
+    notFound()
+  }
+  return (
+    <div className="text-center">
+      <Headline>{page.title}</Headline>
+      <p>{page.content}</p>
+    </div>
+  )
+}
