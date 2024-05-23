@@ -19,7 +19,7 @@ export const Header = ({ lang }: { lang: string }) => {
   return (
     <header className="bg-emerald-500 px-3 py-2">
       <div className="flex justify-between space-x-2">
-        <NextLink href={homePage(lang)} className="group text-lg tracking-tight">
+        <NextLink href={homePage(lang)} className="text-lg tracking-tight">
           <span className="font-semibold">Fabi</span>Tours
           <span aria-hidden={true}>&nbsp;☀️</span>️
         </NextLink>

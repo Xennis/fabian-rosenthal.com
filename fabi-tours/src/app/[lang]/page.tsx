@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import Mapbox from "@/components/map/mapbox"
 import { createAlternativeUrls } from "@/lib/next"
 import { homePage } from "@/content/config"
-import { getCachedPlaces } from "@/lib/fetchers"
+import { getCachedPlaces } from "@/lib/cms/fetchers"
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata | null {
   return {

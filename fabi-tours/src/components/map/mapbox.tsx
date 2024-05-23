@@ -7,7 +7,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 import "./mapbox.css"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { getPopupInfo, placePopupHtml } from "@/components/map/popup"
-import { Place, tagColors } from "@/lib/places"
+import { Place, tagColors } from "@/lib/cms/places"
 import { matchGet } from "@/lib/mapbox-style"
 import { addPlaceToParams, addPositionParams, parseParams } from "@/components/map/url-params"
 
