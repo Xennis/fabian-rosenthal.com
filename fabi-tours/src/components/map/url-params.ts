@@ -1,7 +1,7 @@
 import { type ReadonlyURLSearchParams } from "next/navigation"
 import { type Map } from "mapbox-gl"
 
-import { type Place } from "@/lib/places"
+import { type Place } from "@/lib/cms/places"
 
 const paramZoom = "z"
 const paramLng = "lng"

@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache"
 
-import { fetchPlaces } from "@/lib/places"
+import { fetchPlaces } from "@/lib/cms/places"
 
 // Avoid calling the Notion API too often (e.g. while developing)
 export async function getCachedPlaces() {

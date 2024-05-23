@@ -2,7 +2,7 @@ import { Client, isFullPage, iteratePaginatedAPI } from "@notionhq/client"
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import type { Feature, Point, Position } from "geojson"
 
-import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@/lib/notion"
+import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@/lib/cms/notion"
 import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>
