@@ -1,8 +1,13 @@
-import { Client, isFullPage, iteratePaginatedAPI } from "@notionhq/client"
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import type { Feature, Point, Position } from "geojson"
 
-import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@/lib/cms/notion"
+import {
+  propsFirstPlainText,
+  propsMultiSelect,
+  propsNumber,
+  propsUniqueId,
+  propsUrl,
+} from "@/lib/cms/notion/properties"
 import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>
@@ -56,11 +61,6 @@ export const tagLabel = (lang: string): Record<PlaceTag, string> => {
   }
 }
 
-const notionClient = new Client({
-  auth: process.env.NOTION_ACCESS_TOKEN,
-  timeoutMs: 1000 * 10,
-})
-
 const stringToTag = (raw: string): PlaceTag => {
   switch (raw) {
     case "beach":
@@ -93,24 +93,7 @@ const stringToPosition = (raw: string | null): Position | null => {
   return [lng, lat]
 }
 
-export const fetchPlaces = async (): Promise<Array<Place>> => {
-  const features: Array<Place> = []
-  for await (const block of iteratePaginatedAPI(notionClient.databases.query, {
-    database_id: process.env.NOTION_PLACES_DB_ID!,
-    page_size: 50,
-  })) {
-    if (isFullPage(block)) {
-      const feature = processPage(block)
-      if (feature !== null) {
-        features.push(feature)
-      }
-    }
-  }
-  console.info(`fetched ${features.length} places from notion`)
-  return features
-}
-
-const processPage = (page: PageObjectResponse): Place | null => {
+export const processPlace = (page: PageObjectResponse): Place | null => {
   const id = propsUniqueId(page.properties, "ID")
   const title = propsFirstPlainText(page.properties, "Name")
   const tags = propsMultiSelect(page.properties, "Tags")

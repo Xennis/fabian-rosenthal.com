@@ -1,7 +1,7 @@
 import type { LngLat, LngLatLike, MapboxGeoJSONFeature } from "mapbox-gl"
 import type { GeoJsonProperties } from "geojson"
 
-import { type PlaceProperties, tagColors, tagLabel } from "@/lib/cms/places"
+import { type PlaceProperties, tagColors, tagLabel } from "@/lib/cms/collections/places"
 
 export const placePopupHtml = (props: PlaceProperties, lang: string) => {
   return `
