@@ -2,11 +2,10 @@ import { unstable_cache } from "next/cache"
 import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
 
 import { processPlace } from "@/lib/cms/collections/places"
-import { fetchDatabasePages } from "@/lib/cms/notion/fetch"
+import { fetchBlocksChildren, fetchDatabasePages } from "@/lib/cms/notion/fetch"
 import { processPages } from "@/lib/cms/collections/pages"
 import { i18n } from "@/content/i18n"
 
-// Avoid calling the Notion API too often (e.g. while developing)
 export async function getCachedPlaces() {
   return await unstable_cache(
     async () => {
@@ -44,11 +43,17 @@ export async function getCachedPages() {
 
 export async function getCachedPage({ lang, slug }: { lang: string; slug: string }) {
   const page = (await getCachedPages()).find((p) => p.lang.toString() === lang && p.slug === slug)
-  if (page === undefined) {
-    return null
-  }
-  return {
-    ...page,
-    content: "Hi",
-  }
+  return page ?? null
+}
+
+export async function getCachedPageContent(blockId: string) {
+  return await unstable_cache(
+    async () => {
+      return fetchBlocksChildren(blockId)
+    },
+    [`cms-page-${blockId}`],
+    {
+      revalidate: 5 * 60,
+    },
+  )()
 }
