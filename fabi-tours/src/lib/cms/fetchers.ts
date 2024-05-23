@@ -1,14 +1,15 @@
 import { unstable_cache } from "next/cache"
 
-import { fetchPlaces } from "@/lib/cms/places"
+import { processPlace } from "@/lib/cms/collections/places"
+import { fetchDatabasePages } from "@/lib/cms/notion/fetch"
 
 // Avoid calling the Notion API too often (e.g. while developing)
 export async function getCachedPlaces() {
   return await unstable_cache(
     async () => {
-      return fetchPlaces()
+      return fetchDatabasePages(process.env.NOTION_PLACES_DB_ID!, processPlace)
     },
-    ["places"],
+    ["cms-places"],
     {
       revalidate: 5 * 60,
     },
