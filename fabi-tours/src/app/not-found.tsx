@@ -18,10 +18,12 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <RootLayout lang={lang}>
-      <Headline>Page Not Found</Headline>
-      <p>
-        This page could not be found. Return to <NextLink href={homePage(lang)}>Home</NextLink>.
-      </p>
+      <main className="px-8 py-10">
+        <Headline>Page Not Found</Headline>
+        <p>
+          This page could not be found. Return to <NextLink href={homePage(lang)}>Home</NextLink>.
+        </p>
+      </main>
     </RootLayout>
   )
 }

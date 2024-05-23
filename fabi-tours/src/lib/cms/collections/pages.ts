@@ -11,6 +11,7 @@ export type Page = {
   description: string
   sitemapPriority: number
   lastEdited: Date
+  blockId: string
 }
 
 const stringToLang = (lang: string | null): PageLang | null => {
@@ -37,5 +38,6 @@ export const processPages = (page: PageObjectResponse): Page | null => {
     description: description,
     sitemapPriority: sitemapPriority,
     lastEdited: lastEdited,
+    blockId: page.id,
   }
 }

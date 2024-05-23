@@ -1,7 +1,7 @@
 import { type Metadata } from "next"
 
 import { Headline } from "@/components/layout/headline"
-import { getCachedPage, getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
@@ -41,10 +41,12 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   if (page === null) {
     notFound()
   }
+  const content = await getCachedPageContent(page.blockId)
+
   return (
     <div className="text-center">
       <Headline>{page.title}</Headline>
-      <p>{page.content}</p>
+      <p>{JSON.stringify(content)}</p>
     </div>
   )
 }
