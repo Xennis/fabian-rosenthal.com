@@ -3,6 +3,7 @@ import { type Metadata } from "next"
 import { Headline } from "@/components/layout/headline"
 import { getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
+import { Render } from "@xennis/react-notion-render"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -15,11 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata | null> {
   const page = await getCachedPage(params)
   if (page === null) {
-    return {
-      robots: {
-        index: false,
-      },
-    }
+    return null
   }
 
   return {
@@ -46,7 +43,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   return (
     <div className="text-center">
       <Headline>{page.title}</Headline>
-      <p>{JSON.stringify(content)}</p>
+      <Render blocks={content} />
     </div>
   )
 }
