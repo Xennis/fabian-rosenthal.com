@@ -12,6 +12,7 @@
   "dependencies": {
     "@notionhq/client": "^2.2.15",
     "@vercel/analytics": "^1.2.2",
+    "@xennis/react-notion-render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?main&scripts.install=pnpm%20build",
     "mapbox-gl": "^3.3.0",
     "next": "14.2.3",
     "react": "^18",

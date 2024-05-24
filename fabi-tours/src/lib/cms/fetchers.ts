@@ -2,9 +2,10 @@ import { unstable_cache } from "next/cache"
 import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
 
 import { processPlace } from "@/lib/cms/collections/places"
-import { fetchBlocksChildren, fetchDatabasePages } from "@/lib/cms/notion/fetch"
+import { fetchDatabasePages, notionClient } from "@/lib/cms/notion/fetch"
 import { processPages } from "@/lib/cms/collections/pages"
 import { i18n } from "@/content/i18n"
+import { fetchBlocksChildren } from "@xennis/react-notion-render"
 
 export async function getCachedPlaces() {
   return await unstable_cache(
@@ -49,7 +50,7 @@ export async function getCachedPage({ lang, slug }: { lang: string; slug: string
 export async function getCachedPageContent(blockId: string) {
   return await unstable_cache(
     async () => {
-      return fetchBlocksChildren(blockId)
+      return fetchBlocksChildren(notionClient, blockId)
     },
     [`cms-page-${blockId}`],
     {
