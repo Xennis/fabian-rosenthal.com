@@ -1,9 +1,10 @@
 import { type Metadata } from "next"
+import { Render } from "@react-notion-cms/render"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
-import { Render } from "@xennis/react-notion-render"
+import { pageTitle } from "@/content/config"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -27,7 +28,9 @@ export async function generateMetadata({
     },
     openGraph: {
       description: page.description,
+      siteName: pageTitle,
       title: page.title,
+      type: "website",
     },
     title: page.title,
   }
@@ -43,7 +46,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   return (
     <div className="text-center">
       <Headline>{page.title}</Headline>
-      <Render blocks={content} />
+      <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => nId }} />
     </div>
   )
 }

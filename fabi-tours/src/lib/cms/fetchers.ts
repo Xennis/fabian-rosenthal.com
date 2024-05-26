@@ -1,16 +1,25 @@
 import { unstable_cache } from "next/cache"
 import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
+import { fetchDatabasePages } from "@react-notion-cms/fetch"
+import { fetchBlocksChildren } from "@react-notion-cms/render"
 
-import { processPlace } from "@/lib/cms/collections/places"
-import { fetchDatabasePages, notionClient } from "@/lib/cms/notion/fetch"
-import { processPages } from "@/lib/cms/collections/pages"
+import { processPlace } from "@/lib/cms/places"
+import { processPages } from "@/lib/cms/pages"
 import { i18n } from "@/content/i18n"
-import { fetchBlocksChildren } from "@xennis/react-notion-render"
+import { Client } from "@notionhq/client"
+
+export const notionClient = new Client({
+  auth: process.env.NOTION_ACCESS_TOKEN,
+  timeoutMs: 1000 * 10,
+})
 
 export async function getCachedPlaces() {
   return await unstable_cache(
     async () => {
-      return fetchDatabasePages(process.env.NOTION_PLACES_DB_ID!, processPlace)
+      return fetchDatabasePages(notionClient, processPlace, {
+        database_id: process.env.NOTION_PLACES_DB_ID!,
+        page_size: 50,
+      })
     },
     ["cms-places"],
     {
@@ -22,7 +31,10 @@ export async function getCachedPlaces() {
 export async function getCachedPages() {
   return await unstable_cache(
     async () => {
-      const pages = await fetchDatabasePages(process.env.NOTION_PAGES_DB_ID!, processPages)
+      const pages = await fetchDatabasePages(notionClient, processPages, {
+        database_id: process.env.NOTION_PAGES_DB_ID!,
+        page_size: 50,
+      })
       return pages.map((p) => {
         const languages: AlternateURLs["languages"] = {}
         i18n.locales.forEach((lang) => {

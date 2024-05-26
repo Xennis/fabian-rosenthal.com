@@ -1,13 +1,7 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import type { Feature, Point, Position } from "geojson"
+import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@react-notion-cms/fetch"
 
-import {
-  propsFirstPlainText,
-  propsMultiSelect,
-  propsNumber,
-  propsUniqueId,
-  propsUrl,
-} from "@/lib/cms/notion/properties"
 import { i18n } from "@/content/i18n"
 
 export type Place = Feature<Point, PlaceProperties>

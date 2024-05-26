@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsFirstPlainText, propsNumber, propsSelect } from "@/lib/cms/notion/properties"
+import { propsFirstPlainText, propsNumber, propsSelect } from "@react-notion-cms/fetch"
 
 const langSelects = ["de", "en"] as const
 export type PageLang = (typeof langSelects)[number]
