@@ -42,9 +42,9 @@ export function Projects({
   return (
     <>
       <h2 className="pb-2 pt-7 text-2xl font-semibold tracking-tight sm:text-3xl">{dictionary.headline}</h2>
-      <ul>
+      <ul className="ms-6 list-outside list-disc py-1 leading-7 text-gray-700">
         {projects.map((p, index) => (
-          <li key={index}>
+          <li key={index} className="pt-2">
             <ProjectItem {...p} tagsSrLabel={dictionary.tagsSrLabel} id={index.toString()} />
           </li>
         ))}

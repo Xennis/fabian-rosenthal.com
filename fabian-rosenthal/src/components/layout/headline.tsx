@@ -7,7 +7,7 @@ export function Headline({ subtitle, children }: { subtitle?: string; children: 
         {children}
         <Dot />
       </h1>
-      {subtitle && <div>{subtitle}</div>}
+      {subtitle && <div className="pt-1.5">{subtitle}</div>}
     </div>
   )
 }
