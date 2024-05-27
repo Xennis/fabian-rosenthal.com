@@ -51,7 +51,7 @@ export async function getCachedPageContent(blockId: string) {
     },
     [`cms-page-${blockId}`],
     {
-      revalidate: 5 * 60,
+      revalidate: 15 * 60,
     },
   )()
 }
@@ -72,7 +72,7 @@ export async function getCachedBusinessIdeasPages() {
     },
     ["cms-business-ideas-pages"],
     {
-      revalidate: 5 * 60,
+      revalidate: 15 * 60,
     },
   )()
 }
