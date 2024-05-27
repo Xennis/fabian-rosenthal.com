@@ -6,10 +6,11 @@ import { fetchBlocksChildren } from "@react-notion-cms/render"
 import { processPages } from "@/lib/cms/pages"
 import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
+import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 
 export const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
-  timeoutMs: 1000 * 10,
+  timeoutMs: 20 * 1000,
 })
 
 export async function getCachedPages() {
@@ -53,4 +54,31 @@ export async function getCachedPageContent(blockId: string) {
       revalidate: 5 * 60,
     },
   )()
+}
+
+export async function getCachedBusinessIdeasPages() {
+  return await unstable_cache(
+    async () => {
+      const pages = await fetchDatabasePages(notionClient, processBusinessIdeasPages, {
+        database_id: process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!,
+        page_size: 100,
+      })
+      return pages.map((p) => {
+        console.log(p.slug)
+        return {
+          ...p,
+          canonical: `/en/guides/business-ideas/${p.slug}`,
+        }
+      })
+    },
+    ["cms-business-ideas-pages"],
+    {
+      revalidate: 5 * 60,
+    },
+  )()
+}
+
+export async function getCachedBusinessIdeasPage({ lang, slug }: { lang: string; slug: string }) {
+  const page = (await getCachedBusinessIdeasPages()).find((p) => p.lang.toString() === lang && p.slug === slug)
+  return page ?? null
 }
