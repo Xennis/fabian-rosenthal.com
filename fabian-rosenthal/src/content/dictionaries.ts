@@ -19,8 +19,6 @@ const dictionaries = {
         subtitle: "Read about my insights and learning journey",
       },
       voluntarySupport: {
-        headline: "Voluntary Software Support",
-        subtitle: "Free software help for nonprofit clubs, volunteers, private individuals, ...",
         bookingHeadline: "Book Your Appointment",
         bookingInfoPrefix: "What do I need to do?",
         bookingInfo:
@@ -61,8 +59,6 @@ const dictionaries = {
         subtitle: "Meine Einblicke und Erkenntnisse aus der Software-Welt",
       },
       voluntarySupport: {
-        headline: "Ehrenamtlicher Software-Support",
-        subtitle: "Kostenlose Software-Hilfe für gemeinnützige Vereine, Ehrenamtliche, Privatpersonen, ...",
         bookingHeadline: "Buche Deinen Termin",
         bookingInfoPrefix: "Was muss ich tun?",
         bookingInfo:
