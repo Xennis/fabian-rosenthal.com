@@ -28,6 +28,18 @@ export async function generateMetadata({
     },
     openGraph: {
       description: page.description,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+        },
+        {
+          url: "/og-image-square.png",
+          width: 400,
+          height: 400,
+        },
+      ],
       siteName: pageTitle,
       title: page.title,
       type: "website",
