@@ -1,5 +1,5 @@
 .voluntary-support .notion ul {
-  @apply grid list-none text-sm sm:grid-cols-2 lg:grid-cols-3;
+  @apply ms-6 grid list-none py-1 text-sm leading-7 text-gray-700 sm:grid-cols-2 lg:grid-cols-3;
 }
 
 .legal {
