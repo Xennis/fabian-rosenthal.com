@@ -1,5 +1,6 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import { propsFirstPlainText } from "@react-notion-cms/fetch"
+import { type IconResponse } from "@react-notion-cms/render"
 
 export type Page = {
   title: string
@@ -8,6 +9,7 @@ export type Page = {
   sitemapPriority: number
   lastEdited: Date
   blockId: string
+  icon: IconResponse
 }
 
 export const processBusinessIdeasPages = (page: PageObjectResponse): Page | null => {
@@ -26,5 +28,6 @@ export const processBusinessIdeasPages = (page: PageObjectResponse): Page | null
     sitemapPriority: 0.5,
     lastEdited: lastEdited,
     blockId: page.id,
+    icon: page.icon,
   }
 }

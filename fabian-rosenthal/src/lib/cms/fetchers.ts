@@ -64,7 +64,6 @@ export async function getCachedBusinessIdeasPages() {
         page_size: 100,
       })
       return pages.map((p) => {
-        console.log(p.slug)
         return {
           ...p,
           canonical: `/en/guides/business-ideas/${p.slug}`,
@@ -76,9 +75,4 @@ export async function getCachedBusinessIdeasPages() {
       revalidate: 5 * 60,
     },
   )()
-}
-
-export async function getCachedBusinessIdeasPage({ lang, slug }: { lang: string; slug: string }) {
-  const page = (await getCachedBusinessIdeasPages()).find((p) => p.lang.toString() === lang && p.slug === slug)
-  return page ?? null
 }

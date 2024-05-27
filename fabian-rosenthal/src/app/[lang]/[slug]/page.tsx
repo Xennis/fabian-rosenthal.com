@@ -53,7 +53,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
     <div className={classNames(params.slug === "legal" ? "text-center" : "")}>
       <Headline subtitle={page.subtitle !== null ? page.subtitle : undefined}>{page.title}</Headline>
       <div className="max-width-regular">
-        <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => nId }} />
+        <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => null }} />
       </div>
       {params.slug === "voluntary-support" && <Booking lang={params.lang} />}
     </div>
