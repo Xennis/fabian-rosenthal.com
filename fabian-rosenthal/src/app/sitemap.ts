@@ -2,7 +2,7 @@ import { type MetadataRoute } from "next"
 
 import { aboutPage, homePage, host } from "@/content/config"
 import { i18n } from "@/content/i18n"
-import { getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedBusinessIdeasPages, getCachedPages } from "@/lib/cms/fetchers"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sites: MetadataRoute.Sitemap = []
@@ -36,6 +36,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: p.sitemapPriority,
     }),
   )
+
+  if (process.env.VERCEL_ENV !== "production") {
+    ;(await getCachedBusinessIdeasPages()).forEach((p) =>
+      sites.push({
+        url: `https://${host}${p.canonical}`,
+        lastModified: p.lastEdited,
+        priority: p.sitemapPriority,
+      }),
+    )
+  }
 
   return sites
 }
