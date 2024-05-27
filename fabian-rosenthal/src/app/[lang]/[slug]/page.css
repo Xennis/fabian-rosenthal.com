@@ -1,0 +1,7 @@
+.voluntary-support .notion ul {
+  @apply grid list-none text-sm sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.legal {
+  @apply text-center;
+}

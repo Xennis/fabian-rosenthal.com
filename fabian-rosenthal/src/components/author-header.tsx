@@ -37,7 +37,7 @@ export function AuthorHeader({
     <section>
       <div className="md:flex md:items-center md:justify-center md:space-x-16">
         <div className="pb-8 text-center md:pb-0">
-          <h1>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             {dictionary.headline}
             <Dot />
           </h1>

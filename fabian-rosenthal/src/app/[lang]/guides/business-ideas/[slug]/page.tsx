@@ -4,6 +4,9 @@ import { Headline } from "@/components/layout/headline"
 import { Render } from "@react-notion-cms/render"
 import { i18n } from "@/content/i18n"
 
+import "@react-notion-cms/render/dist/styles.css"
+import "./page.css"
+
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   // TODO: Remove here + add sitemap
   if (process.env.VERCEL_ENV === "production") {
@@ -26,7 +29,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   const content = await getCachedPageContent(page.blockId)
 
   const resolveLinkFn = (nId: string) => {
-    const resolvedPage = pages.find((p) => p.blockId === nId) ?? null
+    const resolvedPage = pages.find((p) => p.blockId.replaceAll("-", "") === nId.replaceAll("-", "")) ?? null
     if (resolvedPage === null) {
       return null
     }

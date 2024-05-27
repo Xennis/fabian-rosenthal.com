@@ -12,6 +12,8 @@ import CalComIframe from "@/components/calcom"
 import { getDictionary } from "@/content/dictionaries"
 import { getCollections } from "@/content/collections"
 
+import "./page.css"
+
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
 }
@@ -50,7 +52,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   const content = await getCachedPageContent(page.blockId)
 
   return (
-    <div className={classNames(params.slug === "legal" ? "text-center" : "")}>
+    <div className={classNames(params.slug)}>
       <Headline subtitle={page.subtitle !== null ? page.subtitle : undefined}>{page.title}</Headline>
       <div className="max-width-regular">
         <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => null }} />
