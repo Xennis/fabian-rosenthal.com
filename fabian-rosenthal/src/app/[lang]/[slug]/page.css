@@ -1,4 +1,4 @@
-.voluntary-support .notion ul {
+.voluntary-support ul {
   @apply ms-6 grid list-none py-1 text-sm leading-7 text-gray-700 sm:grid-cols-2 lg:grid-cols-3;
 }
 

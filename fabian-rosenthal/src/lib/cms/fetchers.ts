@@ -8,7 +8,7 @@ import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 
-export const notionClient = new Client({
+const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
   timeoutMs: 20 * 1000,
 })

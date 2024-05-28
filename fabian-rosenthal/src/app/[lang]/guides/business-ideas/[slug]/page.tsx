@@ -5,7 +5,6 @@ import { Render } from "@react-notion-cms/render"
 import { i18n } from "@/content/i18n"
 
 import "@react-notion-cms/render/dist/styles.css"
-import "./page.css"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   // TODO: Remove here + add sitemap

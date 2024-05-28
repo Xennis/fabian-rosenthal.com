@@ -8,9 +8,9 @@ import { processPages } from "@/lib/cms/pages"
 import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
 
-export const notionClient = new Client({
+const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
-  timeoutMs: 1000 * 10,
+  timeoutMs: 20 * 1000,
 })
 
 export async function getCachedPlaces() {
