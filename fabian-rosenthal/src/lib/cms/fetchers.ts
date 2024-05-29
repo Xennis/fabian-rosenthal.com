@@ -18,7 +18,7 @@ export async function getCachedPages() {
     async () => {
       const pages = await fetchDatabasePages(notionClient, processPages, {
         database_id: process.env.NOTION_PAGES_DB_ID!,
-        page_size: 50,
+        page_size: 100,
       })
       return pages.map((p) => {
         const languages: AlternateURLs["languages"] = {}
@@ -47,7 +47,16 @@ export async function getCachedPage({ lang, slug }: { lang: string; slug: string
 export async function getCachedPageContent(blockId: string) {
   return await unstable_cache(
     async () => {
-      return fetchBlocksChildren(notionClient, blockId)
+      return fetchBlocksChildren(
+        notionClient,
+        {
+          block_id: blockId,
+          page_size: 100,
+        },
+        {
+          resolveImageFn: async (url, meta) => url,
+        },
+      )
     },
     [`cms-page-${blockId}`],
     {
