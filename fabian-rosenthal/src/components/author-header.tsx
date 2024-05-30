@@ -19,6 +19,7 @@ export function AuthorHeader({
     subtitleAriaLabel: string
     subtitleSuffix: string
     imageAlt: string
+    socialLinksAriaLabel: string
   }
   hideSocialLinks?: boolean
   includeJsonLd?: boolean
@@ -48,13 +49,13 @@ export function AuthorHeader({
             {` ${dictionary.subtitleSuffix}`}
           </div>
           {!hideSocialLinks && (
-            <div role="list" aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
+            <ul aria-label={dictionary.socialLinksAriaLabel} className="flex justify-center space-x-4 pt-8">
               {socialLinks.map((l, index) => (
-                <span key={index} role="listitem">
+                <li key={index}>
                   <SocialLink {...l} className="grayscale group-hover:grayscale-0" />
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
         {/* Priority is set to fix the Lighthouse error: "Largest Contentful Paint image was lazily loaded" */}
