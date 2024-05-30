@@ -40,7 +40,10 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
     <div className="max-width-regular">
       <AuthorHeader
         socialLinks={collections.socialLinks}
-        dictionary={dictionary.component.authorHeader}
+        dictionary={{
+          ...dictionary.component.authorHeader,
+          socialLinksAriaLabel: dictionary.footer.socialLinksAriaLabel,
+        }}
         includeJsonLd={true}
       />
       <Projects projects={collections.projects} dictionary={dictionary.component.projects} />

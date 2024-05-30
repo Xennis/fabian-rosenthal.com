@@ -13,13 +13,13 @@ export function Footer({
 }) {
   return (
     <footer className="pxcontent border-t-[1px] border-gray-100 py-6 md:flex md:justify-between">
-      <div role="list" aria-label={dictionary.socialLinksAriaLabel} className="flex items-center space-x-4">
+      <ul aria-label={dictionary.socialLinksAriaLabel} className="flex items-center space-x-4">
         {socialLinks.map((l, index) => (
-          <span key={index} role="listitem">
+          <li key={index} role="listitem">
             <SocialLink {...l} className="group-hover:grayscale" />
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
       <div className="pt-4 text-start text-slate-700 md:pt-0 md:text-end">
         <span className="text-sm">{dictionary.copyright}</span>
         <br />

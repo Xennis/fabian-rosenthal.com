@@ -52,7 +52,7 @@ const dictionaries = {
       },
       projects: {
         headline: "Aktuelle Projekte",
-        tagsSrLabel: "Tags",
+        tagsSrLabel: "Projektkategorien",
       },
       newsletter: {
         headline: "Abonniere meinen Newsletter",

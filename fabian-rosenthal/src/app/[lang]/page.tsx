@@ -20,7 +20,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
     <>
       <AuthorHeader
         socialLinks={collections.socialLinks}
-        dictionary={dictionary.component.authorHeader}
+        dictionary={{
+          ...dictionary.component.authorHeader,
+          socialLinksAriaLabel: dictionary.footer.socialLinksAriaLabel,
+        }}
         hideSocialLinks={true}
       />
     </>
