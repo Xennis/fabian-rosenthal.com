@@ -1,5 +1,5 @@
 import { Place, PlaceTag, tagColors, tagLabel } from "@/lib/cms/places"
-import { PlaceCard } from "@/components/place-card"
+import { PlacePropertiesCard } from "@/components/place-properties-card"
 
 export default async function PlaceList({ lang, places }: { lang: string; places: Array<Place> }) {
   const placesByTag = new Map<PlaceTag, Array<Place>>()
@@ -13,7 +13,7 @@ export default async function PlaceList({ lang, places }: { lang: string; places
   })
 
   return (
-    <div className="">
+    <div>
       {[...placesByTag.entries()].map(([tag, places], index) => {
         return (
           <div key={index}>
@@ -28,7 +28,7 @@ export default async function PlaceList({ lang, places }: { lang: string; places
                 return (
                   <li key={j} className="py-2">
                     <h3 className="pb-2 pt-4 text-lg font-semibold md:text-xl">{p.properties.title}</h3>
-                    <PlaceCard properties={p.properties} />
+                    <PlacePropertiesCard lang={lang} props={p.properties} />
                   </li>
                 )
               })}
