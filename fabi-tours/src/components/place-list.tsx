@@ -18,17 +18,19 @@ export default async function PlaceList({ lang, places }: { lang: string; places
         return (
           <div key={index}>
             <h2
-              className="pb-4 pt-6 text-2xl font-semibold underline decoration-4 underline-offset-4 sm:text-3xl"
+              className="pt-8 text-3xl font-semibold underline decoration-4 underline-offset-4 sm:text-4xl"
               style={{ textDecorationColor: tagColors[tag] }}
             >
-              {tagLabel(lang)[tag]}
+              {capitalizeFirstLetter(tagLabel(lang)[tag])}
             </h2>
             <ul>
               {places.map((p, j) => {
                 return (
                   <li key={j} className="py-2">
                     <h3 className="pb-2 pt-4 text-lg font-semibold md:text-xl">{p.properties.title}</h3>
-                    <PlacePropertiesCard lang={lang} props={p.properties} />
+                    <div className="max-w-[300px]">
+                      <PlacePropertiesCard lang={lang} props={p.properties} />
+                    </div>
                   </li>
                 )
               })}
@@ -38,4 +40,8 @@ export default async function PlaceList({ lang, places }: { lang: string; places
       })}
     </div>
   )
+}
+
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
 }
