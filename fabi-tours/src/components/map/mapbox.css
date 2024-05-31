@@ -2,11 +2,6 @@
   @apply min-w-[300px] max-w-[400px];
 }
 
-.xpop a {
-  /* outline-none: Somehow the link is auto-selected if a new page with a place is opened */
-  @apply underline decoration-emerald-500 decoration-2 outline-none hover:no-underline;
-}
-
 .mapboxgl-popup-close-button {
   /* By default the button is tiny and has no proper padding */
   @apply pe-2 pt-1 text-xl;

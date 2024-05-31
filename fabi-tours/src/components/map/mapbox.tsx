@@ -6,7 +6,7 @@ import mapboxgl, { LngLatLike } from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./mapbox.css"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { getPopupInfo, placePopupHtml } from "@/components/map/popup"
+import { getPopupInfo, placePopUpDomContent } from "@/components/map/popup"
 import { Place, tagColors } from "@/lib/cms/places"
 import { matchGet } from "@/lib/mapbox-style"
 import { addPlaceToParams, addPositionParams, parseParams } from "@/components/map/url-params"
@@ -93,7 +93,7 @@ export default function Mapbox({
         if (place === null) {
           return
         }
-        const popup = new mapboxgl.Popup().setLngLat(place.lnglat).setHTML(place.html).addTo(map)
+        const popup = new mapboxgl.Popup().setLngLat(place.lnglat).setDOMContent(place.domContent).addTo(map)
         popup.on("close", () => {
           router.push(`${pathname}?${addPositionParams(searchParams, map).toString()}`)
         })
@@ -111,7 +111,7 @@ export default function Mapbox({
       if (initPlace !== null) {
         const popup = new mapboxgl.Popup()
           .setLngLat(initPlace.geometry.coordinates as LngLatLike)
-          .setHTML(placePopupHtml(initPlace.properties, lang))
+          .setDOMContent(placePopUpDomContent(lang, initPlace.properties))
           .addTo(map)
         popup.on("close", () => {
           router.push(`${pathname}?${addPositionParams(searchParams, map).toString()}`)
