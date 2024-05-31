@@ -10,6 +10,7 @@
     "format": "prettier --write --ignore-path ../.gitignore ."
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.3",
     "@notionhq/client": "^2.2.15",
     "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?8bb992b&scripts.install=pnpm%20build",
     "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?8bb992b&scripts.install=pnpm%20build",
