@@ -2,6 +2,7 @@ import { MapIcon, MapPinIcon, StarIcon, TagIcon } from "@heroicons/react/24/outl
 
 import { cn } from "@/lib/tw"
 import { PlaceProperties, tagColors, tagLabel } from "@/lib/cms/places"
+import { i18n } from "@/content/i18n"
 
 const Link = ({ className, ...props }: React.ComponentPropsWithoutRef<"a">) => {
   /* outline-none: Somehow the link is auto-selected if a new page with a place is opened */
@@ -16,21 +17,39 @@ const Link = ({ className, ...props }: React.ComponentPropsWithoutRef<"a">) => {
 }
 
 export const PlacePropertiesCard = ({ lang, props }: { lang: string; props: PlaceProperties }) => {
+  const dictionary =
+    lang === i18n.defaultLocale
+      ? {
+          srRating: "Rating",
+          srRatingNone: "None",
+          srRatingSuffix: "out of 5 stars",
+        }
+      : {
+          srRating: "Bewertung",
+          srRatingNone: "Keine",
+          srRatingSuffix: "von 5 Sternen",
+        }
+
   return (
     <>
-      <div className="flex space-x-3">
+      <div className="flex space-x-2.5">
         <span
           className="rounded px-1.5 py-0.5 text-sm text-white"
           style={{ backgroundColor: tagColors[props.mainTag] }}
         >
           {tagLabel(lang)[props.mainTag]}
         </span>
-        <div className="flex items-center space-x-0.5">
+        <div className="space-x flex items-center">
+          <div className="sr-only">
+            {`${dictionary.srRating}: `}
+            {props.rating !== null ? `${props.rating} ${dictionary.srRatingSuffix}` : dictionary.srRatingNone}
+          </div>
           {[0, 1, 2, 3, 4].map((rating) => (
             <StarIcon
               key={rating}
+              aria-hidden={true}
               className={cn(
-                "h-4 w-4",
+                "h-5 w-5",
                 props.rating !== null && props.rating > rating
                   ? "fill-yellow-300 text-yellow-300"
                   : "fill-gray-300 text-gray-300",

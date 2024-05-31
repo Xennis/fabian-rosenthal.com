@@ -4,5 +4,6 @@
 
 .mapboxgl-popup-close-button {
   /* By default the button is tiny and has no proper padding */
-  @apply pe-2 pt-1 text-xl;
+  /* outline-none: Somehow the button is auto-selected if a new page with a place is opened */
+  @apply pe-2 pt-1 text-xl outline-none;
 }
