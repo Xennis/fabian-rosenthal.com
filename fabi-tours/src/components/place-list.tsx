@@ -18,7 +18,7 @@ export default async function PlaceList({ lang, places }: { lang: string; places
         return (
           <div key={index}>
             <h2
-              className="pt-8 text-3xl font-semibold underline decoration-4 underline-offset-4 first:pt-0 sm:text-4xl"
+              className="pt-8 text-3xl font-semibold underline decoration-4 underline-offset-4 sm:text-4xl"
               style={{ textDecorationColor: tagColors[tag] }}
             >
               {capitalizeFirstLetter(tagLabel(lang)[tag])}
