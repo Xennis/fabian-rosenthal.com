@@ -1,10 +1,11 @@
 import { type Metadata } from "next"
+import { notFound } from "next/navigation"
 import { Render } from "@react-notion-cms/render"
 
 import { Headline } from "@/components/layout/headline"
-import { getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
-import { notFound } from "next/navigation"
+import { getCachedPage, getCachedPageContent, getCachedPages, getCachedPlaces } from "@/lib/cms/fetchers"
 import { pageTitle } from "@/content/config"
+import PlaceList from "@/components/place-list"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -55,10 +56,17 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   }
   const content = await getCachedPageContent(page.blockId)
 
+  let endComponent: React.ReactNode | undefined = undefined
+  if (params.slug === "places") {
+    const places = await getCachedPlaces()
+    endComponent = <PlaceList lang={params.lang} places={places} />
+  }
+
   return (
-    <div className="text-center">
+    <div className={params.slug === "legal" ? "text-center" : ""}>
       <Headline>{page.title}</Headline>
       <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => nId }} />
+      {endComponent !== undefined ? endComponent : <></>}
     </div>
   )
 }

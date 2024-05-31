@@ -12,14 +12,16 @@ export const Header = ({ lang }: { lang: string }) => {
     lang === i18n.defaultLocale
       ? {
           legalLabel: "Legal",
+          logoAriaLabel: "Home",
         }
       : {
           legalLabel: "Impressum",
+          logoAriaLabel: "Startseite",
         }
   return (
     <header className="bg-emerald-500 px-3 py-2">
-      <div className="flex justify-between space-x-2">
-        <NextLink href={homePage(lang)} className="text-lg tracking-tight">
+      <nav className="flex justify-between space-x-2">
+        <NextLink href={homePage(lang)} aria-label={dictionary.logoAriaLabel} className="text-lg tracking-tight">
           <span className="font-semibold">Fabi</span>Tours
           <span aria-hidden={true}>&nbsp;☀️</span>️
         </NextLink>
@@ -48,7 +50,7 @@ export const Header = ({ lang }: { lang: string }) => {
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
     </header>
   )
 }
