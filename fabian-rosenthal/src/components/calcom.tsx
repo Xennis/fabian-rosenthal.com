@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 import { brandColor } from "@/content/config"
 
-export default function CalComIframe({ calLink }: { calLink: string }) {
+export function CalComIframe({ calLink }: { calLink: string }) {
   useEffect(() => {
     ;(async function () {
       const cal = await getCalApi()

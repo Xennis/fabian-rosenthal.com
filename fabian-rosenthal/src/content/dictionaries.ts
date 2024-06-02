@@ -14,10 +14,6 @@ const dictionaries = {
         headline: "Current Projects",
         tagsSrLabel: "Tags",
       },
-      newsletter: {
-        headline: "Subscribe to My Newsletter",
-        subtitle: "Read about my insights and learning journey",
-      },
       voluntarySupport: {
         bookingHeadline: "Book Your Appointment",
         bookingInfoPrefix: "What do I need to do?",
@@ -53,10 +49,6 @@ const dictionaries = {
       projects: {
         headline: "Aktuelle Projekte",
         tagsSrLabel: "Projektkategorien",
-      },
-      newsletter: {
-        headline: "Abonniere meinen Newsletter",
-        subtitle: "Meine Einblicke und Erkenntnisse aus der Software-Welt",
       },
       voluntarySupport: {
         bookingHeadline: "Buche Deinen Termin",

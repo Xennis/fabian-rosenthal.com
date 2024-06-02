@@ -5,12 +5,13 @@ const langSelects = ["de", "en"] as const
 export type PageLang = (typeof langSelects)[number]
 
 export type Page = {
-  title: string
-  subtitle: string | null
+  metaTitle: string
+  metaDescription: string
   lang: PageLang
   slug: string
-  description: string
   sitemapPriority: number
+  pageTitle: string | null
+  pageSubtitle: string | null
   lastEdited: Date
   blockId: string
 }
@@ -20,27 +21,38 @@ const stringToLang = (lang: string | null): PageLang | null => {
 }
 
 export const processPages = (page: PageObjectResponse): Page | null => {
-  const title = propsFirstPlainText(page.properties, "Name")
+  const metaTitle = propsFirstPlainText(page.properties, "meta-title")
+  const metaDescription = propsFirstPlainText(page.properties, "meta-description")
   const lang = stringToLang(propsSelect(page.properties, "lang"))
   const slug = propsFirstPlainText(page.properties, "slug")
-  const description = propsFirstPlainText(page.properties, "description")
   const sitemapPriority = propsNumber(page.properties, "sitemap-priority")
   const lastEdited = new Date(page.last_edited_time)
 
-  if (!title || !lang || !slug || !description || !sitemapPriority || Number.isNaN(lastEdited)) {
-    console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)
+  if (
+    !metaTitle ||
+    !lang ||
+    !slug ||
+    !metaDescription ||
+    !sitemapPriority ||
+    sitemapPriority < 0 ||
+    sitemapPriority > 1 ||
+    Number.isNaN(lastEdited)
+  ) {
+    console.warn(`page with id=${page.id} and title="${metaTitle}" has invalid properties`)
     return null
   }
 
-  const subtitle = propsFirstPlainText(page.properties, "subtitle")
+  const pageTitle = propsFirstPlainText(page.properties, "page-title")
+  const pageSubtitle = propsFirstPlainText(page.properties, "page-subtitle")
 
   return {
-    title: title,
-    subtitle: subtitle,
+    metaTitle: metaTitle,
+    metaDescription: metaDescription,
     lang: lang,
     slug: slug,
-    description: description,
     sitemapPriority: sitemapPriority,
+    pageTitle: pageTitle,
+    pageSubtitle: pageSubtitle,
     lastEdited: lastEdited,
     blockId: page.id,
   }

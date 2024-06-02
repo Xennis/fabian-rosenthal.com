@@ -14,16 +14,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: new Date(),
           priority: 1,
         },
-        {
-          url: `https://${host}${aboutPage(lang)}`,
-          lastModified: new Date(),
-          priority: 0.8,
-        },
-        // {
-        //   url: `https://${host}${newsletterPage(lang)}`,
-        //   lastModified: new Date(),
-        //   priority: 0.8,
-        // },
       ],
     )
   })
