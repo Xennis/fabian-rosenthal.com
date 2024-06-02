@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { getCachedBusinessIdeasPages, getCachedPageContent } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
 import { Headline } from "@/components/layout/headline"
@@ -5,6 +6,7 @@ import { Render } from "@react-notion-cms/render"
 import { i18n } from "@/content/i18n"
 
 import "@react-notion-cms/render/dist/styles.css"
+import { pageTitle } from "@/content/config"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   // TODO: Remove here + add sitemap
@@ -14,6 +16,32 @@ export async function generateStaticParams({ params }: { params: { lang: string 
   return (await getCachedBusinessIdeasPages())
     .filter((p) => p.lang.toString() === params.lang)
     .map((p) => ({ slug: p.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string; slug: string }
+}): Promise<Metadata | null> {
+  if (params.lang !== i18n.defaultLocale) {
+    return null
+  }
+  const pages = await getCachedBusinessIdeasPages()
+  const page = pages.find((p) => p.slug === params.slug) ?? null
+  if (page === null) {
+    return null
+  }
+
+  return {
+    // description: page.metaDescription,
+    openGraph: {
+      // description: page.metaDescription,
+      siteName: pageTitle,
+      title: page.title,
+      type: "website",
+    },
+    title: page.title,
+  }
 }
 
 export default async function SlugPage({ params }: { params: { lang: string; slug: string } }) {
