@@ -6,6 +6,7 @@
 export const host = "fabian-rosenthal.com"
 
 export const aboutPage = (lang: string) => `/${lang}/about`
+export const businessIdeasPage = (lang: string, slug: string) => `/${lang}/guides/business-ideas/${slug}`
 export const homePage = (lang: string) => `/${lang}`
 export const legalPage = (lang: string) => `/${lang}/legal`
 export const newsletterPage = (lang: string) => `/${lang}/newsletter`

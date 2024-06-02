@@ -8,6 +8,7 @@ import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
+import { businessIdeasPage } from "@/content/config"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -76,7 +77,7 @@ export async function getCachedBusinessIdeasPages() {
       return pages.map((p) => {
         return {
           ...p,
-          canonical: `/en/guides/business-ideas/${p.slug}`,
+          canonical: businessIdeasPage(i18n.defaultLocale, p.slug),
         }
       })
     },
