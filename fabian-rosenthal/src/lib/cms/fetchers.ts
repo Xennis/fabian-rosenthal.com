@@ -7,6 +7,7 @@ import { processPages } from "@/lib/cms/pages"
 import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
+import { downloadImageToPublicDir } from "@/lib/cms/image"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -54,7 +55,7 @@ export async function getCachedPageContent(blockId: string) {
           page_size: 100,
         },
         {
-          resolveImageFn: async (url, meta) => url,
+          resolveImageFn: downloadImageToPublicDir,
         },
       )
     },
