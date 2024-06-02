@@ -12,8 +12,8 @@
   "dependencies": {
     "@calcom/embed-react": "^1.4.0",
     "@notionhq/client": "^2.2.15",
-    "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?a6333a8&scripts.install=pnpm%20build",
-    "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?a6333a8&scripts.install=pnpm%20build",
+    "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?ef861bb&scripts.install=pnpm%20build",
+    "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?ef861bb&scripts.install=pnpm%20build",
     "@vercel/analytics": "^1.2.2",
     "next": "14.1.4",
     "react": "^18",

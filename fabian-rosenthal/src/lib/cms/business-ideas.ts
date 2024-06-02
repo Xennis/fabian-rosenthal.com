@@ -2,6 +2,8 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 import { propsPlainTexts } from "@react-notion-cms/fetch"
 import { type IconResponse } from "@react-notion-cms/render"
 
+import { downloadImageToPublicDir } from "@/lib/cms/image"
+
 export type Page = {
   title: string
   lang: "en"
@@ -19,6 +21,11 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
   if (!title || Number.isNaN(lastEdited)) {
     console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)
     return null
+  }
+
+  const icon = page.icon
+  if (icon !== null && icon.type === "file") {
+    icon.file.url = await downloadImageToPublicDir(icon.file.url, { blockId: page.id, lastEditedTime: lastEdited })
   }
 
   return {

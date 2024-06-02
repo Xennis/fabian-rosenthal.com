@@ -42,7 +42,10 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
     <div>
       <Headline>{page.title}</Headline>
       <div className="max-width-regular">
-        <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: resolveLinkFn }} />
+        <Render
+          blocks={content}
+          options={{ formatDateFn: (date: Date) => date.toLocaleDateString(params.lang), resolveLinkFn: resolveLinkFn }}
+        />
       </div>
     </div>
   )
