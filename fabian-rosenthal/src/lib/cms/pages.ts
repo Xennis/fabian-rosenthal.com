@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsFirstPlainText, propsNumber, propsSelect } from "@react-notion-cms/fetch"
+import { propsPlainTexts, propsNumber, propsSelect } from "@react-notion-cms/fetch"
 
 const langSelects = ["de", "en"] as const
 export type PageLang = (typeof langSelects)[number]
@@ -20,11 +20,11 @@ const stringToLang = (lang: string | null): PageLang | null => {
   return langSelects.find((s) => s.toString() === lang) ?? null
 }
 
-export const processPages = (page: PageObjectResponse): Page | null => {
-  const metaTitle = propsFirstPlainText(page.properties, "meta-title")
-  const metaDescription = propsFirstPlainText(page.properties, "meta-description")
+export const processPages = async (page: PageObjectResponse): Promise<Page | null> => {
+  const metaTitle = propsPlainTexts(page.properties, "meta-title")
+  const metaDescription = propsPlainTexts(page.properties, "meta-description")
   const lang = stringToLang(propsSelect(page.properties, "lang"))
-  const slug = propsFirstPlainText(page.properties, "slug")
+  const slug = propsPlainTexts(page.properties, "slug")
   const sitemapPriority = propsNumber(page.properties, "sitemap-priority")
   const lastEdited = new Date(page.last_edited_time)
 
@@ -42,8 +42,8 @@ export const processPages = (page: PageObjectResponse): Page | null => {
     return null
   }
 
-  const pageTitle = propsFirstPlainText(page.properties, "page-title")
-  const pageSubtitle = propsFirstPlainText(page.properties, "page-subtitle")
+  const pageTitle = propsPlainTexts(page.properties, "page-title")
+  const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
 
   return {
     metaTitle: metaTitle,

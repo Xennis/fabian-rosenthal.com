@@ -28,7 +28,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   const content = await getCachedPageContent(page.blockId)
 
   const resolveLinkFn = (nId: string) => {
-    const resolvedPage = pages.find((p) => p.blockId.replaceAll("-", "") === nId.replaceAll("-", "")) ?? null
+    const resolvedPage = pages.find((p) => p.blockId === nId) ?? null
     if (resolvedPage === null) {
       return null
     }

@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsFirstPlainText } from "@react-notion-cms/fetch"
+import { propsPlainTexts } from "@react-notion-cms/fetch"
 import { type IconResponse } from "@react-notion-cms/render"
 
 export type Page = {
@@ -12,8 +12,8 @@ export type Page = {
   icon: IconResponse
 }
 
-export const processBusinessIdeasPages = (page: PageObjectResponse): Page | null => {
-  const title = propsFirstPlainText(page.properties, "Page")
+export const processBusinessIdeasPages = async (page: PageObjectResponse): Promise<Page | null> => {
+  const title = propsPlainTexts(page.properties, "Page")
   const lastEdited = new Date(page.last_edited_time)
 
   if (!title || Number.isNaN(lastEdited)) {

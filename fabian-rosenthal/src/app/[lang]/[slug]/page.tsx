@@ -54,7 +54,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   const content = await getCachedPageContent(page.blockId)
 
   return (
-    <div className={classNames(params.slug)}>
+    <div className={classNames(params.slug, "default")}>
       {page.pageTitle !== null && (
         <Headline subtitle={page.pageSubtitle !== null ? page.pageSubtitle : undefined}>{page.pageTitle}</Headline>
       )}
