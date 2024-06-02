@@ -3,7 +3,26 @@
 //
 // const headersList = headers()
 // const host = headersList.get("host")!
-export const host = "fabian-rosenthal.com"
+const getHost = () => {
+  if (process.env.VERCEL_ENV === "production") {
+    const url = process.env.VERCEL_PROJECT_PRODUCTION_URL
+    if (url) {
+      return url
+    }
+  }
+  if (process.env.VERCEL_ENV === "preview") {
+    const url = process.env.VERCEL_BRANCH_URL
+    if (url) {
+      return url
+    }
+  }
+  if (process.env.NODE_ENV === "development") {
+    return "localhost:3000"
+  }
+  throw Error("host not set")
+}
+
+export const host = getHost()
 
 export const aboutPage = (lang: string) => `/${lang}/about`
 export const businessIdeasPage = (lang: string, slug: string) => `/${lang}/guides/business-ideas/${slug}`
