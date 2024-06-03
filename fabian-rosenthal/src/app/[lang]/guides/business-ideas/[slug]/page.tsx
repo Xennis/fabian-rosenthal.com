@@ -11,7 +11,8 @@ import { pageTitle } from "@/content/config"
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   // TODO: Remove here + add sitemap
   if (process.env.VERCEL_ENV === "production") {
-    return []
+    // If nothing is returned an error is raised, i.e. the build fails
+    return [{ slug: "abc" }]
   }
   return (await getCachedBusinessIdeasPages())
     .filter((p) => p.lang.toString() === params.lang)
