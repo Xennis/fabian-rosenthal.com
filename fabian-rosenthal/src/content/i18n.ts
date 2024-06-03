@@ -14,7 +14,7 @@ export const toggledLangMetadata = (lang: string) => {
         lang: "de",
       }
     : {
-        label: "🇺🇸",
+        label: "🇬🇧",
         srLabel: "Switch to English language",
         lang: "en",
       }
