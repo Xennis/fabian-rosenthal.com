@@ -11,11 +11,11 @@ function ProjectItem({
 }) {
   return (
     <>
-      <div className="flex">
+      <div className="sm:flex sm:gap-2">
         <a href={href} target="_blank">
           {name}
         </a>
-        <ul className="flex gap-1 ps-2" aria-label={tagsSrLabel}>
+        <ul className="flex gap-1" aria-label={tagsSrLabel}>
           {tags.map((t, index) => (
             <li key={index}>
               <span aria-hidden={true}>#</span>
