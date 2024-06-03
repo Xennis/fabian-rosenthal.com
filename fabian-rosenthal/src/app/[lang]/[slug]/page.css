@@ -5,3 +5,8 @@
 .legal {
   @apply text-center;
 }
+
+:root {
+  /* gray-700 */
+  --notion-default: rgb(22, 25, 32);
+}
