@@ -18,7 +18,12 @@ export function LanguageToggle() {
   const href = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
 
   return (
-    <NextLink className="border-s-2 ps-6 text-lg hover:grayscale md:ps-3" href={href} hrefLang={targetLang.lang}>
+    <NextLink
+      title={targetLang.srLabel}
+      className="border-s-2 ps-6 text-lg hover:grayscale md:ps-3"
+      href={href}
+      hrefLang={targetLang.lang}
+    >
       <span className="sr-only" lang={targetLang.lang}>
         {targetLang.srLabel}
       </span>
