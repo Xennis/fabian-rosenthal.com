@@ -9,7 +9,12 @@ type Dictionary = { logo: { title: string; subtitle: string; subtitlePrefix: str
 function Logo({ homeHref, dictionary }: { homeHref: string; dictionary: Dictionary["logo"] }) {
   return (
     <div>
-      <NextLink aria-label={dictionary.ariaLabel} href={homeHref} className="group flex items-center">
+      <NextLink
+        title={dictionary.ariaLabel}
+        aria-label={dictionary.ariaLabel}
+        href={homeHref}
+        className="group flex items-center"
+      >
         <NextImage className="rounded" src={authorImage} alt="Profile picture of Fabian" width={75} unoptimized />
         <div className="ps-3">
           <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">{dictionary.title}</span>
