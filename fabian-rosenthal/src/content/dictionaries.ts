@@ -14,6 +14,12 @@ const dictionaries = {
         headline: "Current Projects",
         tagsSrLabel: "Tags",
       },
+      shortBio: {
+        headline: "Short Bio",
+        morePrefix: "Read more on the",
+        moreLinkLabel: "About",
+        moreSuffix: "page",
+      },
       voluntarySupport: {
         bookingHeadline: "Book Your Appointment",
         bookingInfoPrefix: "What do I need to do?",
@@ -49,6 +55,12 @@ const dictionaries = {
       projects: {
         headline: "Aktuelle Projekte",
         tagsSrLabel: "Projektkategorien",
+      },
+      shortBio: {
+        headline: "Kurzbiografie",
+        morePrefix: "Mehr auf der",
+        moreLinkLabel: "Über",
+        moreSuffix: "Seite",
       },
       voluntarySupport: {
         bookingHeadline: "Buche Deinen Termin",

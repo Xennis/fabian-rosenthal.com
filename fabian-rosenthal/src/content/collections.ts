@@ -63,6 +63,11 @@ const collections = {
         { label: "About", href: aboutPage("en") },
       ],
     },
+    shortBio: [
+      { emoji: "👨‍💻", text: "Software Engineer" },
+      { emoji: "🏗️", text: "Building large applications & micro SaaS" },
+      { emoji: "📖", text: "Sharing my knowledge on building software products" },
+    ],
     socialLinks: socialLinks,
     projects: [
       {
@@ -129,6 +134,11 @@ const collections = {
         { label: "Über", href: aboutPage("de") },
       ],
     },
+    shortBio: [
+      { emoji: "👨‍💻", text: "Softwareentwickler" },
+      { emoji: "🏗️", text: "Bau großer Anwendungen & Micro-SaaS" },
+      { emoji: "📖", text: "Teile mein Wissen über den Bau von Softwareprodukten" },
+    ],
     socialLinks: socialLinks,
     projects: [
       {
