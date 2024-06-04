@@ -1,15 +1,14 @@
+import NextLink from "next/link"
+
 import { Link } from "@/components/layout/link"
 import { blogPagePost, blogTagPage } from "@/content/config"
 import { BlogPost, Tag, tagToString } from "@/lib/cms/blog-posts"
 import { i18n } from "@/content/i18n"
-import { cn } from "@react-notion-cms/render/dist/util"
-import NextLink from "next/link"
 
 const TagChip = ({ tag }: { tag: Tag }) => {
-  // FIXME: no-underline only needed because global style applies
   return (
     <NextLink
-      className={cn("rounded-xl bg-slate-900 px-2 py-1 text-xs text-white hover:bg-slate-700", "no-underline")}
+      className={"rounded-xl bg-slate-900 px-2 py-1 text-xs text-white hover:bg-slate-700"}
       href={blogTagPage(i18n.defaultLocale, tag)}
     >
       {tagToString(tag)}
