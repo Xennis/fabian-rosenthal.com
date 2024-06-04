@@ -30,14 +30,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (process.env.VERCEL_ENV !== "production") {
     ;(await getCachedBlogPosts()).forEach((p) => {
       sites.push({
-        url: `https://${host}/${blogPagePost(p.lang, p.slug)}`,
+        url: `https://${host}${blogPagePost(p.lang, p.slug)}`,
         lastModified: p.lastEdited,
         priority: p.sitemapPriority,
       })
     })
     ;(await getCachedBlogTags()).forEach((t) => {
       sites.push({
-        url: `https://${host}/${blogTagPage(i18n.defaultLocale, t)}`,
+        url: `https://${host}${blogTagPage(i18n.defaultLocale, t)}`,
         lastModified: new Date(),
         priority: 0.6,
       })
