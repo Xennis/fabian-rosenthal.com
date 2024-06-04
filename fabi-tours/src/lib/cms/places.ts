@@ -1,6 +1,12 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import type { Feature, Point, Position } from "geojson"
-import { propsFirstPlainText, propsMultiSelect, propsNumber, propsUniqueId, propsUrl } from "@react-notion-cms/fetch"
+import {
+  propsPlainTexts,
+  propsMultiSelectNames,
+  propsNumber,
+  propsUniqueIdNumber,
+  propsUrl,
+} from "@react-notion-cms/fetch"
 
 import { i18n } from "@/content/i18n"
 
@@ -78,12 +84,12 @@ const stringToPosition = (raw: string | null): Position | null => {
   return [lng, lat]
 }
 
-export const processPlace = (page: PageObjectResponse): Place | null => {
-  const id = propsUniqueId(page.properties, "ID")
-  const title = propsFirstPlainText(page.properties, "Name")
-  const tags = propsMultiSelect(page.properties, "Tags")
-  const position = stringToPosition(propsFirstPlainText(page.properties, "Location"))
-  const address = propsFirstPlainText(page.properties, "Address")
+export const processPlace = async (page: PageObjectResponse): Promise<Place | null> => {
+  const id = propsUniqueIdNumber(page.properties, "ID")
+  const title = propsPlainTexts(page.properties, "Name")
+  const tags = propsMultiSelectNames(page.properties, "Tags")
+  const position = stringToPosition(propsPlainTexts(page.properties, "Location"))
+  const address = propsPlainTexts(page.properties, "Address")
   const googleMaps = propsUrl(page.properties, "Google Maps")
   if (!id || !title || !tags || !position || !address || !googleMaps) {
     console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)

@@ -54,10 +54,10 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   if (page === null) {
     notFound()
   }
-  const content = await getCachedPageContent(page.blockId)
+  const content = await getCachedPageContent(page.notionId)
 
   const resolveLinkFn = (nId: string) => {
-    const resolvedPage = pages.find((p) => p.blockId === nId) ?? null
+    const resolvedPage = pages.find((p) => p.notionId === nId) ?? null
     if (resolvedPage === null) {
       return null
     }
