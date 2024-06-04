@@ -2,10 +2,9 @@ import { type Metadata } from "next"
 import { Render } from "@react-notion-cms/render"
 
 import { Headline } from "@/components/layout/headline"
-import { getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedBlogPosts, getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
 import { pageTitle } from "@/content/config"
-import { classNames } from "@/lib/tw"
 import { Hero } from "@/components/layout/hero"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { CalComIframe } from "@/components/calcom"
@@ -13,6 +12,8 @@ import { getDictionary } from "@/content/dictionaries"
 import { getCollections } from "@/content/collections"
 import { AuthorHeader } from "@/components/author-header"
 import { Projects } from "@/components/projects"
+import { i18n } from "@/content/i18n"
+import { BlogPostList } from "@/components/blog-post-list"
 
 import "./page.css"
 
@@ -54,11 +55,11 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   const content = await getCachedPageContent(page.notionId)
 
   return (
-    <div className={classNames(params.slug, "default")}>
+    <div className={params.slug}>
       {page.pageTitle !== null && (
         <Headline subtitle={page.pageSubtitle !== null ? page.pageSubtitle : undefined}>{page.pageTitle}</Headline>
       )}
-      <div className="max-width-regular">
+      <div className="max-width-regular default">
         <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => null }} />
       </div>
       <EndComponent params={params} />
@@ -72,6 +73,12 @@ const EndComponent = ({ params }: { params: { lang: string; slug: string } }) =>
       return (
         <div className="max-width-regular">
           <About lang={params.lang} />
+        </div>
+      )
+    case "blog":
+      return (
+        <div className="max-width-regular">
+          <Blog lang={params.lang} />
         </div>
       )
     case "newsletter":
@@ -104,6 +111,19 @@ const About = ({ lang }: { lang: string }) => {
       <Projects projects={collections.projects} dictionary={dictionary.component.projects} />
     </>
   )
+}
+
+const Blog = async ({ lang }: { lang: string }) => {
+  if (lang !== i18n.defaultLocale) {
+    return <></>
+  }
+  const posts = await getCachedBlogPosts()
+  const postsByDate = posts.sort((a, b) => {
+    // FIXME: Somehow the date is here sometimes a string
+    return new Date(a.publishDate).getTime() - new Date(b.publishDate).getTime()
+  })
+
+  return <BlogPostList posts={postsByDate} />
 }
 
 const Booking = ({ lang }: { lang: string }) => {

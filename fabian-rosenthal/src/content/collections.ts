@@ -131,7 +131,6 @@ const collections = {
     },
     header: {
       navLinks: [
-        // { label: "Artikel", href: blogPage("de") },
         { label: "Support", href: voluntarySupport("de") },
         { label: "Über", href: aboutPage("de") },
       ],

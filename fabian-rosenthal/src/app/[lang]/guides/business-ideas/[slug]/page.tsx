@@ -3,7 +3,6 @@ import { getCachedBusinessIdeasPages, getCachedPageContent } from "@/lib/cms/fet
 import { notFound } from "next/navigation"
 import { Headline } from "@/components/layout/headline"
 import { Render } from "@react-notion-cms/render"
-import { i18n } from "@/content/i18n"
 
 import "@react-notion-cms/render/dist/styles.css"
 import { pageTitle } from "@/content/config"
@@ -24,9 +23,6 @@ export async function generateMetadata({
 }: {
   params: { lang: string; slug: string }
 }): Promise<Metadata | null> {
-  if (params.lang !== i18n.defaultLocale) {
-    return null
-  }
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {
@@ -46,9 +42,6 @@ export async function generateMetadata({
 }
 
 export default async function SlugPage({ params }: { params: { lang: string; slug: string } }) {
-  if (params.lang !== i18n.defaultLocale) {
-    notFound()
-  }
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {
