@@ -16,15 +16,13 @@ const getHost = () => {
       return url
     }
   }
-  if (process.env.NODE_ENV === "development") {
-    return "localhost:3000"
-  }
-  throw Error("host not set")
+  return "localhost:3000"
 }
 
 export const host = getHost()
 
 export const aboutPage = (lang: string) => `/${lang}/about`
+export const blogPage = (lang: string) => `/${lang}/blog`
 export const businessIdeasPage = (lang: string, slug: string) => `/${lang}/guides/business-ideas/${slug}`
 export const homePage = (lang: string) => `/${lang}`
 export const legalPage = (lang: string) => `/${lang}/legal`

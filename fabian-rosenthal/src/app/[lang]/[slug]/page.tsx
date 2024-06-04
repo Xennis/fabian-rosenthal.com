@@ -51,7 +51,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   if (page === null) {
     notFound()
   }
-  const content = await getCachedPageContent(page.blockId)
+  const content = await getCachedPageContent(page.notionId)
 
   return (
     <div className={classNames(params.slug, "default")}>

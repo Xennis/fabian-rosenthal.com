@@ -6,7 +6,7 @@ import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
-import { aboutPage, legalPage, newsletterPage, voluntarySupport } from "@/content/config"
+import { aboutPage, blogPage, legalPage, newsletterPage, voluntarySupport } from "@/content/config"
 
 const socialLinks = [
   {
@@ -59,6 +59,7 @@ const collections = {
     },
     header: {
       navLinks: [
+        // { label: "Articles", href: blogPage("en") },
         { label: "Support", href: voluntarySupport("en") },
         { label: "About", href: aboutPage("en") },
       ],
@@ -130,6 +131,7 @@ const collections = {
     },
     header: {
       navLinks: [
+        // { label: "Artikel", href: blogPage("de") },
         { label: "Support", href: voluntarySupport("de") },
         { label: "Über", href: aboutPage("de") },
       ],

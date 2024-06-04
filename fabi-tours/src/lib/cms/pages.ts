@@ -1,43 +1,52 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsFirstPlainText, propsNumber, propsSelect } from "@react-notion-cms/fetch"
+import { propsPlainTexts, propsNumber, propsSelectName } from "@react-notion-cms/fetch"
 
 const langSelects = ["de", "en"] as const
 export type PageLang = (typeof langSelects)[number]
 
 export type Page = {
-  title: string
-  lang: PageLang
-  slug: string
   description: string
-  sitemapPriority: number
+  lang: PageLang
   lastEdited: Date
-  blockId: string
+  notionId: string
+  sitemapPriority: number
+  slug: string
+  title: string
 }
 
 const stringToLang = (lang: string | null): PageLang | null => {
   return langSelects.find((s) => s.toString() === lang) ?? null
 }
 
-export const processPages = (page: PageObjectResponse): Page | null => {
-  const title = propsFirstPlainText(page.properties, "Name")
-  const lang = stringToLang(propsSelect(page.properties, "lang"))
-  const slug = propsFirstPlainText(page.properties, "slug")
-  const description = propsFirstPlainText(page.properties, "description")
-  const sitemapPriority = propsNumber(page.properties, "sitemap-priority")
+export const processPages = async (page: PageObjectResponse): Promise<Page | null> => {
+  const description = propsPlainTexts(page.properties, "description")
+  const lang = stringToLang(propsSelectName(page.properties, "lang"))
   const lastEdited = new Date(page.last_edited_time)
+  const sitemapPriority = propsNumber(page.properties, "sitemap-priority")
+  const slug = propsPlainTexts(page.properties, "slug")
+  const title = propsPlainTexts(page.properties, "title")
 
-  if (!title || !lang || !slug || !description || !sitemapPriority || Number.isNaN(lastEdited)) {
+  if (
+    !description ||
+    !lang ||
+    Number.isNaN(lastEdited.getTime()) ||
+    !sitemapPriority ||
+    sitemapPriority < 0 ||
+    sitemapPriority > 1 ||
+    !slug ||
+    !title
+  ) {
     console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)
     return null
   }
 
   return {
-    title: title,
-    lang: lang,
-    slug: slug,
     description: description,
-    sitemapPriority: sitemapPriority,
+    lang: lang,
     lastEdited: lastEdited,
-    blockId: page.id,
+    notionId: page.id,
+    sitemapPriority: sitemapPriority,
+    slug: slug,
+    title: title,
   }
 }

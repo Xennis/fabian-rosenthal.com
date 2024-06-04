@@ -54,7 +54,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   if (page === null) {
     notFound()
   }
-  const content = await getCachedPageContent(page.blockId)
+  const content = await getCachedPageContent(page.notionId)
 
   let endComponent: React.ReactNode | undefined = undefined
   if (params.slug === "places") {
@@ -65,7 +65,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   return (
     <div className={params.slug === "legal" ? "text-center" : ""}>
       <Headline>{page.title}</Headline>
-      <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => nId }} />
+      <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => null }} />
       {endComponent !== undefined ? endComponent : <></>}
     </div>
   )

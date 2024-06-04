@@ -3,46 +3,47 @@ import { propsCheckbox, propsPlainTexts } from "@react-notion-cms/fetch"
 import { type IconResponse } from "@react-notion-cms/render"
 
 import { downloadImageToPublicDir } from "@/lib/cms/image"
+import { i18n } from "@/content/i18n"
 
 export type Page = {
-  title: string
-  lang: "en"
-  slug: string
-  sitemapPriority: number
-  lastEdited: Date
-  blockId: string
-  icon: IconResponse
   homePage: boolean
+  icon: IconResponse
+  lang: "en"
+  lastEdited: Date
+  notionId: string
+  sitemapPriority: number
+  slug: string
+  title: string
 }
 
 export const processBusinessIdeasPages = async (page: PageObjectResponse): Promise<Page | null> => {
-  const title = propsPlainTexts(page.properties, "Page")
   const lastEdited = new Date(page.last_edited_time)
+  const title = propsPlainTexts(page.properties, "Page")
 
-  if (!title || Number.isNaN(lastEdited)) {
+  if (Number.isNaN(lastEdited.getTime()) || !title) {
     console.warn(`page with id=${page.id} and title="${title}" has invalid properties`)
     return null
   }
 
-  let slug = propsPlainTexts(page.properties, "slug")
-  if (!slug) {
-    // If no slug is set use the one from Notion.
-    slug = page.url.replace("https://www.notion.so/", "")
-  }
   const homePage = propsCheckbox(page.properties, "home-page") ?? false
   const icon = page.icon
   if (icon !== null && icon.type === "file") {
     icon.file.url = await downloadImageToPublicDir(icon.file.url, { blockId: page.id, lastEditedTime: lastEdited })
   }
+  let slug = propsPlainTexts(page.properties, "slug")
+  if (!slug) {
+    // If no slug is set use the one from Notion.
+    slug = page.url.replace("https://www.notion.so/", "")
+  }
 
   return {
-    title: title,
-    lang: "en",
-    slug: slug,
-    sitemapPriority: 0.5,
-    lastEdited: lastEdited,
-    blockId: page.id,
-    icon: page.icon,
     homePage: homePage,
+    icon: page.icon,
+    lang: i18n.defaultLocale,
+    lastEdited: lastEdited,
+    notionId: page.id,
+    sitemapPriority: 0.5,
+    slug: slug,
+    title: title,
   }
 }
