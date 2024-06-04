@@ -9,6 +9,7 @@ import { Client } from "@notionhq/client"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { businessIdeasPage } from "@/content/config"
+import { processBlogPosts } from "@/lib/cms/blog-posts"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -87,3 +88,30 @@ export async function getCachedBusinessIdeasPages() {
     },
   )()
 }
+
+export const getCachedBlogPosts = unstable_cache(
+  async () => {
+    return await fetchDatabasePages(notionClient, processBlogPosts, {
+      database_id: "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4",
+      page_size: 100,
+    })
+  },
+  ["cms-blog-posts"],
+  {
+    revalidate: 15 * 60,
+  },
+)
+
+export const getCachedBlogTags = unstable_cache(
+  async () => {
+    const tags = new Set<string>()
+    ;(await getCachedBlogPosts()).forEach((p) => {
+      p.tags.forEach((t) => tags.add(t))
+    })
+    return Array.from(tags)
+  },
+  ["cms-blog-tags"],
+  {
+    revalidate: 15 * 60,
+  },
+)

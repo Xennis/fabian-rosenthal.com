@@ -2,19 +2,22 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@react-notion-cms/fetch"
 import { i18n } from "@/content/i18n"
 
+export type Tag = string
+
 export type BlogPost = {
-  blockId: string
   lang: string
   lastEdited: Date
   metaDescription: string
+  notionId: string
   pageSubtitle: string | null
   publishDate: Date
   sitemapPriority: number
   slug: string
+  tags: Array<Tag>
   title: string
 }
 
-export const processPages = async (page: PageObjectResponse): Promise<BlogPost | null> => {
+export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPost | null> => {
   const lastEdited = new Date(page.last_edited_time)
   const metaDescription = propsPlainTexts(page.properties, "meta-description")
   const publishDate = propsStartDate(page.properties, "publish-date")
@@ -30,14 +33,30 @@ export const processPages = async (page: PageObjectResponse): Promise<BlogPost |
   const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
 
   return {
-    blockId: page.id,
     lang: i18n.defaultLocale,
     lastEdited: lastEdited,
     metaDescription: metaDescription,
+    notionId: page.id,
     pageSubtitle: pageSubtitle,
     publishDate: publishDate,
     sitemapPriority: 0.8,
     slug: slug,
+    tags: tags,
     title: title,
+  }
+}
+
+export const tagToString = (tag: Tag) => {
+  switch (tag) {
+    case "accessibility":
+      return "Accessibility"
+    case "nextjs":
+      return "Next.js"
+    case "seo":
+      return "SEO"
+    case "tailwind-css":
+      return "Tailwind CSS"
+    default:
+      return tag.toString()
   }
 }

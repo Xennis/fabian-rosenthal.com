@@ -1,3 +1,5 @@
+import { Link } from "@/components/layout/link"
+
 type Project = { name: string; href: string; tags: Array<string>; shortDescription: string }
 
 function ProjectItem({
@@ -12,9 +14,9 @@ function ProjectItem({
   return (
     <>
       <div className="sm:flex sm:gap-2">
-        <a href={href} target="_blank">
+        <Link href={href} target="_blank">
           {name}
-        </a>
+        </Link>
         <ul className="flex gap-1" aria-label={tagsSrLabel}>
           {tags.map((t, index) => (
             <li key={index}>
