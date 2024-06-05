@@ -11,7 +11,6 @@ export type Page = {
   lang: "en"
   lastEdited: Date
   notionId: string
-  sitemapPriority: number
   slug: string
   title: string
 }
@@ -42,7 +41,6 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
     lang: i18n.defaultLocale,
     lastEdited: lastEdited,
     notionId: page.id,
-    sitemapPriority: 0.5,
     slug: slug,
     title: title,
   }

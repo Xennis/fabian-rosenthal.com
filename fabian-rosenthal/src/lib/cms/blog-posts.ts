@@ -11,7 +11,6 @@ export type BlogPost = {
   notionId: string
   pageSubtitle: string | null
   publishDate: Date
-  sitemapPriority: number
   slug: string
   tags: Array<Tag>
   title: string
@@ -39,7 +38,6 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
     notionId: page.id,
     pageSubtitle: pageSubtitle,
     publishDate: publishDate,
-    sitemapPriority: 0.8,
     slug: slug,
     tags: tags,
     title: title,

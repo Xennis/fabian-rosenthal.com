@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       sites.push({
         url: `https://${host}${blogPagePost(p.lang, p.slug)}`,
         lastModified: p.lastEdited,
-        priority: p.sitemapPriority,
+        priority: 0.8,
       })
     })
     ;(await getCachedBlogTags()).forEach((t) => {
@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       sites.push({
         url: `https://${host}${p.canonical}`,
         lastModified: p.lastEdited,
-        priority: p.sitemapPriority,
+        priority: 0.6,
       }),
     )
   }
