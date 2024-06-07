@@ -8,8 +8,8 @@ import { i18n } from "@/content/i18n"
 import { Client } from "@notionhq/client"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
-import { businessIdeasPage } from "@/content/config"
-import { processBlogPosts } from "@/lib/cms/blog-posts"
+import { blogPagePost, blogTagPage, businessIdeasPage } from "@/content/config"
+import { processBlogPosts, tagToString } from "@/lib/cms/blog-posts"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -91,9 +91,15 @@ export async function getCachedBusinessIdeasPages() {
 
 export const getCachedBlogPosts = unstable_cache(
   async () => {
-    return await fetchDatabasePages(notionClient, processBlogPosts, {
+    const posts = await fetchDatabasePages(notionClient, processBlogPosts, {
       database_id: "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4",
       page_size: 100,
+    })
+    return posts.map((p) => {
+      return {
+        ...p,
+        canonical: blogPagePost(i18n.defaultLocale, p.slug),
+      }
     })
   },
   ["cms-blog-posts"],
@@ -108,7 +114,11 @@ export const getCachedBlogTags = unstable_cache(
     ;(await getCachedBlogPosts()).forEach((p) => {
       p.tags.forEach((t) => tags.add(t))
     })
-    return Array.from(tags)
+    return Array.from(tags).map((t) => ({
+      name: t,
+      label: tagToString(t),
+      canonical: blogTagPage(i18n.defaultLocale, t),
+    }))
   },
   ["cms-blog-tags"],
   {

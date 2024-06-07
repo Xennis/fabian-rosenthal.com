@@ -16,7 +16,7 @@ export async function generateStaticParams({ params }: { params: { lang: string 
   if (params.lang !== i18n.defaultLocale) {
     return []
   }
-  return (await getCachedBlogTags()).map((t) => ({ tag: t }))
+  return (await getCachedBlogTags()).map((t) => ({ tag: t.name }))
 }
 
 export async function generateMetadata({
@@ -24,17 +24,21 @@ export async function generateMetadata({
 }: {
   params: { lang: string; tag: string }
 }): Promise<Metadata | null> {
-  const title = tagToString(params.tag)
-  const description = `All blog articles with the tag ${title}.`
+  const tags = await getCachedBlogTags()
+  const tag = tags.find((t) => t.name === params.tag)
+  if (!tag) {
+    return null
+  }
+  const description = `All blog articles with the tag ${tag.label}.`
   return {
     description: description,
     openGraph: {
       description: description,
       siteName: pageTitle,
-      title: title,
+      title: tag.label,
       type: "website",
     },
-    title: title,
+    title: tag.label,
   }
 }
 

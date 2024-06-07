@@ -1,6 +1,6 @@
 import { type MetadataRoute } from "next"
 
-import { aboutPage, blogPagePost, blogTagPage, homePage, host } from "@/content/config"
+import { homePage, host } from "@/content/config"
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedBlogTags, getCachedBusinessIdeasPages, getCachedPages } from "@/lib/cms/fetchers"
 
@@ -30,14 +30,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (process.env.VERCEL_ENV !== "production") {
     ;(await getCachedBlogPosts()).forEach((p) => {
       sites.push({
-        url: `https://${host}${blogPagePost(p.lang, p.slug)}`,
+        url: `https://${host}${p.canonical}`,
         lastModified: p.lastEdited,
         priority: 0.8,
       })
     })
     ;(await getCachedBlogTags()).forEach((t) => {
       sites.push({
-        url: `https://${host}${blogTagPage(i18n.defaultLocale, t)}`,
+        url: `https://${host}${t.canonical}`,
         lastModified: new Date(),
         priority: 0.6,
       })
