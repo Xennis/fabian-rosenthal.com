@@ -12,15 +12,17 @@
   "dependencies": {
     "@calcom/embed-react": "^1.4.0",
     "@notionhq/client": "^2.2.15",
-    "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?de6b9b4&scripts.install=pnpm%20build",
-    "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?de6b9b4&scripts.install=pnpm%20build",
+    "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build",
+    "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build",
     "@vercel/analytics": "^1.2.2",
     "next": "14.1.4",
+    "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/prismjs": "^1.26.4",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",

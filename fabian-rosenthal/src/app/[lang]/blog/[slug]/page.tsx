@@ -6,6 +6,7 @@ import { Headline } from "@/components/layout/headline"
 import { Metadata } from "next"
 import { pageTitle } from "@/content/config"
 import { Render } from "@react-notion-cms/render"
+import { Code } from "@/components/cms/code"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
   // TODO: Remove here + add sitemap
@@ -56,7 +57,13 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
       <div className="max-width-regular">
         <Render
           blocks={content}
-          options={{ formatDateFn: (date: Date) => date.toLocaleDateString(params.lang), resolveLinkFn: (nId) => null }}
+          options={{
+            formatDateFn: (date: Date) => date.toLocaleDateString(params.lang),
+            resolveLinkFn: (nId) => null,
+            htmlComponents: {
+              code: (props) => <Code {...props} />,
+            },
+          }}
         />
       </div>
     </>
