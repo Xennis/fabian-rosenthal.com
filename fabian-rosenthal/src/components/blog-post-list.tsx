@@ -8,11 +8,23 @@ import { i18n } from "@/content/i18n"
 const TagChip = ({ tag }: { tag: Tag }) => {
   return (
     <NextLink
-      className={"rounded-xl bg-slate-900 px-2 py-1 text-xs text-white hover:bg-slate-700"}
+      className={"rounded-xl bg-slate-800 px-2 py-1 text-xs text-white hover:bg-slate-600"}
       href={blogTagPage(i18n.defaultLocale, tag)}
     >
       {tagToString(tag)}
     </NextLink>
+  )
+}
+
+export const BlogTagList = ({ tags }: { tags: Array<Tag> }) => {
+  return (
+    <ul aria-label="Tags" className="flex gap-1.5">
+      {tags.map((t, index) => (
+        <li key={index}>
+          <TagChip tag={t} />
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -31,13 +43,7 @@ export const BlogPostList = ({ posts }: { posts: Array<BlogPost> }) => {
                 year: "numeric",
               })}
             </span>
-            <ul aria-label="Tags" className="flex gap-1">
-              {p.tags.map((t, index) => (
-                <li key={index}>
-                  <TagChip tag={t} />
-                </li>
-              ))}
-            </ul>
+            <BlogTagList tags={p.tags} />
           </div>
         </li>
       ))}

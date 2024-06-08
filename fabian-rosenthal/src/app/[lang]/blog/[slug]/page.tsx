@@ -1,12 +1,16 @@
 import { notFound } from "next/navigation"
+import { CalendarIcon, HomeIcon, TagIcon } from "@heroicons/react/24/outline"
 
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
 import { Metadata } from "next"
-import { pageTitle } from "@/content/config"
+import { blogPage, pageTitle } from "@/content/config"
 import { Render } from "@react-notion-cms/render"
 import { Code } from "@/components/cms/code"
+import { Link } from "@/components/layout/link"
+import { BlogTagList } from "@/components/blog-post-list"
+import { formatDate } from "@/lib/date"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
   // TODO: Remove here + add sitemap
@@ -53,18 +57,43 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
 
   return (
     <>
-      <Headline>{post.title}</Headline>
       <div className="max-width-regular">
+        <Headline>{post.title}</Headline>
         <Render
           blocks={content}
           options={{
-            formatDateFn: (date: Date) => date.toLocaleDateString(params.lang),
+            formatDateFn: (date: Date) => formatDate(date, params.lang),
             resolveLinkFn: (nId) => null,
             htmlComponents: {
               code: (props) => <Code {...props} />,
             },
           }}
         />
+        <div className="mt-14 border-t border-gray-100 py-8">
+          <div className="flex flex-col gap-y-3 text-sm text-gray-600">
+            <div className="flex flex-row space-x-2">
+              <CalendarIcon aria-hidden={true} className="h-5 w-5" />
+              <div>
+                <span>Published: </span>
+                {formatDate(post.publishDate, params.lang)}
+              </div>
+            </div>
+            <div className="flex flex-row space-x-2">
+              <TagIcon aria-hidden={true} className="h-5 w-5" />
+              <div className="flex space-x-2">
+                <span>Tags: </span>
+                <BlogTagList tags={post.tags} />
+              </div>
+            </div>
+            <div className="flex flex-row space-x-2">
+              <HomeIcon aria-hidden={true} className="h-5 w-5" />
+              <div className="">
+                <span>Blog: </span>
+                <Link href={blogPage(params.lang)}>Read further articles</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )

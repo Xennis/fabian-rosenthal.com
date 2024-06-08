@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.4.0",
+    "@heroicons/react": "^2.1.3",
     "@notionhq/client": "^2.2.15",
     "@react-notion-cms/fetch": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build",
     "@react-notion-cms/render": "https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build",
