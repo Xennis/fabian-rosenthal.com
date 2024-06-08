@@ -1,9 +1,11 @@
 import NextLink from "next/link"
+import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 
 import { Link } from "@/components/layout/link"
 import { blogPagePost, blogTagPage } from "@/content/config"
 import { BlogPost, Tag, tagToString } from "@/lib/cms/blog-posts"
 import { i18n } from "@/content/i18n"
+import { formatDate } from "@/lib/date"
 
 const TagChip = ({ tag }: { tag: Tag }) => {
   return (
@@ -34,16 +36,17 @@ export const BlogPostList = ({ posts }: { posts: Array<BlogPost> }) => {
       {posts.map((p, index) => (
         <li className="py-1" key={index}>
           <Link href={blogPagePost(i18n.defaultLocale, p.slug)}>{p.title}</Link>
-          <div className="flex flex-row gap-2 py-0">
-            <span>
-              {/* FIXME: Somehow the date is here sometimes a string  */}
-              {new Date(p.publishDate).toLocaleDateString(i18n.defaultLocale, {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
-            <BlogTagList tags={p.tags} />
+          <div className="flex flex-row gap-3 py-1 text-sm text-gray-600">
+            <div className="flex gap-1">
+              <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
+              <span className="sr-only">Published: </span>
+              <span>{formatDate(p.publishDate, i18n.defaultLocale)}</span>
+            </div>
+            <div className="flex gap-1.5">
+              <TagIcon title="Tags" aria-hidden={true} className="h-5 w-5" />
+              {/* The list itself has an aria label */}
+              <BlogTagList tags={p.tags} />
+            </div>
           </div>
         </li>
       ))}
