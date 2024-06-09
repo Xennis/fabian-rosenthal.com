@@ -87,11 +87,11 @@ importers:
         specifier: ^2.2.15
         version: 2.2.15
       "@react-notion-cms/fetch":
-        specifier: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build
-        version: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build
+        specifier: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?4593744&scripts.install=pnpm%20build
+        version: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?4593744&scripts.install=pnpm%20build
       "@react-notion-cms/render":
-        specifier: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build
-        version: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build
+        specifier: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?4593744&scripts.install=pnpm%20build
+        version: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?4593744&scripts.install=pnpm%20build
       "@vercel/analytics":
         specifier: ^1.2.2
         version: 1.2.2(next@14.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -805,10 +805,10 @@ packages:
       }
     engines: { node: ">=14" }
 
-  "@react-notion-cms/fetch@https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build":
+  "@react-notion-cms/fetch@https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?4593744&scripts.install=pnpm%20build":
     resolution:
       {
-        tarball: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build,
+        tarball: https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?4593744&scripts.install=pnpm%20build,
       }
     version: 0.0.1-alpha.1
 
@@ -819,10 +819,10 @@ packages:
       }
     version: 0.0.1-alpha.1
 
-  "@react-notion-cms/render@https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build":
+  "@react-notion-cms/render@https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?4593744&scripts.install=pnpm%20build":
     resolution:
       {
-        tarball: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build,
+        tarball: https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?4593744&scripts.install=pnpm%20build,
       }
     version: 0.0.1-alpha.1
 
@@ -3928,7 +3928,7 @@ snapshots:
   "@pkgjs/parseargs@0.11.0":
     optional: true
 
-  "@react-notion-cms/fetch@https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?dca63af&scripts.install=pnpm%20build":
+  "@react-notion-cms/fetch@https://gitpkg.now.sh/Xennis/react-notion-render/packages/fetch?4593744&scripts.install=pnpm%20build":
     dependencies:
       "@notionhq/client": 2.2.15
     transitivePeerDependencies:
@@ -3940,7 +3940,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  "@react-notion-cms/render@https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?dca63af&scripts.install=pnpm%20build":
+  "@react-notion-cms/render@https://gitpkg.now.sh/Xennis/react-notion-render/packages/render?4593744&scripts.install=pnpm%20build":
     dependencies:
       "@notionhq/client": 2.2.15
     transitivePeerDependencies:

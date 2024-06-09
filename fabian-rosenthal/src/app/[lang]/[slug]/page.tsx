@@ -2,7 +2,7 @@ import { type Metadata } from "next"
 import { Render } from "@react-notion-cms/render"
 
 import { Headline } from "@/components/layout/headline"
-import { getCachedBlogPosts, getCachedPage, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
 import { pageTitle } from "@/content/config"
 import { Hero } from "@/components/layout/hero"
@@ -14,6 +14,8 @@ import { AuthorHeader } from "@/components/author-header"
 import { Projects } from "@/components/projects"
 import { i18n } from "@/content/i18n"
 import { BlogPostList } from "@/components/blog-post-list"
+import { formatDate } from "@/lib/date"
+import { Link } from "@/components/layout/link"
 
 import "./page.css"
 
@@ -26,8 +28,8 @@ export async function generateMetadata({
 }: {
   params: { lang: string; slug: string }
 }): Promise<Metadata | null> {
-  const page = await getCachedPage(params)
-  if (page === null) {
+  const page = (await getCachedPages()).find((p) => p.lang.toString() === params.lang && p.slug === params.slug)
+  if (!page) {
     return null
   }
 
@@ -48,8 +50,9 @@ export async function generateMetadata({
 }
 
 export default async function SlugPage({ params }: { params: { lang: string; slug: string } }) {
-  const page = await getCachedPage(params)
-  if (page === null) {
+  const pages = await getCachedPages()
+  const page = pages.find((p) => p.lang.toString() === params.lang && p.slug === params.slug)
+  if (!page) {
     notFound()
   }
   const content = await getCachedPageContent(page.notionId)
@@ -60,7 +63,22 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
         <Headline subtitle={page.pageSubtitle !== null ? page.pageSubtitle : undefined}>{page.pageTitle}</Headline>
       )}
       <div className="max-width-regular default">
-        <Render blocks={content} options={{ formatDateFn: (date) => date.toString(), resolveLinkFn: (nId) => null }} />
+        <Render
+          blocks={content}
+          options={{
+            formatDateFn: (date) => formatDate(date, params.lang),
+            resolveLinkFn: (nId) => {
+              const page = pages.find((p) => p.notionId === nId)
+              if (!page) {
+                return null
+              }
+              return { href: page.canonical, icon: null }
+            },
+            htmlComponents: {
+              a: (props) => <Link href={props.href ?? "#"} {...props} />,
+            },
+          }}
+        />
       </div>
       <EndComponent params={params} />
     </div>

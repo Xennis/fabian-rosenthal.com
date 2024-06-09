@@ -42,11 +42,6 @@ export async function getCachedPages() {
   )()
 }
 
-export async function getCachedPage({ lang, slug }: { lang: string; slug: string }) {
-  const page = (await getCachedPages()).find((p) => p.lang.toString() === lang && p.slug === slug)
-  return page ?? null
-}
-
 export async function getCachedPageContent(blockId: string) {
   return await unstable_cache(
     async () => {
@@ -94,6 +89,12 @@ export const getCachedBlogPosts = unstable_cache(
     const posts = await fetchDatabasePages(notionClient, processBlogPosts, {
       database_id: "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4",
       page_size: 100,
+      filter: {
+        property: "public",
+        checkbox: {
+          equals: true,
+        },
+      },
     })
     return posts.map((p) => {
       return {

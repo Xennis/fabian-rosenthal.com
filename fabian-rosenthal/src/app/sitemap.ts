@@ -26,22 +26,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: p.sitemapPriority,
     }),
   )
+  ;(await getCachedBlogPosts()).forEach((p) => {
+    sites.push({
+      url: `https://${host}${p.canonical}`,
+      lastModified: p.lastEdited,
+      priority: 0.8,
+    })
+  })
+  ;(await getCachedBlogTags()).forEach((t) => {
+    sites.push({
+      url: `https://${host}${t.canonical}`,
+      lastModified: new Date(),
+      priority: 0.6,
+    })
+  })
 
   if (process.env.VERCEL_ENV !== "production") {
-    ;(await getCachedBlogPosts()).forEach((p) => {
-      sites.push({
-        url: `https://${host}${p.canonical}`,
-        lastModified: p.lastEdited,
-        priority: 0.8,
-      })
-    })
-    ;(await getCachedBlogTags()).forEach((t) => {
-      sites.push({
-        url: `https://${host}${t.canonical}`,
-        lastModified: new Date(),
-        priority: 0.6,
-      })
-    })
     ;(await getCachedBusinessIdeasPages()).forEach((p) =>
       sites.push({
         url: `https://${host}${p.canonical}`,
