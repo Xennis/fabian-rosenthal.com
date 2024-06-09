@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { CalendarIcon, HomeIcon, TagIcon } from "@heroicons/react/24/outline"
 
 import { i18n } from "@/content/i18n"
-import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
+import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
 import { Metadata } from "next"
 import { blogPage, pageTitle } from "@/content/config"
@@ -13,11 +13,6 @@ import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
-  // TODO: Remove here + add sitemap
-  if (process.env.VERCEL_ENV === "production") {
-    // If nothing is returned an error is raised, i.e. the build fails
-    return [{ slug: "abc" }]
-  }
   if (params.lang !== i18n.defaultLocale) {
     return []
   }
@@ -62,9 +57,16 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
         <Render
           blocks={content}
           options={{
-            formatDateFn: (date: Date) => formatDate(date, params.lang),
-            resolveLinkFn: (nId) => null,
+            formatDateFn: (date) => formatDate(date, params.lang),
+            resolveLinkFn: (nId) => {
+              const post = posts.find((p) => p.notionId === nId)
+              if (!post) {
+                return null
+              }
+              return { href: post.canonical, icon: null }
+            },
             htmlComponents: {
+              a: (props) => <Link href={props.href ?? "#"} {...props} />,
               code: (props) => <Code {...props} />,
             },
           }}

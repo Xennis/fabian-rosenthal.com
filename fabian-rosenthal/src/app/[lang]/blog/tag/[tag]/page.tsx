@@ -4,17 +4,10 @@ import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedBlogTags } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
 import { tagToString } from "@/lib/cms/blog-posts"
-import { BlogPostList, BlogTagList } from "@/components/blog-post-list"
-import { blogPage, pageTitle } from "@/content/config"
-import { Link } from "@/components/layout/link"
-import { formatDate } from "@/lib/date"
+import { BlogPostList } from "@/components/blog-post-list"
+import { pageTitle } from "@/content/config"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  // TODO: Remove here + add sitemap
-  if (process.env.VERCEL_ENV === "production") {
-    // If nothing is returned an error is raised, i.e. the build fails
-    return [{ slug: "abc" }]
-  }
   if (params.lang !== i18n.defaultLocale) {
     return []
   }

@@ -48,6 +48,8 @@ export const tagToString = (tag: Tag) => {
   switch (tag) {
     case "accessibility":
       return "Accessibility"
+    case "frontend":
+      return "Frontend"
     case "nextjs":
       return "Next.js"
     case "seo":
