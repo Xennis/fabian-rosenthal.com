@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation"
 import { CalendarIcon, HomeIcon, TagIcon } from "@heroicons/react/24/outline"
+import { Metadata } from "next"
 
 import { i18n } from "@/content/i18n"
-import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
-import { Metadata } from "next"
 import { blogPage, pageTitle } from "@/content/config"
 import { Render } from "@react-notion-cms/render"
 import { Code } from "@/components/cms/code"
@@ -68,6 +68,7 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
             htmlComponents: {
               a: (props) => <Link href={props.href ?? "#"} {...props} />,
               code: (props) => <Code {...props} />,
+              img: (props) => <img {...props} className="mx-auto rounded" />,
             },
           }}
         />
