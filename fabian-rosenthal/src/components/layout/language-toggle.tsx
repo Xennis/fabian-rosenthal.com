@@ -3,7 +3,8 @@
 import { useParams, usePathname } from "next/navigation"
 import NextLink from "next/link"
 
-import { toggledLangMetadata } from "@/content/i18n"
+import { i18n, toggledLangMetadata } from "@/content/i18n"
+import { blogPage } from "@/content/config"
 
 export function LanguageToggle() {
   const { lang } = useParams() as { lang?: string }
@@ -15,7 +16,11 @@ export function LanguageToggle() {
   }
 
   const targetLang = toggledLangMetadata(lang)
-  const href = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
+  let href = pathname.replace(`/${lang}`, `/${targetLang.lang}`)
+  // Special case: Some pages are not available in the non-default locale
+  if (pathname.startsWith(`${blogPage(i18n.defaultLocale)}/`)) {
+    href = blogPage(targetLang.lang)
+  }
 
   return (
     <NextLink

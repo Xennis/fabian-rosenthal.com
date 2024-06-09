@@ -20,7 +20,7 @@ export const Code = ({ ...props }: React.ComponentPropsWithoutRef<"code">) => {
   }, [ref])
 
   return (
-    <code dir="ltr" ref={ref} {...props}>
+    <code ref={ref} {...props}>
       {props.children}
     </code>
   )
