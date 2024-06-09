@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { CalendarIcon, HomeIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
+import "@react-notion-cms/render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"

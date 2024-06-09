@@ -36,13 +36,13 @@ export const BlogPostList = ({ posts }: { posts: Array<BlogPost> }) => {
       {posts.map((p, index) => (
         <li className="py-1" key={index}>
           <Link href={blogPagePost(i18n.defaultLocale, p.slug)}>{p.title}</Link>
-          <div className="flex flex-row gap-3 py-1 text-sm text-gray-600">
+          <div className="gap-3 py-1 text-sm text-gray-600 md:flex md:flex-row">
             <div className="flex gap-1">
               <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
               <span className="sr-only">Published: </span>
               <span>{formatDate(p.publishDate, i18n.defaultLocale)}</span>
             </div>
-            <div className="flex gap-1.5">
+            <div className="flex gap-1.5 pt-3 md:pt-0">
               <TagIcon title="Tags" aria-hidden={true} className="h-5 w-5" />
               {/* The list itself has an aria label */}
               <BlogTagList tags={p.tags} />
