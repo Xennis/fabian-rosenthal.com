@@ -37,7 +37,7 @@ export async function getCachedPages() {
     },
     ["cms-pages"],
     {
-      revalidate: 5 * 60,
+      revalidate: false,
     },
   )()
 }
@@ -59,7 +59,7 @@ export async function getCachedPageContent(blockId: string) {
     },
     [`cms-page-${blockId}`],
     {
-      revalidate: 15 * 60,
+      revalidate: false,
     },
   )()
 }
@@ -87,7 +87,7 @@ export async function getCachedBusinessIdeasPages() {
     },
     ["cms-business-ideas-pages"],
     {
-      revalidate: 15 * 60,
+      revalidate: false,
     },
   )()
 }
@@ -114,7 +114,7 @@ export const getCachedBlogPosts = unstable_cache(
   },
   ["cms-blog-posts"],
   {
-    revalidate: 15 * 60,
+    revalidate: false,
   },
 )
 
@@ -132,6 +132,6 @@ export const getCachedBlogTags = unstable_cache(
   },
   ["cms-blog-tags"],
   {
-    revalidate: 15 * 60,
+    revalidate: false,
   },
 )
