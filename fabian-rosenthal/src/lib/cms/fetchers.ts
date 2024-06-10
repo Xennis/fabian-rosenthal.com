@@ -70,6 +70,13 @@ export async function getCachedBusinessIdeasPages() {
       const pages = await fetchDatabasePages(notionClient, processBusinessIdeasPages, {
         database_id: process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!,
         page_size: 100,
+        filter: {
+          property: "public",
+          type: "checkbox",
+          checkbox: {
+            equals: true,
+          },
+        },
       })
       return pages.map((p) => {
         return {
@@ -92,6 +99,7 @@ export const getCachedBlogPosts = unstable_cache(
       page_size: 100,
       filter: {
         property: "public",
+        type: "checkbox",
         checkbox: {
           equals: true,
         },

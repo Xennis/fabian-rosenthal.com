@@ -40,16 +40,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })
   })
-
-  if (process.env.VERCEL_ENV !== "production") {
-    ;(await getCachedBusinessIdeasPages()).forEach((p) =>
-      sites.push({
-        url: `https://${host}${p.canonical}`,
-        lastModified: p.lastEdited,
-        priority: 0.6,
-      }),
-    )
-  }
+  ;(await getCachedBusinessIdeasPages()).forEach((p) =>
+    sites.push({
+      url: `https://${host}${p.canonical}`,
+      lastModified: p.lastEdited,
+      priority: 0.6,
+    }),
+  )
 
   return sites
 }
