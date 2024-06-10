@@ -1,7 +1,8 @@
 import { type Metadata, type Viewport } from "next"
 
 import "./globals.css"
-import { brandColor, host, pageTitle } from "@/content/config"
+import { brandColor, pageTitle } from "@/content/config"
+import { getHost } from "@/lib/next"
 
 export const metadata: Metadata = {
   //description: not set here due to lang
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
       template: `%s - ${pageTitle}`,
     },
   },
-  metadataBase: new URL(`https://${host}`),
+  metadataBase: new URL(`https://${getHost()}`),
   robots: {
     index: true,
     follow: true,

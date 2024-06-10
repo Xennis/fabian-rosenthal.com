@@ -4,13 +4,12 @@ import { type Person, type WithContext } from "schema-dts"
 import { SocialLink } from "@/components/social-links"
 import authorLargeImage from "@/content/images/author-large-350x383.webp"
 import { Dot } from "@/components/dot"
-import { host } from "@/content/config"
 
 export function AuthorHeader({
   socialLinks,
   dictionary,
   hideSocialLinks,
-  includeJsonLd,
+  jsonLd,
 }: {
   socialLinks: Array<{ label: string; href: string; imageSrc: any }>
   dictionary: {
@@ -22,18 +21,8 @@ export function AuthorHeader({
     socialLinksAriaLabel: string
   }
   hideSocialLinks?: boolean
-  includeJsonLd?: boolean
+  jsonLd?: WithContext<Person>
 }) {
-  const jsonLd: WithContext<Person> = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Fabian Rosenthal",
-    // image: authorLargeImage.src,
-    jobTitle: "Software Engineer",
-    url: `https://${host}`,
-    sameAs: socialLinks.map((l) => l.href),
-  }
-
   return (
     <section>
       <div className="md:flex md:items-center md:justify-center md:space-x-16">
@@ -68,9 +57,7 @@ export function AuthorHeader({
           priority
         />
       </div>
-      {includeJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      )}
+      {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}
     </section>
   )
 }
