@@ -1,5 +1,6 @@
 import { type Metadata } from "next"
 import { Render } from "@react-notion-cms/render"
+import { headers } from "next/headers"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
@@ -113,6 +114,8 @@ const EndComponent = ({ params }: { params: { lang: string; slug: string } }) =>
 }
 
 const About = ({ lang }: { lang: string }) => {
+  const headersList = headers()
+  const host = headersList.get("host")!
   const dictionary = getDictionary(lang)
   const collections = getCollections(lang)
 
@@ -124,7 +127,15 @@ const About = ({ lang }: { lang: string }) => {
           ...dictionary.component.authorHeader,
           socialLinksAriaLabel: dictionary.footer.socialLinksAriaLabel,
         }}
-        includeJsonLd={true}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Fabian Rosenthal",
+          // image: authorLargeImage.src,
+          jobTitle: "Software Engineer",
+          url: `https://${host}`,
+          sameAs: collections.socialLinks.map((l) => l.href),
+        }}
       />
       <Projects projects={collections.projects} dictionary={dictionary.component.projects} />
     </>
