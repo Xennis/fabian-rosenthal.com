@@ -3,16 +3,13 @@ import { getCachedBusinessIdeasPages, getCachedPageContent } from "@/lib/cms/fet
 import { notFound } from "next/navigation"
 import { Headline } from "@/components/layout/headline"
 import { Render } from "@react-notion-cms/render"
-
 import "@react-notion-cms/render/dist/styles.css"
-import { pageTitle } from "@/content/config"
+
+import { businessIdeas, pageTitle } from "@/content/config"
+import { formatDate } from "@/lib/date"
+import { Link } from "@/components/layout/link"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  // TODO: Remove here + add sitemap
-  if (process.env.VERCEL_ENV === "production") {
-    // If nothing is returned an error is raised, i.e. the build fails
-    return [{ slug: "abc" }]
-  }
   return (await getCachedBusinessIdeasPages())
     .filter((p) => p.lang.toString() === params.lang)
     .map((p) => ({ slug: p.slug }))
@@ -61,14 +58,21 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-screen-md">
       <Headline>{page.title}</Headline>
-      <div className="max-width-regular">
-        <Render
-          blocks={content}
-          options={{ formatDateFn: (date: Date) => date.toLocaleDateString(params.lang), resolveLinkFn: resolveLinkFn }}
-        />
-      </div>
+      <Render
+        blocks={content}
+        options={{ formatDateFn: (date: Date) => formatDate(date, params.lang), resolveLinkFn: resolveLinkFn }}
+      />
+      {!page.homePage && (
+        <div className="mt-14 border-t border-gray-100 py-4">
+          <div className="text-sm text-slate-600">
+            Last updated: {formatDate(page.lastEdited, params.lang)}
+            <span className="px-2">·</span>
+            Published in <Link href={businessIdeas(params.lang)}>Business Ideas</Link>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
