@@ -35,6 +35,7 @@ export async function generateMetadata({
     description: post.title,
     openGraph: {
       description: post.metaDescription,
+      images: post.ogImage ?? undefined,
       siteName: pageTitle,
       title: post.title,
       type: "article",

@@ -27,7 +27,7 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
   const homePage = propsCheckbox(page.properties, "home-page") ?? false
   const icon = page.icon
   if (icon !== null && icon.type === "file") {
-    icon.file.url = await downloadImageToPublicDir(icon.file.url, { blockId: page.id, lastEditedTime: lastEdited })
+    icon.file.url = await downloadImageToPublicDir(icon.file.url, `page-icon-${page.id}`, lastEdited)
   }
   let slug = propsPlainTexts(page.properties, "slug")
   if (!slug) {
