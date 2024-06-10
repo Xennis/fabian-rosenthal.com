@@ -1,17 +1,18 @@
 import { notFound } from "next/navigation"
-import { CalendarIcon, HomeIcon, TagIcon } from "@heroicons/react/24/outline"
+import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
 import "@react-notion-cms/render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
-import { Headline } from "@/components/layout/headline"
+import { HeadlineBlog } from "@/components/layout/headline"
 import { blogPage, pageTitle } from "@/content/config"
 import { Render } from "@react-notion-cms/render"
 import { Code } from "@/components/cms/code"
 import { Link } from "@/components/layout/link"
 import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
+import { type BlogPost } from "@/lib/cms/blog-posts"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
   if (params.lang !== i18n.defaultLocale) {
@@ -44,6 +45,29 @@ export async function generateMetadata({
   }
 }
 
+const BlogMeta = ({ lang, post }: { lang: string; post: BlogPost }) => {
+  return (
+    <div className="flex flex-col gap-y-3 text-sm text-slate-600">
+      <div className="flex flex-row space-x-2">
+        <CalendarIcon title="Publish date" aria-hidden={true} className="h-5 w-5" />
+        <div>
+          <span className="sr-only">Publish date: </span>
+          {formatDate(post.publishDate, lang)}
+          <span className="px-2">·</span>
+          Published in <Link href={blogPage(lang)}>Blog</Link>
+        </div>
+      </div>
+      <div className="flex flex-row space-x-2">
+        <TagIcon title="Topics" aria-hidden={true} className="h-5 w-5" />
+        <div>
+          <span className="sr-only">Topics: </span>
+          <BlogTagList tags={post.tags} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default async function BlogSlugPage({ params }: { params: { lang: string; slug: string } }) {
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
@@ -54,8 +78,22 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
 
   return (
     <>
-      <div className="max-width-regular">
-        <Headline>{post.title}</Headline>
+      <div className="mx-auto max-w-screen-md">
+        <HeadlineBlog subtitle={post.pageSubtitle ?? undefined}>{post.title}</HeadlineBlog>
+        <div className="my-5 border-y border-gray-100 py-4">
+          <BlogMeta lang={params.lang} post={post} />
+        </div>
+      </div>
+      {post.ogImage !== null && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={post.ogImage}
+          alt="Blog image"
+          width={825}
+          className="mx-auto my-8 rounded-lg shadow-md sm:my-10 sm:rounded-xl sm:shadow-lg"
+        />
+      )}
+      <div className="mx-auto max-w-screen-md">
         <Render
           blocks={content}
           options={{
@@ -74,31 +112,6 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
             },
           }}
         />
-        <div className="mt-14 border-t border-gray-100 py-8">
-          <div className="flex flex-col gap-y-3 text-sm text-gray-600">
-            <div className="flex flex-row space-x-2">
-              <CalendarIcon aria-hidden={true} className="h-5 w-5" />
-              <div>
-                <span>Published: </span>
-                {formatDate(post.publishDate, params.lang)}
-              </div>
-            </div>
-            <div className="flex flex-row space-x-2">
-              <TagIcon aria-hidden={true} className="h-5 w-5" />
-              <div className="flex space-x-2">
-                <span>Tags: </span>
-                <BlogTagList tags={post.tags} />
-              </div>
-            </div>
-            <div className="flex flex-row space-x-2">
-              <HomeIcon aria-hidden={true} className="h-5 w-5" />
-              <div className="">
-                <span>Blog: </span>
-                <Link href={blogPage(params.lang)}>Read further articles</Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   )

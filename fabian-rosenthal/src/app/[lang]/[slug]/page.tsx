@@ -59,10 +59,10 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
 
   return (
     <div className={params.slug}>
-      {page.pageTitle !== null && (
-        <Headline subtitle={page.pageSubtitle !== null ? page.pageSubtitle : undefined}>{page.pageTitle}</Headline>
-      )}
       <div className="max-width-regular default">
+        {page.pageTitle !== null && (
+          <Headline subtitle={page.pageSubtitle !== null ? page.pageSubtitle : undefined}>{page.pageTitle}</Headline>
+        )}
         <Render
           blocks={content}
           options={{
