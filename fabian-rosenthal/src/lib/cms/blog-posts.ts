@@ -1,6 +1,7 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@react-notion-cms/fetch"
 import { i18n } from "@/content/i18n"
+import { downloadImageToPublicDir } from "@/lib/cms/image"
 
 export type Tag = string
 
@@ -9,6 +10,7 @@ export type BlogPost = {
   lastEdited: Date
   metaDescription: string
   notionId: string
+  ogImage: string | null
   pageSubtitle: string | null
   publishDate: Date
   slug: string
@@ -29,6 +31,10 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
     return null
   }
 
+  let ogImage = propsFirstInternalFilesUrl(page.properties, "og-image")
+  if (ogImage !== null) {
+    ogImage = await downloadImageToPublicDir(ogImage, `page-og-image-${page.id}`, lastEdited)
+  }
   const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
 
   return {
@@ -36,12 +42,25 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
     lastEdited: lastEdited,
     metaDescription: metaDescription,
     notionId: page.id,
+    ogImage: ogImage,
     pageSubtitle: pageSubtitle,
     publishDate: publishDate,
     slug: slug,
     tags: tags,
     title: title,
   }
+}
+
+const propsFirstInternalFilesUrl = (properties: PageObjectResponse["properties"], name: string) => {
+  const prop = properties[name]
+  if (prop?.type === "files" && prop.files.length > 0) {
+    for (const f of prop.files) {
+      if (f.type === "file") {
+        return f.file.url
+      }
+    }
+  }
+  return null
 }
 
 export const tagToString = (tag: Tag) => {

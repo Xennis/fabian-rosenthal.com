@@ -52,7 +52,8 @@ export async function getCachedPageContent(blockId: string) {
           page_size: 100,
         },
         {
-          resolveImageFn: downloadImageToPublicDir,
+          resolveImageFn: (url: string, meta: { blockId: string; lastEditedTime: Date }) =>
+            downloadImageToPublicDir(url, `image-${meta.blockId}`, meta.lastEditedTime),
         },
       )
     },
