@@ -1,6 +1,5 @@
 import { type Metadata } from "next"
 import { Render } from "@react-notion-cms/render"
-import { headers } from "next/headers"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
@@ -17,8 +16,8 @@ import { i18n } from "@/content/i18n"
 import { BlogPostList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { Link } from "@/components/layout/link"
-
 import "./page.css"
+import { host } from "@/lib/next"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -114,8 +113,6 @@ const EndComponent = ({ params }: { params: { lang: string; slug: string } }) =>
 }
 
 const About = ({ lang }: { lang: string }) => {
-  const headersList = headers()
-  const host = headersList.get("host")!
   const dictionary = getDictionary(lang)
   const collections = getCollections(lang)
 

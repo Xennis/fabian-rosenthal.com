@@ -1,14 +1,11 @@
 import { type MetadataRoute } from "next"
-import { headers } from "next/headers"
 
 import { homePage } from "@/content/config"
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedBlogTags, getCachedBusinessIdeasPages, getCachedPages } from "@/lib/cms/fetchers"
+import { host } from "@/lib/next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const headersList = headers()
-  const host = headersList.get("host")!
-
   const sites: MetadataRoute.Sitemap = []
   i18n.locales.forEach((lang) => {
     sites.push(
