@@ -13,7 +13,7 @@ export const createAlternativeUrls = (pageFn: (lang: string) => string, lang: st
   }
 }
 
-export const getHost = () => {
+const getHost = () => {
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") {
     const url = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
     if (url) {
@@ -28,3 +28,5 @@ export const getHost = () => {
   }
   return `localhost:${process.env.PORT || 3000}`
 }
+
+export const host = getHost()
