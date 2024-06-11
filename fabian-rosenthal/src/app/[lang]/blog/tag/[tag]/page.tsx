@@ -41,7 +41,7 @@ export default async function TagPage({ params }: { params: { lang: string; tag:
   const postsWithTag = (await getCachedBlogPosts()).filter((p) => p.tags.includes(params.tag))
   return (
     <div className="max-width-regular">
-      <Headline>Tag: {tagToString(params.tag)}</Headline>
+      <Headline>Topic: {tagToString(params.tag)}</Headline>
       <p className="leading-7">Blog articles with this tag:</p>
       <BlogPostList posts={postsWithTag} />
     </div>
