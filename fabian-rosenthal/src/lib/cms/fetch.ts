@@ -26,6 +26,8 @@ export const fetchPageContent = async (blockId: string) => {
   )
 }
 
+export const fetchPage = (pageId: string) => notionClient.pages.retrieve({ page_id: pageId })
+
 export const fetchPages = () =>
   fetchDatabasePages(notionClient, processPages, {
     database_id: process.env.NOTION_PAGES_DB_ID!,

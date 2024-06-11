@@ -1,18 +1,21 @@
 import { notFound } from "next/navigation"
 import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
+import NextLink from "next/link"
 import "@react-notion-cms/render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { HeadlineBlog } from "@/components/layout/headline"
-import { blogPage, pageTitle } from "@/content/config"
+import { apiDisableDraft, blogPage, pageTitle } from "@/content/config"
 import { Render } from "@react-notion-cms/render"
 import { Code } from "@/components/cms/code"
 import { Link } from "@/components/layout/link"
 import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
+import { draftMode } from "next/headers"
+import { fetchPageContent } from "@/lib/cms/fetch"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
   if (params.lang !== i18n.defaultLocale) {
@@ -69,15 +72,38 @@ const BlogMeta = ({ lang, post }: { lang: string; post: BlogPost }) => {
 }
 
 export default async function BlogSlugPage({ params }: { params: { lang: string; slug: string } }) {
+  const { isEnabled } = draftMode()
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) {
     notFound()
   }
-  const content = await getCachedPageContent(post.notionId)
+
+  const content = isEnabled ? await fetchPageContent(post.notionId) : await getCachedPageContent(post.notionId)
 
   return (
     <>
+      {isEnabled && (
+        <div className="mb-10 rounded-lg bg-red-300 p-4 text-center">
+          <div className="text-lg">
+            Draft Mode (
+            <NextLink className="underline hover:no-underline" href={apiDisableDraft} target="_blank">
+              disable
+            </NextLink>
+            )
+          </div>
+          <div>
+            Page:{" "}
+            <a
+              className="underline hover:no-underline"
+              href={`https://www.notion.so/${post.notionId.replaceAll("-", "")}`}
+              target="_blank"
+            >
+              {post.notionId.replaceAll("-", "")}
+            </a>
+          </div>
+        </div>
+      )}
       <div className="mx-auto max-w-screen-md">
         <HeadlineBlog subtitle={post.pageSubtitle ?? undefined}>{post.title}</HeadlineBlog>
         <div className="my-5 border-y border-gray-100 py-4">
