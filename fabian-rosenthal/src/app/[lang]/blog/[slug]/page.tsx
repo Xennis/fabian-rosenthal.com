@@ -108,7 +108,8 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
             htmlComponents: {
               a: (props) => <Link href={props.href ?? "#"} {...props} />,
               code: (props) => <Code {...props} />,
-              img: (props) => <img {...props} className="mx-auto rounded" />,
+              // eslint-disable-next-line @next/next/no-img-element
+              img: (props) => <img alt={props.alt} {...props} className="mx-auto rounded" />,
             },
           }}
         />
