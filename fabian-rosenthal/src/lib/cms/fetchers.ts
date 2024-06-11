@@ -1,110 +1,76 @@
 import { unstable_cache } from "next/cache"
 import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
-import { fetchDatabasePages } from "@react-notion-cms/fetch"
-import { fetchBlocksChildren } from "@react-notion-cms/render"
 
-import { processPages } from "@/lib/cms/pages"
 import { i18n } from "@/content/i18n"
-import { Client } from "@notionhq/client"
-import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
-import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { blogPagePost, blogTagPage, businessIdeasPage } from "@/content/config"
-import { processBlogPosts, tagToString } from "@/lib/cms/blog-posts"
+import { tagToString } from "@/lib/cms/blog-posts"
+import { fetchBlogPosts, fetchBusinessIdeasPages, fetchPageContent, fetchPages } from "@/lib/cms/fetch"
 
-const notionClient = new Client({
-  auth: process.env.NOTION_ACCESS_TOKEN,
-  timeoutMs: 20 * 1000,
-})
+export const tagPageContent = (blockId: string) => `cms-page-${blockId}`
+export const tagCmsData = "cms-data"
 
-export async function getCachedPages() {
+export const getCachedPages = unstable_cache(
+  async () => {
+    const pages = await fetchPages()
+    console.debug(`fetched ${pages.length} pages from notion database ${process.env.NOTION_PAGES_DB_ID!}`)
+    return pages.map((p) => {
+      const languages: AlternateURLs["languages"] = {}
+      i18n.locales.forEach((lang) => {
+        languages[lang] = `/${lang}/${p.slug}`
+      })
+      return {
+        ...p,
+        canonical: `/${p.lang}/${p.slug}`,
+        languages: languages,
+      }
+    })
+  },
+  ["cms-pages"],
+  {
+    revalidate: false,
+    tags: [tagCmsData],
+  },
+)
+
+export const getCachedPageContent = async (blockId: string) => {
   return await unstable_cache(
     async () => {
-      const pages = await fetchDatabasePages(notionClient, processPages, {
-        database_id: process.env.NOTION_PAGES_DB_ID!,
-        page_size: 100,
-      })
-      return pages.map((p) => {
-        const languages: AlternateURLs["languages"] = {}
-        i18n.locales.forEach((lang) => {
-          languages[lang] = `/${lang}/${p.slug}`
-        })
-        return {
-          ...p,
-          canonical: `/${p.lang}/${p.slug}`,
-          languages: languages,
-        }
-      })
-    },
-    ["cms-pages"],
-    {
-      revalidate: false,
-    },
-  )()
-}
-
-export async function getCachedPageContent(blockId: string) {
-  return await unstable_cache(
-    async () => {
-      return fetchBlocksChildren(
-        notionClient,
-        {
-          block_id: blockId,
-          page_size: 100,
-        },
-        {
-          resolveImageFn: (url: string, meta: { blockId: string; lastEditedTime: Date }) =>
-            downloadImageToPublicDir(url, `image-${meta.blockId}`, meta.lastEditedTime),
-        },
-      )
+      const children = await fetchPageContent(blockId)
+      console.info(`fetched ${children.length} first-class child blocks from notion block ${blockId}`)
+      return children
     },
     [`cms-page-${blockId}`],
     {
       revalidate: false,
+      tags: [tagPageContent(blockId)],
     },
   )()
 }
 
-export async function getCachedBusinessIdeasPages() {
-  return await unstable_cache(
-    async () => {
-      const pages = await fetchDatabasePages(notionClient, processBusinessIdeasPages, {
-        database_id: process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!,
-        page_size: 100,
-        filter: {
-          property: "public",
-          type: "checkbox",
-          checkbox: {
-            equals: true,
-          },
-        },
-      })
-      return pages.map((p) => {
-        return {
-          ...p,
-          canonical: businessIdeasPage(i18n.defaultLocale, p.slug),
-        }
-      })
-    },
-    ["cms-business-ideas-pages"],
-    {
-      revalidate: false,
-    },
-  )()
-}
+export const getCachedBusinessIdeasPages = unstable_cache(
+  async () => {
+    const pages = await fetchBusinessIdeasPages()
+    console.debug(
+      `fetched ${pages.length} pages from notion database ${process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!}`,
+    )
+    return pages.map((p) => {
+      return {
+        ...p,
+        canonical: businessIdeasPage(i18n.defaultLocale, p.slug),
+      }
+    })
+  },
+  ["cms-business-ideas-pages"],
+  {
+    revalidate: false,
+    tags: [tagCmsData],
+  },
+)
 
 export const getCachedBlogPosts = unstable_cache(
   async () => {
-    const posts = await fetchDatabasePages(notionClient, processBlogPosts, {
-      database_id: "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4",
-      page_size: 100,
-      filter: {
-        property: "public",
-        type: "checkbox",
-        checkbox: {
-          equals: true,
-        },
-      },
-    })
+    const posts = await fetchBlogPosts()
+    console.debug(`fetched ${posts.length} pages from notion database 0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4`)
     return posts.map((p) => {
       return {
         ...p,
@@ -115,6 +81,7 @@ export const getCachedBlogPosts = unstable_cache(
   ["cms-blog-posts"],
   {
     revalidate: false,
+    tags: [tagCmsData],
   },
 )
 
@@ -133,5 +100,6 @@ export const getCachedBlogTags = unstable_cache(
   ["cms-blog-tags"],
   {
     revalidate: false,
+    tags: [tagCmsData], // the tags depend on the posts
   },
 )
