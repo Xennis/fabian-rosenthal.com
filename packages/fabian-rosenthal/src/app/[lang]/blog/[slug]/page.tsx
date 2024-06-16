@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
 import NextLink from "next/link"
+import { draftMode } from "next/headers"
 import "@react-notion-cms/render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
@@ -14,7 +15,6 @@ import { Link } from "@/components/layout/link"
 import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
-import { draftMode } from "next/headers"
 import { fetchPageContent } from "@/lib/cms/fetch"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
