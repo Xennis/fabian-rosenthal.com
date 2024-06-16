@@ -35,7 +35,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Custom
-# Images downloaded from CMS
-fabian-rosenthal/public/cms/*
