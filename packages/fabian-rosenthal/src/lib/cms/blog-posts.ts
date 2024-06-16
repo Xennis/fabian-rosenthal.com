@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@react-notion-cms/fetch"
+import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@xennis/react-notion-cms-fetch"
 import { i18n } from "@/content/i18n"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 

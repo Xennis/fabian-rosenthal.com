@@ -1,7 +1,7 @@
 import { draftMode } from "next/headers"
 import { redirect } from "next/navigation"
 import { APIResponseError, isFullPage } from "@notionhq/client"
-import { propsPlainTexts } from "@react-notion-cms/fetch"
+import { propsPlainTexts } from "@xennis/react-notion-cms-fetch"
 
 import { fetchPage } from "@/lib/cms/fetch"
 import { blogPagePost, businessIdeasPage, langPage } from "@/content/config"
