@@ -1,5 +1,5 @@
-import { fetchDatabasePages } from "@react-notion-cms/fetch"
-import { fetchBlocksChildren } from "@react-notion-cms/render"
+import { fetchDatabasePages } from "@xennis/react-notion-cms-fetch"
+import { fetchBlocksChildren } from "@xennis/react-notion-cms-render"
 import { Client } from "@notionhq/client"
 
 import { processPages } from "@/lib/cms/pages"

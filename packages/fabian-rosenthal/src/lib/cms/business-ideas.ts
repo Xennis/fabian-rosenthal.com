@@ -1,6 +1,6 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsCheckbox, propsPlainTexts } from "@react-notion-cms/fetch"
-import { type IconResponse } from "@react-notion-cms/render"
+import { propsCheckbox, propsPlainTexts } from "@xennis/react-notion-cms-fetch"
+import { type IconResponse } from "@xennis/react-notion-cms-render"
 
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { i18n } from "@/content/i18n"
