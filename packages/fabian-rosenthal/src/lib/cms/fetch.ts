@@ -1,11 +1,14 @@
 import { fetchDatabasePages } from "@xennis/react-notion-cms-fetch"
 import { fetchBlocksChildren } from "@xennis/react-notion-cms-render"
 import { Client } from "@notionhq/client"
+import type { QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints"
 
 import { processPages } from "@/lib/cms/pages"
 import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { processBlogPosts } from "@/lib/cms/blog-posts"
+import { blogPagePost } from "@/content/config"
+import { i18n } from "@/content/i18n"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -47,17 +50,21 @@ export const fetchBusinessIdeasPages = () =>
     },
   })
 
-export const fetchBlogPosts = () =>
-  fetchDatabasePages(notionClient, processBlogPosts, {
+export const fetchBlogPosts = async (draftMode?: boolean) => {
+  const filter: QueryDatabaseParameters["filter"] =
+    draftMode === true
+      ? undefined
+      : {
+          property: "public",
+          type: "checkbox",
+          checkbox: {
+            equals: true,
+          },
+        }
+  const posts = await fetchDatabasePages(notionClient, processBlogPosts, {
     database_id: "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4",
     page_size: 100,
-    filter: {
-      property: "public",
-      type: "checkbox",
-      checkbox: {
-        equals: true,
-      },
-    },
+    filter: filter,
     sorts: [
       {
         property: "publish-date",
@@ -65,3 +72,8 @@ export const fetchBlogPosts = () =>
       },
     ],
   })
+  return posts.map((p) => ({
+    ...p,
+    canonical: blogPagePost(i18n.defaultLocale, p.slug),
+  }))
+}

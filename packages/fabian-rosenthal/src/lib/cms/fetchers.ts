@@ -2,7 +2,7 @@ import { unstable_cache } from "next/cache"
 import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
 
 import { i18n } from "@/content/i18n"
-import { blogPagePost, blogTagPage, businessIdeasPage } from "@/content/config"
+import { blogTagPage, businessIdeasPage } from "@/content/config"
 import { tagToString } from "@/lib/cms/blog-posts"
 import { fetchBlogPosts, fetchBusinessIdeasPages, fetchPageContent, fetchPages } from "@/lib/cms/fetch"
 
@@ -71,12 +71,7 @@ export const getCachedBlogPosts = unstable_cache(
   async () => {
     const posts = await fetchBlogPosts()
     console.debug(`fetched ${posts.length} pages from notion database 0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4`)
-    return posts.map((p) => {
-      return {
-        ...p,
-        canonical: blogPagePost(i18n.defaultLocale, p.slug),
-      }
-    })
+    return posts
   },
   ["cms-blog-posts"],
   {
