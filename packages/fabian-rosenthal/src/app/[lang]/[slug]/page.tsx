@@ -1,5 +1,6 @@
 import { type Metadata } from "next"
 import { Render } from "@xennis/react-notion-cms-render"
+import { draftMode } from "next/headers"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
@@ -18,6 +19,7 @@ import { formatDate } from "@/lib/date"
 import { Link } from "@/components/layout/link"
 import "./page.css"
 import { host } from "@/lib/next"
+import { fetchBlogPosts } from "@/lib/cms/fetch"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -140,10 +142,11 @@ const About = ({ lang }: { lang: string }) => {
 }
 
 const Blog = async ({ lang }: { lang: string }) => {
+  const { isEnabled } = draftMode()
   if (lang !== i18n.defaultLocale) {
     return <></>
   }
-  const postsByDate = await getCachedBlogPosts()
+  const postsByDate = isEnabled ? await fetchBlogPosts(isEnabled) : await getCachedBlogPosts()
 
   return <BlogPostList posts={postsByDate} />
 }
