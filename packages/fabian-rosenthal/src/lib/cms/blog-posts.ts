@@ -71,6 +71,8 @@ export const tagToString = (tag: Tag) => {
       return "Frontend"
     case "nextjs":
       return "Next.js"
+    case "react":
+      return "React"
     case "seo":
       return "SEO"
     case "tailwind-css":
