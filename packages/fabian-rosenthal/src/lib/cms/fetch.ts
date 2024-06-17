@@ -58,4 +58,10 @@ export const fetchBlogPosts = () =>
         equals: true,
       },
     },
+    sorts: [
+      {
+        property: "publish-date",
+        direction: "descending",
+      },
+    ],
   })
