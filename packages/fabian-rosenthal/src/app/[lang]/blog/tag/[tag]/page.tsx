@@ -40,9 +40,8 @@ export async function generateMetadata({
 export default async function TagPage({ params }: { params: { lang: string; tag: string } }) {
   const postsWithTag = (await getCachedBlogPosts()).filter((p) => p.tags.includes(params.tag))
   return (
-    <div className="max-width-regular">
-      <Headline>Topic: {tagToString(params.tag)}</Headline>
-      <p className="leading-7">Blog articles with this tag:</p>
+    <div className="mx-auto max-w-screen-md">
+      <Headline subtitle="Blog articles with this tag.">Topic: {tagToString(params.tag)}</Headline>
       <BlogPostList posts={postsWithTag} />
     </div>
   )

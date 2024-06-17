@@ -97,7 +97,7 @@ const EndComponent = ({ params }: { params: { lang: string; slug: string } }) =>
       )
     case "blog":
       return (
-        <div className="max-width-regular">
+        <div className="mx-auto max-w-screen-md">
           <Blog lang={params.lang} />
         </div>
       )
