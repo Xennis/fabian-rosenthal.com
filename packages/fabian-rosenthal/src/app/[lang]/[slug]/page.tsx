@@ -143,11 +143,7 @@ const Blog = async ({ lang }: { lang: string }) => {
   if (lang !== i18n.defaultLocale) {
     return <></>
   }
-  const posts = await getCachedBlogPosts()
-  const postsByDate = posts.sort((a, b) => {
-    // FIXME: Somehow the date is here sometimes a string
-    return new Date(a.publishDate).getTime() - new Date(b.publishDate).getTime()
-  })
+  const postsByDate = await getCachedBlogPosts()
 
   return <BlogPostList posts={postsByDate} />
 }
