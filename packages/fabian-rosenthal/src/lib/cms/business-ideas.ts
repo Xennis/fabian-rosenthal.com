@@ -11,6 +11,7 @@ export type Page = {
   lang: "en"
   lastEdited: Date
   notionId: string
+  pageSubtitle: string | null
   slug: string
   title: string
 }
@@ -29,6 +30,7 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
   if (icon !== null && icon.type === "file") {
     icon.file.url = await downloadImageToPublicDir(icon.file.url, `page-icon-${page.id}`, lastEdited)
   }
+  const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
   let slug = propsPlainTexts(page.properties, "slug")
   if (!slug) {
     // If no slug is set use the one from Notion.
@@ -41,6 +43,7 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
     lang: i18n.defaultLocale,
     lastEdited: lastEdited,
     notionId: page.id,
+    pageSubtitle: pageSubtitle,
     slug: slug,
     title: title,
   }

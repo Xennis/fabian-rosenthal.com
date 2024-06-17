@@ -164,7 +164,7 @@ const Blog = async ({ lang }: { lang: string }) => {
           <div className="relative aspect-[1.91/1] w-full sm:max-w-96">
             <NextImage
               src={bussinessIdeasOgImage}
-              alt="A Guide for Business Ideas"
+              alt="How to Find Business Ideas - A Practical Guide"
               className="rounded-md sm:rounded-lg"
               fill
               quality={100}
