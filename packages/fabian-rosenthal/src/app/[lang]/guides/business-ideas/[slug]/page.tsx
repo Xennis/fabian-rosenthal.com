@@ -59,7 +59,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
 
   return (
     <div className="mx-auto max-w-screen-md">
-      <Headline>{page.title}</Headline>
+      <Headline subtitle={page.pageSubtitle ?? undefined}>{page.title}</Headline>
       <Render
         blocks={content}
         options={{ formatDateFn: (date: Date) => formatDate(date, params.lang), resolveLinkFn: resolveLinkFn }}
