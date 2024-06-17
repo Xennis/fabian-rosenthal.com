@@ -3,12 +3,13 @@ import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
 import NextLink from "next/link"
 import { draftMode } from "next/headers"
+import { Article, WithContext } from "schema-dts"
 import "@xennis/react-notion-cms-render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { HeadlineBlog } from "@/components/layout/headline"
-import { apiDisableDraft, blogPage, pageTitle } from "@/content/config"
+import { aboutPage, apiDisableDraft, blogPage, pageTitle } from "@/content/config"
 import { Render } from "@xennis/react-notion-cms-render"
 import { Code } from "@/components/cms/code"
 import { Link } from "@/components/layout/link"
@@ -16,6 +17,7 @@ import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
 import { fetchPageContent } from "@/lib/cms/fetch"
+import { host } from "@/lib/next"
 
 export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
   if (params.lang !== i18n.defaultLocale) {
@@ -80,6 +82,19 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
   }
 
   const content = isEnabled ? await fetchPageContent(post.notionId) : await getCachedPageContent(post.notionId)
+  const jsonLd: WithContext<Article> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: post.ogImage !== null ? post.ogImage : undefined,
+    datePublished: new Date(post.publishDate).toISOString(),
+    dateModified: new Date(post.lastEdited).toISOString(),
+    author: {
+      "@type": "Person",
+      name: "Fabian Rosenthal",
+      url: `https://${host}${aboutPage(params.lang)}`,
+    },
+  }
 
   return (
     <>
@@ -140,6 +155,7 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
           }}
         />
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   )
 }
