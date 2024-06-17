@@ -39,9 +39,9 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
             <h2 className="pb-2 text-xl font-semibold group-hover:text-[#18b83d] sm:text-2xl">{post.title}</h2>
             <p className="leading-7 text-gray-700">{post.metaDescription}</p>
           </div>
-          <div className="relative aspect-video w-full sm:h-[140px] sm:w-[267px]">
+          <div className="relative aspect-video w-full sm:h-[140px] sm:w-[268px]">
             {post.ogImage && (
-              <NextImage src={post.ogImage} alt="Alt image" className="rounded-md sm:rounded-lg" fill quality={85} />
+              <NextImage src={post.ogImage} alt="Post image" className="rounded-md sm:rounded-lg" fill quality={85} />
             )}
           </div>
         </div>

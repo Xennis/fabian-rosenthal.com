@@ -1,11 +1,13 @@
 import { type Metadata } from "next"
 import { Render } from "@xennis/react-notion-cms-render"
 import { draftMode } from "next/headers"
+import NextImage from "next/image"
+import NextLink from "next/link"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
-import { pageTitle } from "@/content/config"
+import { businessIdeas, pageTitle } from "@/content/config"
 import { Hero } from "@/components/layout/hero"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { CalComIframe } from "@/components/calcom"
@@ -20,6 +22,8 @@ import { Link } from "@/components/layout/link"
 import "./page.css"
 import { host } from "@/lib/next"
 import { fetchBlogPosts } from "@/lib/cms/fetch"
+import bussinessIdeasOgImage from "@/app/[lang]/guides/business-ideas/[slug]/opengraph-image.png"
+import { Dot } from "@/components/dot"
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   return (await getCachedPages()).filter((p) => p.lang.toString() === params.lang).map((p) => ({ slug: p.slug }))
@@ -148,7 +152,28 @@ const Blog = async ({ lang }: { lang: string }) => {
   }
   const postsByDate = isEnabled ? await fetchBlogPosts(isEnabled) : await getCachedBlogPosts()
 
-  return <BlogPostList posts={postsByDate} />
+  return (
+    <>
+      <BlogPostList posts={postsByDate} />
+      <div className="mt-4 border-t border-gray-100">
+        <h2 className="pb-5 pt-7 text-3xl font-semibold tracking-tight sm:pb-6 sm:pt-8 sm:text-4xl">
+          Collections of Articles
+          <Dot />
+        </h2>
+        <NextLink href={businessIdeas(lang)} className="hover:grayscale">
+          <div className="relative aspect-video w-full sm:max-w-96">
+            <NextImage
+              src={bussinessIdeasOgImage}
+              alt="A Guide for Business Ideas"
+              className="rounded-md sm:rounded-lg"
+              fill
+              quality={85}
+            />
+          </div>
+        </NextLink>
+      </div>
+    </>
+  )
 }
 
 const Booking = ({ lang }: { lang: string }) => {
