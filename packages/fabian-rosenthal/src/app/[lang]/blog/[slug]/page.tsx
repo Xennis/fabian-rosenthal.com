@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import NextLink from "next/link"
 import { draftMode } from "next/headers"
 import { Article, WithContext } from "schema-dts"
+import NextImage from "next/image"
 import "@xennis/react-notion-cms-render/dist/styles.css"
 
 import { i18n } from "@/content/i18n"
@@ -126,13 +127,15 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
         </div>
       </div>
       {post.ogImage !== null && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={post.ogImage}
-          alt="Blog image"
-          width={825}
-          className="mx-auto my-8 rounded-lg shadow-md sm:my-10 sm:rounded-xl sm:shadow-lg"
-        />
+        <div className="relative mx-auto my-8 aspect-[1.91/1] w-full sm:my-10 md:max-w-[825px]">
+          <NextImage
+            src={post.ogImage}
+            alt="Blog image"
+            fill
+            className="rounded-lg shadow-md sm:rounded-xl sm:shadow-lg"
+            quality={100}
+          />
+        </div>
       )}
       <div className="mx-auto max-w-screen-md">
         <Render

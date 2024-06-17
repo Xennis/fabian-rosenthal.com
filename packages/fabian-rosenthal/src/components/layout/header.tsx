@@ -15,7 +15,14 @@ function Logo({ homeHref, dictionary }: { homeHref: string; dictionary: Dictiona
         href={homeHref}
         className="group flex items-center"
       >
-        <NextImage className="rounded" src={authorImage} alt="Profile picture of Fabian" width={75} unoptimized />
+        <NextImage
+          className="rounded"
+          src={authorImage}
+          alt="Profile picture of Fabian"
+          width={75}
+          height={75}
+          quality={100}
+        />
         <div className="ps-3">
           <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">{dictionary.title}</span>
           <br />

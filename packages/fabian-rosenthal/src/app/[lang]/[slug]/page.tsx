@@ -161,13 +161,13 @@ const Blog = async ({ lang }: { lang: string }) => {
           <Dot />
         </h2>
         <NextLink href={businessIdeas(lang)} className="hover:grayscale">
-          <div className="relative aspect-video w-full sm:max-w-96">
+          <div className="relative aspect-[1.91/1] w-full sm:max-w-96">
             <NextImage
               src={bussinessIdeasOgImage}
               alt="A Guide for Business Ideas"
               className="rounded-md sm:rounded-lg"
               fill
-              quality={85}
+              quality={100}
             />
           </div>
         </NextLink>
