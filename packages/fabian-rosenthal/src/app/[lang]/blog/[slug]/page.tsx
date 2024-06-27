@@ -39,13 +39,17 @@ export async function generateMetadata({
   }
 
   return {
-    description: post.title,
+    description: post.metaDescription,
     openGraph: {
       description: post.metaDescription,
       images: post.ogImage ?? undefined,
       siteName: pageTitle,
       title: post.title,
       type: "article",
+      url: post.canonical,
+      // article namespace
+      modifiedTime: new Date(post.lastEdited).toISOString(),
+      publishedTime: new Date(post.publishDate).toISOString(),
     },
     title: post.title,
   }

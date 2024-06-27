@@ -33,6 +33,7 @@ export async function generateMetadata({
       siteName: pageTitle,
       title: page.title,
       type: "website",
+      url: page.canonical,
     },
     title: page.title,
   }
