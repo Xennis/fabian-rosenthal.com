@@ -30,11 +30,11 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2(next@14.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@xennis/react-notion-cms-fetch':
-        specifier: 0.0.1-alpha.2
-        version: 0.0.1-alpha.2
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2
       '@xennis/react-notion-cms-render':
-        specifier: 0.0.1-alpha.2
-        version: 0.0.1-alpha.2
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2
       mapbox-gl:
         specifier: ^3.3.0
         version: 3.3.0
@@ -94,11 +94,11 @@ importers:
         specifier: ^0.23.3
         version: 0.23.3
       '@xennis/react-notion-cms-fetch':
-        specifier: 0.0.1-alpha.2
-        version: 0.0.1-alpha.2
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2
       '@xennis/react-notion-cms-render':
-        specifier: 0.0.1-alpha.2
-        version: 0.0.1-alpha.2
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -629,11 +629,11 @@ packages:
     resolution: {integrity: sha512-6Zr/9twzWpMJp4ap1fwLIcKkehju6UR8D1BK2+QUfGPxlXQBusxwBJzf3TqATCSceeShaJsALHaSDwuKDFpoTw==}
     engines: {node: '>=16.14'}
 
-  '@xennis/react-notion-cms-fetch@0.0.1-alpha.2':
-    resolution: {integrity: sha512-zEZGnRP67F1fL27T/Na1uU/wsZqdspV039bI+Vgzx3BC5Cx+ZdPbQMqX8ijcw0M5bBNh0Nt0sgFf0mIMkFYuJA==}
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.2':
+    resolution: {integrity: sha512-3g/NQXn5ytxmsSVtUNqy8AJI5PYvDR0iwd5Nv3YkqwA/fNhPPnih6YaqqrLAro5AHzVcZtnuuwS3GuA7NQ8u2Q==}
 
-  '@xennis/react-notion-cms-render@0.0.1-alpha.2':
-    resolution: {integrity: sha512-u5edmeQym064ifN9n7SA3u16/TuQVGNF2k5eus4+RzXHO5CsZfiKbFBMKgeTvNR47elL0Er9SkWQyN839vQXag==}
+  '@xennis/react-notion-cms-render@1.0.0-beta.2':
+    resolution: {integrity: sha512-3VGkUOQmeA/6JSoijrs7Mq1SmBuS9cpcFEtNquXMWXY3W9wxmxp295du2vXTnxo5X0u67oalICWYvcnpBlh34g==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2606,13 +2606,13 @@ snapshots:
       is-buffer: 2.0.5
       undici: 5.28.4
 
-  '@xennis/react-notion-cms-fetch@0.0.1-alpha.2':
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.2':
     dependencies:
       '@notionhq/client': 2.2.15
     transitivePeerDependencies:
       - encoding
 
-  '@xennis/react-notion-cms-render@0.0.1-alpha.2':
+  '@xennis/react-notion-cms-render@1.0.0-beta.2':
     dependencies:
       '@notionhq/client': 2.2.15
     transitivePeerDependencies:
@@ -3060,7 +3060,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
       eslint-plugin-react: 7.34.1(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -3101,7 +3101,7 @@ snapshots:
       enhanced-resolve: 5.16.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.5
       is-core-module: 2.13.1
@@ -3161,7 +3161,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5

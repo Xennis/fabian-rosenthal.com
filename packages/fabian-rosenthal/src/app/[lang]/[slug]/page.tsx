@@ -73,7 +73,7 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
         <Render
           blocks={content}
           options={{
-            formatDateFn: (date) => formatDate(date, params.lang),
+            formatDateFn: (dateString) => formatDate(dateString, params.lang),
             resolveLinkFn: (nId) => {
               const page = pages.find((p) => p.notionId === nId)
               if (!page) {
