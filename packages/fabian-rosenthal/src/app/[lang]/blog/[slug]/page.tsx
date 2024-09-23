@@ -145,7 +145,7 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
         <Render
           blocks={content}
           options={{
-            formatDateFn: (date) => formatDate(date, params.lang),
+            formatDateFn: (dateString) => formatDate(dateString, params.lang),
             resolveLinkFn: (nId) => {
               const post = posts.find((p) => p.notionId === nId)
               if (!post) {

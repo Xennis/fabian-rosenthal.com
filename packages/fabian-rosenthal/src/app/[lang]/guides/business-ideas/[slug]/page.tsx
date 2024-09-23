@@ -63,7 +63,10 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
       <Headline subtitle={page.pageSubtitle ?? undefined}>{page.title}</Headline>
       <Render
         blocks={content}
-        options={{ formatDateFn: (date: Date) => formatDate(date, params.lang), resolveLinkFn: resolveLinkFn }}
+        options={{
+          formatDateFn: (dateString: string) => formatDate(dateString, params.lang),
+          resolveLinkFn: resolveLinkFn,
+        }}
       />
       {!page.homePage && (
         <div className="mt-14 border-t border-gray-100 py-4">
