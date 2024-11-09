@@ -7,10 +7,9 @@ import { Article, WithContext } from "schema-dts"
 import NextImage from "next/image"
 import "@xennis/react-notion-cms-render/dist/styles.css"
 
-import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { HeadlineBlog } from "@/components/layout/headline"
-import { aboutPage, apiDisableDraft, blogPage, pageTitle } from "@/content/config"
+import { apiDisableDraft, blogPage, pageTitle } from "@/content/config"
 import { Render } from "@xennis/react-notion-cms-render"
 import { Code } from "@/components/cms/code"
 import { Link } from "@/components/layout/link"
@@ -18,20 +17,12 @@ import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
 import { fetchPageContent } from "@/lib/cms/fetch"
-import { host } from "@/lib/next"
 
-export async function generateStaticParams({ params }: { params: { lang: string; tag: string } }) {
-  if (params.lang !== i18n.defaultLocale) {
-    return []
-  }
+export async function generateStaticParams() {
   return (await getCachedBlogPosts()).map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string; slug: string }
-}): Promise<Metadata | null> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata | null> {
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) {
@@ -55,16 +46,16 @@ export async function generateMetadata({
   }
 }
 
-const BlogMeta = ({ lang, post }: { lang: string; post: BlogPost }) => {
+const BlogMeta = ({ post }: { post: BlogPost }) => {
   return (
     <div className="flex flex-col gap-y-3 text-sm text-slate-600">
       <div className="flex flex-row space-x-2">
         <CalendarIcon title="Publish date" aria-hidden={true} className="h-5 w-5" />
         <div>
           <span className="sr-only">Publish date: </span>
-          {formatDate(post.publishDate, lang)}
+          {formatDate(post.publishDate)}
           <span className="px-2">·</span>
-          Published in <Link href={blogPage(lang)}>Blog</Link>
+          Published in <Link href={blogPage}>Blog</Link>
         </div>
       </div>
       <div className="flex flex-row space-x-2">
@@ -78,7 +69,7 @@ const BlogMeta = ({ lang, post }: { lang: string; post: BlogPost }) => {
   )
 }
 
-export default async function BlogSlugPage({ params }: { params: { lang: string; slug: string } }) {
+export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
   const { isEnabled } = draftMode()
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
@@ -97,7 +88,6 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
     author: {
       "@type": "Person",
       name: "Fabian Rosenthal",
-      url: `https://${host}${aboutPage(params.lang)}`,
     },
   }
 
@@ -127,7 +117,7 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
       <div className="mx-auto max-w-screen-md">
         <HeadlineBlog subtitle={post.pageSubtitle ?? undefined}>{post.title}</HeadlineBlog>
         <div className="my-5 border-y border-gray-100 py-4">
-          <BlogMeta lang={params.lang} post={post} />
+          <BlogMeta post={post} />
         </div>
       </div>
       {post.ogImage !== null && (
@@ -145,7 +135,7 @@ export default async function BlogSlugPage({ params }: { params: { lang: string;
         <Render
           blocks={content}
           options={{
-            formatDateFn: (dateString) => formatDate(dateString, params.lang),
+            formatDateFn: (dateString) => formatDate(dateString),
             resolveLinkFn: (nId) => {
               const post = posts.find((p) => p.notionId === nId)
               if (!post) {

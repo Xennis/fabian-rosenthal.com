@@ -4,8 +4,7 @@ import { APIResponseError, isFullPage } from "@notionhq/client"
 import { propsPlainTexts } from "@xennis/react-notion-cms-fetch"
 
 import { fetchPage } from "@/lib/cms/fetch"
-import { blogPagePost, businessIdeasPage, langPage } from "@/content/config"
-import { i18n } from "@/content/i18n"
+import { blogPagePost, businessIdeasPage, slugPage } from "@/content/config"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -33,7 +32,6 @@ const getPostBySlug = async (pageId: string) => {
     if (isFullPage(page) && page.parent.type === "database_id") {
       return canonicalPathname({
         slug: propsPlainTexts(page.properties, "slug"),
-        lang: propsPlainTexts(page.properties, "lang"),
         parentDbId: page.parent.database_id,
       })
     }
@@ -47,29 +45,18 @@ const getPostBySlug = async (pageId: string) => {
   return null
 }
 
-const canonicalPathname = ({
-  slug,
-  lang,
-  parentDbId,
-}: {
-  slug: string | null
-  lang: string | null
-  parentDbId: string
-}) => {
+const canonicalPathname = ({ slug, parentDbId }: { slug: string | null; parentDbId: string }) => {
   if (slug === null) {
     return null
   }
 
   switch (parentDbId) {
     case "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4":
-      return blogPagePost(i18n.defaultLocale, slug)
+      return blogPagePost(slug)
     case process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!:
-      return businessIdeasPage(i18n.defaultLocale, slug)
+      return businessIdeasPage(slug)
     case process.env.NOTION_PAGES_DB_ID!:
-      if (lang === null) {
-        break
-      }
-      return langPage(lang, slug)
+      return slugPage(slug)
   }
   return null
 }

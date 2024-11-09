@@ -22,7 +22,6 @@ const storageSetItem = (key: string, value: any) => {
 
 export function GdprIframe({
   config,
-  dictionary,
   children,
 }: {
   config: {
@@ -33,7 +32,6 @@ export function GdprIframe({
     gdprLinkLabel: string
     gdprLinkHref: string
   }
-  dictionary: { consentButtonLabel: string }
   children: React.ReactNode
 }) {
   const [enabled, setEnabled] = useState<"loading" | false | true>("loading")
@@ -74,7 +72,7 @@ export function GdprIframe({
           className="rounded bg-slate-900 px-3 py-1.5 font-semibold text-white shadow"
           onClick={onClick}
         >
-          {dictionary.consentButtonLabel}
+          Load external content
         </button>
       </div>
     </div>

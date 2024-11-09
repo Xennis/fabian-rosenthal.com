@@ -4,14 +4,13 @@ import NextImage from "next/image"
 
 import { blogPagePost, blogTagPage } from "@/content/config"
 import { BlogPost, Tag, tagToString } from "@/lib/cms/blog-posts"
-import { i18n } from "@/content/i18n"
 import { formatDate } from "@/lib/date"
 
 const TagChip = ({ tag }: { tag: Tag }) => {
   return (
     <NextLink
       className={"rounded-xl bg-slate-800 px-2 py-1 text-xs text-white hover:bg-slate-600"}
-      href={blogTagPage(i18n.defaultLocale, tag)}
+      href={blogTagPage(tag)}
     >
       {tagToString(tag)}
     </NextLink>
@@ -33,7 +32,7 @@ export const BlogTagList = ({ tags }: { tags: Array<Tag> }) => {
 const BlogPostCard = ({ post }: { post: BlogPost }) => {
   return (
     <>
-      <NextLink href={blogPagePost(i18n.defaultLocale, post.slug)}>
+      <NextLink href={blogPagePost(post.slug)}>
         <div className="group flex flex-col-reverse justify-between gap-5 sm:flex-row sm:gap-7">
           <div className="flex-1">
             <h2 className="pb-2 text-xl font-semibold group-hover:text-[#18b83d] sm:text-2xl">{post.title}</h2>
@@ -57,7 +56,7 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
           <div className="flex gap-1">
             <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
             <span className="sr-only">Published: </span>
-            <span>{formatDate(post.publishDate, i18n.defaultLocale)}</span>
+            <span>{formatDate(post.publishDate)}</span>
           </div>
           <div className="flex gap-1.5 pt-3 md:pt-0">
             <TagIcon title="Tags" aria-hidden={true} className="h-5 w-5" />
