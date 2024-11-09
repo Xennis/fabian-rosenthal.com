@@ -1,24 +1,16 @@
 import { Metadata } from "next"
 
-import { i18n } from "@/content/i18n"
 import { getCachedBlogPosts, getCachedBlogTags } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
 import { tagToString } from "@/lib/cms/blog-posts"
 import { BlogPostList } from "@/components/blog-post-list"
 import { pageTitle } from "@/content/config"
 
-export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  if (params.lang !== i18n.defaultLocale) {
-    return []
-  }
+export async function generateStaticParams() {
   return (await getCachedBlogTags()).map((t) => ({ tag: t.name }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string; tag: string }
-}): Promise<Metadata | null> {
+export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata | null> {
   const tags = await getCachedBlogTags()
   const tag = tags.find((t) => t.name === params.tag)
   if (!tag) {
@@ -37,7 +29,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function TagPage({ params }: { params: { lang: string; tag: string } }) {
+export default async function TagPage({ params }: { params: { tag: string } }) {
   const postsWithTag = (await getCachedBlogPosts()).filter((p) => p.tags.includes(params.tag))
   return (
     <div className="mx-auto max-w-screen-md">

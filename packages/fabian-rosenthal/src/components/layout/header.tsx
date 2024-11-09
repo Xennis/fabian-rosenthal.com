@@ -2,19 +2,12 @@ import NextLink from "next/link"
 import NextImage from "next/image"
 
 import authorImage from "@/content/images/author-75x75.png"
-import { LanguageToggle } from "@/components/layout/language-toggle"
+import { pageTitle } from "@/content/config"
 
-type Dictionary = { logo: { title: string; subtitle: string; subtitlePrefix: string; ariaLabel: string } }
-
-function Logo({ homeHref, dictionary }: { homeHref: string; dictionary: Dictionary["logo"] }) {
+function Logo({ homeHref }: { homeHref: string }) {
   return (
     <div>
-      <NextLink
-        title={dictionary.ariaLabel}
-        aria-label={dictionary.ariaLabel}
-        href={homeHref}
-        className="group flex items-center"
-      >
+      <NextLink title="Home" aria-label="Home" href={homeHref} className="group flex items-center">
         <NextImage
           className="rounded"
           src={authorImage}
@@ -24,11 +17,11 @@ function Logo({ homeHref, dictionary }: { homeHref: string; dictionary: Dictiona
           quality={100}
         />
         <div className="ps-3">
-          <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">{dictionary.title}</span>
+          <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">{pageTitle}</span>
           <br />
           <span>
-            <span className="hidden sm:inline">{`${dictionary.subtitlePrefix} `}</span>
-            {dictionary.subtitle}
+            <span className="hidden sm:inline">The Enthusiastic </span>
+            Software Engineer
           </span>
         </div>
       </NextLink>
@@ -59,23 +52,20 @@ function NavLink({
 export function Header({
   homeHref,
   navLinks,
-  dictionary,
 }: {
   homeHref: string
   navLinks: Array<{ label: string; href: string; target?: React.HTMLAttributeAnchorTarget }>
-  dictionary: Dictionary
 }) {
   return (
     <header className="w-full bg-gray-100">
       <nav className="pxcontent mx-auto max-w-screen-xl py-7 md:flex md:items-center md:justify-between">
-        <Logo homeHref={homeHref} dictionary={dictionary.logo} />
+        <Logo homeHref={homeHref} />
         <div className="flex items-center justify-center space-x-6 pt-5 md:justify-normal md:space-x-4 md:pt-0">
           {navLinks.map((l, index) => (
             <NavLink key={index} href={l.href} target={l.target}>
               {l.label}
             </NavLink>
           ))}
-          <LanguageToggle />
         </div>
       </nav>
     </header>

@@ -3,12 +3,10 @@ import { propsCheckbox, propsPlainTexts } from "@xennis/react-notion-cms-fetch"
 import { type IconResponse } from "@xennis/react-notion-cms-render"
 
 import { downloadImageToPublicDir } from "@/lib/cms/image"
-import { i18n } from "@/content/i18n"
 
 export type Page = {
   homePage: boolean
   icon: IconResponse
-  lang: "en"
   lastEdited: Date
   notionId: string
   pageSubtitle: string | null
@@ -40,7 +38,6 @@ export const processBusinessIdeasPages = async (page: PageObjectResponse): Promi
   return {
     homePage: homePage,
     icon: page.icon,
-    lang: i18n.defaultLocale,
     lastEdited: lastEdited,
     notionId: page.id,
     pageSubtitle: pageSubtitle,

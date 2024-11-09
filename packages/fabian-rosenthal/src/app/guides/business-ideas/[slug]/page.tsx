@@ -9,17 +9,11 @@ import { businessIdeas, pageTitle } from "@/content/config"
 import { formatDate } from "@/lib/date"
 import { Link } from "@/components/layout/link"
 
-export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  return (await getCachedBusinessIdeasPages())
-    .filter((p) => p.lang.toString() === params.lang)
-    .map((p) => ({ slug: p.slug }))
+export async function generateStaticParams() {
+  return (await getCachedBusinessIdeasPages()).map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string; slug: string }
-}): Promise<Metadata | null> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata | null> {
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {
@@ -39,7 +33,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function SlugPage({ params }: { params: { lang: string; slug: string } }) {
+export default async function SlugPage({ params }: { params: { slug: string } }) {
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {
@@ -64,16 +58,16 @@ export default async function SlugPage({ params }: { params: { lang: string; slu
       <Render
         blocks={content}
         options={{
-          formatDateFn: (dateString: string) => formatDate(dateString, params.lang),
+          formatDateFn: (dateString: string) => formatDate(dateString),
           resolveLinkFn: resolveLinkFn,
         }}
       />
       {!page.homePage && (
         <div className="mt-14 border-t border-gray-100 py-4">
           <div className="text-sm text-slate-600">
-            Last updated: {formatDate(page.lastEdited, params.lang)}
+            Last updated: {formatDate(page.lastEdited)}
             <span className="px-2">·</span>
-            Published in <Link href={businessIdeas(params.lang)}>Business Ideas</Link>
+            Published in <Link href={businessIdeas}>Business Ideas</Link>
           </div>
         </div>
       )}

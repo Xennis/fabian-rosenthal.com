@@ -1,12 +1,10 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@xennis/react-notion-cms-fetch"
-import { i18n } from "@/content/i18n"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 
 export type Tag = string
 
 export type BlogPost = {
-  lang: string
   lastEdited: Date
   metaDescription: string
   notionId: string
@@ -38,7 +36,6 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
   const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
 
   return {
-    lang: i18n.defaultLocale,
     lastEdited: lastEdited,
     metaDescription: metaDescription,
     notionId: page.id,

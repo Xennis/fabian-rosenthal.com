@@ -8,7 +8,6 @@ import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { processBlogPosts } from "@/lib/cms/blog-posts"
 import { blogPagePost } from "@/content/config"
-import { i18n } from "@/content/i18n"
 
 const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN,
@@ -74,6 +73,6 @@ export const fetchBlogPosts = async (draftMode?: boolean) => {
   })
   return posts.map((p) => ({
     ...p,
-    canonical: blogPagePost(i18n.defaultLocale, p.slug),
+    canonical: blogPagePost(p.slug),
   }))
 }

@@ -1,7 +1,5 @@
 import { unstable_cache } from "next/cache"
-import type { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types"
 
-import { i18n } from "@/content/i18n"
 import { blogTagPage, businessIdeasPage } from "@/content/config"
 import { tagToString } from "@/lib/cms/blog-posts"
 import { fetchBlogPosts, fetchBusinessIdeasPages, fetchPageContent, fetchPages } from "@/lib/cms/fetch"
@@ -14,14 +12,9 @@ export const getCachedPages = unstable_cache(
     const pages = await fetchPages()
     console.debug(`fetched ${pages.length} pages from notion database ${process.env.NOTION_PAGES_DB_ID!}`)
     return pages.map((p) => {
-      const languages: AlternateURLs["languages"] = {}
-      i18n.locales.forEach((lang) => {
-        languages[lang] = `/${lang}/${p.slug}`
-      })
       return {
         ...p,
-        canonical: `/${p.lang}/${p.slug}`,
-        languages: languages,
+        canonical: `/${p.slug}`,
       }
     })
   },
@@ -56,7 +49,7 @@ export const getCachedBusinessIdeasPages = unstable_cache(
     return pages.map((p) => {
       return {
         ...p,
-        canonical: businessIdeasPage(i18n.defaultLocale, p.slug),
+        canonical: businessIdeasPage(p.slug),
       }
     })
   },
@@ -89,7 +82,7 @@ export const getCachedBlogTags = unstable_cache(
     return Array.from(tags).map((t) => ({
       name: t,
       label: tagToString(t),
-      canonical: blogTagPage(i18n.defaultLocale, t),
+      canonical: blogTagPage(t),
     }))
   },
   ["cms-blog-tags"],

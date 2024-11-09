@@ -7,20 +7,9 @@ import { Dot } from "@/components/dot"
 
 export function AuthorHeader({
   socialLinks,
-  dictionary,
-  hideSocialLinks,
   jsonLd,
 }: {
   socialLinks: Array<{ label: string; href: string; imageSrc: any }>
-  dictionary: {
-    headline: string
-    subtitlePrefix: string
-    subtitleAriaLabel: string
-    subtitleSuffix: string
-    imageAlt: string
-    socialLinksAriaLabel: string
-  }
-  hideSocialLinks?: boolean
   jsonLd?: WithContext<Person>
 }) {
   return (
@@ -28,31 +17,27 @@ export function AuthorHeader({
       <div className="md:flex md:items-center md:justify-center md:space-x-16">
         <div className="pb-8 text-center md:pb-0">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            {dictionary.headline}
+            Ahoy, I&apos;m Fabian
             <Dot />
           </h1>
           <div>
-            {`${dictionary.subtitlePrefix} `}
-            <span aria-hidden={true}>💚</span>
-            <span className="sr-only">{dictionary.subtitleAriaLabel}</span>
-            {` ${dictionary.subtitleSuffix}`}
+            I <span aria-hidden={true}>💚</span>
+            <span className="sr-only">love</span> travelling, software development & hiking.
           </div>
-          {!hideSocialLinks && (
-            <ul aria-label={dictionary.socialLinksAriaLabel} className="flex justify-center space-x-4 pt-8">
-              {socialLinks.map((l, index) => (
-                <li key={index}>
-                  <SocialLink {...l} className="grayscale group-hover:grayscale-0" />
-                </li>
-              ))}
-            </ul>
-          )}
+          <ul aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
+            {socialLinks.map((l, index) => (
+              <li key={index}>
+                <SocialLink {...l} className="grayscale group-hover:grayscale-0" />
+              </li>
+            ))}
+          </ul>
         </div>
         {/* Priority is set to fix the Lighthouse error: "Largest Contentful Paint image was lazily loaded" */}
         <NextImage
           className="mx-auto rounded-xl shadow-xl md:mx-0"
           width={350}
           src={authorLargeImage}
-          alt={dictionary.imageAlt}
+          alt="Picture of Fabian"
           unoptimized
           priority
         />
