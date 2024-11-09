@@ -10,7 +10,7 @@ export const newsletterPage = "/newsletter"
 export const apiDisableDraft = "/api/cms/disable-draft"
 
 export const locale = "en"
-export const brandColor = "#18b83d"
+export const brandColor = "#10b981"
 
 export const pageTitle = "Fabian Rosenthal"
 export const pageDescription =

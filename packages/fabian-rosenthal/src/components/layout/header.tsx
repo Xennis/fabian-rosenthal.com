@@ -14,14 +14,14 @@ function Logo({ homeHref }: { homeHref: string }) {
           alt="Profile picture of Fabian"
           width={75}
           height={75}
-          quality={100}
+          unoptimized
         />
         <div className="ps-3">
-          <span className="text-xl font-semibold tracking-tight group-hover:text-[#18b83d]">{pageTitle}</span>
+          <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
           <br />
           <span>
-            <span className="hidden sm:inline">The Enthusiastic </span>
             Software Engineer
+            <span className="hidden sm:inline"> & Indie Hacker</span>
           </span>
         </div>
       </NextLink>
@@ -42,7 +42,7 @@ function NavLink({
     <NextLink
       href={href}
       target={target}
-      className="py-1 font-semibold text-slate-700 underline decoration-[#18b83d] decoration-2 hover:no-underline"
+      className="decoration-primary-500 py-1 font-semibold text-slate-700 underline decoration-2 hover:no-underline"
     >
       {children}
     </NextLink>
