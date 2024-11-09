@@ -21,7 +21,7 @@ export function AuthorHeader({
             <Dot />
           </h1>
           <div>
-            I <span aria-hidden={true}>💚</span>
+            I <span aria-hidden={true}>🖤</span>
             <span className="sr-only">love</span> travelling, software development & hiking.
           </div>
           <ul aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">

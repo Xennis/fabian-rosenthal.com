@@ -12,7 +12,7 @@ export function SocialLink({
   className?: string
 }) {
   return (
-    <a href={href} title={label} target="_blank" className="group hover:text-[#18b83d]">
+    <a href={href} title={label} target="_blank" className="hover:text-primary-500 group">
       <span className="sr-only">{label}</span>
       <NextImage aria-hidden={true} className={className} width={25} src={imageSrc} alt={`${label} logo`} />
     </a>

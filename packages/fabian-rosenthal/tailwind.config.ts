@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import colors from "tailwindcss/colors"
 
 const config: Config = {
   content: [
@@ -7,7 +8,11 @@ const config: Config = {
     "./node_modules/@xennis/react-notion-cms-render/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.emerald,
+      },
+    },
   },
   plugins: [],
 }

@@ -17,7 +17,7 @@
 }
 
 .default a {
-  @apply font-semibold underline decoration-[#18b83d] decoration-2 underline-offset-2 hover:no-underline;
+  @apply decoration-primary-500 font-semibold underline decoration-2 underline-offset-2 hover:no-underline;
 }
 .default p {
   @apply py-2 leading-7;

@@ -35,7 +35,7 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
       <NextLink href={blogPagePost(post.slug)}>
         <div className="group flex flex-col-reverse justify-between gap-5 sm:flex-row sm:gap-7">
           <div className="flex-1">
-            <h2 className="pb-2 text-xl font-semibold group-hover:text-[#18b83d] sm:text-2xl">{post.title}</h2>
+            <h2 className="group-hover:text-primary-500 pb-2 text-xl font-semibold sm:text-2xl">{post.title}</h2>
             <p className="leading-7 text-gray-700">{post.metaDescription}</p>
           </div>
           <div>
