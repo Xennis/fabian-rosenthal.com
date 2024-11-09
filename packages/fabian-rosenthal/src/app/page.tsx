@@ -4,8 +4,8 @@ import { homePage } from "@/content/config"
 import { getCollections } from "@/content/collections"
 import { AuthorHeader } from "@/components/author-header"
 import { host } from "@/lib/next"
-import { Dot } from "@/components/dot"
 import { Projects } from "@/components/projects"
+import { Headline2 } from "@/components/layout/headline"
 
 export const metadata: Metadata = {
   alternates: {
@@ -30,10 +30,7 @@ export default function HomePage() {
         }}
       />
       <div className="mx-auto max-w-screen-md pt-14 sm:pt-16">
-        <h2 className="pb-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Short Bio
-          <Dot />
-        </h2>
+        <Headline2>Short Bio</Headline2>
         <div className="flex flex-col py-2">
           {collections.shortBio.map((s, index) => {
             return (
@@ -46,7 +43,7 @@ export default function HomePage() {
             )
           })}
         </div>
-        <Projects projects={collections.projects} />
+        <Projects />
       </div>
     </>
   )
