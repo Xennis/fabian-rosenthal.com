@@ -22,7 +22,8 @@ export async function generateStaticParams() {
   return (await getCachedBlogPosts()).map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata | null> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata | null> {
+  const params = await props.params
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) {
@@ -69,8 +70,9 @@ const BlogMeta = ({ post }: { post: BlogPost }) => {
   )
 }
 
-export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
-  const { isEnabled } = draftMode()
+export default async function BlogSlugPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
+  const { isEnabled } = await draftMode()
   const posts = await getCachedBlogPosts()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) {
