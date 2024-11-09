@@ -65,44 +65,6 @@ const collections = {
     { emoji: "📖", text: "Sharing my knowledge on building software products" },
   ],
   socialLinks: socialLinks,
-  projects: [
-    {
-      name: "FabiTours",
-      href: "https://fabi-tours.vercel.app/en",
-      tags: ["Next.js", "PWA", "Mapbox"],
-      shortDescription: "The interactive map shows the most beautiful places in Hamburg, Germany.",
-    },
-    {
-      name: "WunderDesk",
-      href: "https://wunderdesk.app",
-      tags: ["SaaS"],
-      shortDescription: "The easiest way to build your help center with Notion.",
-    },
-    {
-      name: "Green Walking: Walk & Hike Map",
-      href: "https://xennis.github.io/green-walking/",
-      tags: ["AndroidApp", "Flutter"],
-      shortDescription: "The map shows all kinds of trails for walking and hiking.",
-    },
-    {
-      name: "Restore Leveling After G28",
-      href: "https://plugins.octoprint.org/plugins/restorelevelingafterg28/",
-      tags: ["OctoPrintPlugin", "3DPrinting"],
-      shortDescription: "Automatically keeps bed leveling on after G28 (Auto Home).",
-    },
-    {
-      name: "Life Clock App",
-      href: "https://play.google.com/store/apps/details?id=org.xennis.apps.lifetime_clock",
-      tags: ["AndroidApp", "Flutter"],
-      shortDescription: "A clock to visualize your life to encourage making the most out of it.",
-    },
-    {
-      name: "EpiDoc Parser",
-      href: "https://xennis.github.io/epidoc-parser/",
-      tags: ["PythonLibrary"],
-      shortDescription: "Python parser for EpiDoc (epigraphic documents in TEI XML).",
-    },
-  ],
 }
 
 export const getCollections = () => {

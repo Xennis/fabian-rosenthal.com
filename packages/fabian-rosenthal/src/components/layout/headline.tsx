@@ -12,6 +12,15 @@ export function Headline({ subtitle, children }: { subtitle?: string; children: 
   )
 }
 
+export function Headline2({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="pb-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+      {children}
+      <Dot />
+    </h2>
+  )
+}
+
 export function HeadlineBlog({ subtitle, children }: { subtitle?: string; children: React.ReactNode }) {
   return (
     <>
