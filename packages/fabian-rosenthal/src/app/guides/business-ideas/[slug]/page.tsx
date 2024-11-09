@@ -13,7 +13,8 @@ export async function generateStaticParams() {
   return (await getCachedBusinessIdeasPages()).map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata | null> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata | null> {
+  const params = await props.params
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function SlugPage({ params }: { params: { slug: string } }) {
+export default async function SlugPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
   const pages = await getCachedBusinessIdeasPages()
   const page = pages.find((p) => p.slug === params.slug) ?? null
   if (page === null) {

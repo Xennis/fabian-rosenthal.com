@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     return new Response("Invalid canonical", { status: 401 })
   }
 
-  draftMode().enable()
+  ;(await draftMode()).enable()
 
   // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
   redirect(canonical)
