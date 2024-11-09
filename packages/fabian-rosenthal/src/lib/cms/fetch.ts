@@ -34,6 +34,13 @@ export const fetchPages = () =>
   fetchDatabasePages(notionClient, processPages, {
     database_id: process.env.NOTION_PAGES_DB_ID!,
     page_size: 100,
+    filter: {
+      property: "archived",
+      type: "checkbox",
+      checkbox: {
+        equals: false,
+      },
+    },
   })
 
 export const fetchBusinessIdeasPages = () =>
