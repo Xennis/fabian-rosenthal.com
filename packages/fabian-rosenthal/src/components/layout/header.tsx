@@ -1,7 +1,7 @@
 import NextLink from "next/link"
 import NextImage from "next/image"
 
-import authorImage from "@/content/images/author-75x75.png"
+import authorImage from "@/content/images/author-512x512.png"
 import { pageTitle } from "@/content/config"
 
 function Logo({ homeHref }: { homeHref: string }) {
@@ -14,7 +14,7 @@ function Logo({ homeHref }: { homeHref: string }) {
           alt="Profile picture of Fabian"
           width={75}
           height={75}
-          unoptimized
+          quality={100}
         />
         <div className="ps-3">
           <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
