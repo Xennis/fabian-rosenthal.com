@@ -6,6 +6,8 @@ import { AuthorHeader } from "@/components/author-header"
 import { host } from "@/lib/next"
 import { Projects } from "@/components/projects"
 import { Headline2 } from "@/components/layout/headline"
+import NextLink from "next/link"
+import { Link } from "@/components/layout/link"
 
 export const metadata: Metadata = {
   alternates: {
@@ -42,6 +44,13 @@ export default function HomePage() {
               </span>
             )
           })}
+        </div>
+        <div className="pt-2.5">
+          I work four days a week at{" "}
+          <Link href="https://cc.systems/en/" target="_blank">
+            cc.systems
+          </Link>
+          , building software applications for clients. Alongside, I run a solo business creating micro SaaS products.
         </div>
         <Projects />
       </div>
