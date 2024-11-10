@@ -2,7 +2,6 @@ import "server-only"
 
 import threadsIcon from "@/content/images/social/threads.svg"
 import youtubeIcon from "@/content/images/social/youtube.svg"
-import instagramIcon from "@/content/images/social/instagram.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import linkedinIcon from "@/content/images/social/linkedin.svg"
 
@@ -10,29 +9,29 @@ import { blogPage, legalPage } from "@/content/config"
 
 const socialLinks = [
   {
-    label: "Threads",
-    href: "https://www.threads.net/@the.fabian.rosenthal",
-    imageSrc: threadsIcon,
-  },
-  {
     label: "YouTube",
     href: "https://www.youtube.com/@fabian.rosenthal",
     imageSrc: youtubeIcon,
   },
   {
-    label: "Instagram",
-    href: "https://www.instagram.com/the.fabian.rosenthal/",
-    imageSrc: instagramIcon,
+    label: "Threads",
+    href: "https://www.threads.net/@the.fabian.rosenthal",
+    imageSrc: threadsIcon,
+  },
+  // {
+  //   label: "Instagram",
+  //   href: "https://www.instagram.com/the.fabian.rosenthal/",
+  //   imageSrc: instagramIcon,
+  // },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/fabian-rosenthal",
+    imageSrc: linkedinIcon,
   },
   {
     label: "GitHub",
     href: "https://github.com/Xennis",
     imageSrc: githubIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/fabian-rosenthal",
-    imageSrc: linkedinIcon,
   },
 ]
 

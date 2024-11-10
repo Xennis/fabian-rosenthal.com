@@ -27,7 +27,7 @@ export function AuthorHeader({
           <ul aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
             {socialLinks.map((l, index) => (
               <li key={index}>
-                <SocialLink {...l} className="grayscale group-hover:grayscale-0" />
+                <SocialLink {...l} className="duration-500 group-hover:scale-110" />
               </li>
             ))}
           </ul>
