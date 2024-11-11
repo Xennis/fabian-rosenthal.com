@@ -1,8 +1,9 @@
 import NextLink from "next/link"
 import NextImage from "next/image"
-
 import authorImage from "@/content/images/author-512x512.png"
-import { pageTitle } from "@/content/config"
+import { pageTitle, youtubeSubscribeLink } from "@/content/config"
+import youtubeIcon from "@/content/images/social/youtube.svg"
+import { SocialLink } from "@/components/social-links"
 
 function Logo({ homeHref }: { homeHref: string }) {
   return (
@@ -66,8 +67,17 @@ export function Header({
               {l.label}
             </NavLink>
           ))}
+          <HeroButton />
         </div>
       </nav>
     </header>
+  )
+}
+
+const HeroButton = () => {
+  return (
+    <div className="border-s-2 ps-6 hover:grayscale md:ps-3">
+      <SocialLink label="Subscribe" href={youtubeSubscribeLink} imageSrc={youtubeIcon} />
+    </div>
   )
 }
