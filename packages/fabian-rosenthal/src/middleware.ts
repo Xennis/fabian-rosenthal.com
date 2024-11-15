@@ -8,7 +8,7 @@ export const config = {
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname
   // The content of the about page is now on the home page.
-  if (path.endsWith("/de") || path.endsWith("/de") || path.endsWith("/about")) {
+  if (path.endsWith("/de") || path.endsWith("/en") || path.endsWith("/about")) {
     const newUrl = new URL("/", req.url)
     console.log(`redirect ${req.url} to ${newUrl}`)
     return NextResponse.redirect(newUrl)
