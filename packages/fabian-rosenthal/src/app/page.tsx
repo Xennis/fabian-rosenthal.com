@@ -6,7 +6,6 @@ import { AuthorHeader } from "@/components/author-header"
 import { host } from "@/lib/next"
 import { Projects } from "@/components/projects"
 import { Headline2 } from "@/components/layout/headline"
-import NextLink from "next/link"
 import { Link } from "@/components/layout/link"
 
 export const metadata: Metadata = {

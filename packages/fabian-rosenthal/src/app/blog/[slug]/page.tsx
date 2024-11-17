@@ -31,6 +31,9 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 
   return {
+    alternates: {
+      canonical: post.canonical,
+    },
     description: post.metaDescription,
     openGraph: {
       description: post.metaDescription,

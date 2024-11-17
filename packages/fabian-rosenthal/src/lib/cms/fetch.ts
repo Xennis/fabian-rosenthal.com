@@ -3,10 +3,10 @@ import { fetchBlocksChildren } from "@xennis/react-notion-cms-render"
 import { Client } from "@notionhq/client"
 import type { QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints"
 
-import { processPages } from "@/lib/cms/pages"
-import { processBusinessIdeasPages } from "@/lib/cms/business-ideas"
+import { Page, processPages } from "@/lib/cms/pages"
+import { Page as BiPage, processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
-import { processBlogPosts } from "@/lib/cms/blog-posts"
+import { BlogPost, processBlogPosts } from "@/lib/cms/blog-posts"
 import { blogPagePost } from "@/content/config"
 
 const notionClient = new Client({
@@ -30,7 +30,7 @@ export const fetchPageContent = async (blockId: string) => {
 
 export const fetchPage = (pageId: string) => notionClient.pages.retrieve({ page_id: pageId })
 
-export const fetchPages = () =>
+export const fetchPages = (): Promise<Array<Page>> =>
   fetchDatabasePages(notionClient, processPages, {
     database_id: process.env.NOTION_PAGES_DB_ID!,
     page_size: 100,
@@ -43,7 +43,7 @@ export const fetchPages = () =>
     },
   })
 
-export const fetchBusinessIdeasPages = () =>
+export const fetchBusinessIdeasPages = (): Promise<Array<BiPage>> =>
   fetchDatabasePages(notionClient, processBusinessIdeasPages, {
     database_id: process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!,
     page_size: 100,
@@ -56,7 +56,7 @@ export const fetchBusinessIdeasPages = () =>
     },
   })
 
-export const fetchBlogPosts = async (draftMode?: boolean) => {
+export const fetchBlogPosts = async (draftMode?: boolean): Promise<Array<BlogPost & { canonical: string }>> => {
   const filter: QueryDatabaseParameters["filter"] =
     draftMode === true
       ? undefined
