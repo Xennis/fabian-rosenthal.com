@@ -22,6 +22,9 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 
   return {
+    alternates: {
+      canonical: page.canonical,
+    },
     // description: page.metaDescription,
     openGraph: {
       // description: page.metaDescription,

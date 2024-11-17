@@ -19,6 +19,9 @@ export async function generateMetadata(props: { params: Promise<{ tag: string }>
   }
   const description = `All blog articles with the tag ${tag.label}.`
   return {
+    alternates: {
+      canonical: tag.canonical,
+    },
     description: description,
     openGraph: {
       description: description,
