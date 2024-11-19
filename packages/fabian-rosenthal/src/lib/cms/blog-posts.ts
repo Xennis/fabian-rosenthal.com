@@ -70,6 +70,8 @@ export const tagToString = (tag: Tag) => {
       return "Next.js"
     case "react":
       return "React"
+    case "micro-saas":
+      return "Micro SaaS"
     case "seo":
       return "SEO"
     case "tailwind-css":
