@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { homePage } from "@/content/config"
+import { homePage, profileLargeImage } from "@/content/config"
 import { getCollections } from "@/content/collections"
 import { AuthorHeader } from "@/components/author-header"
 import { host } from "@/lib/next"
@@ -24,7 +24,7 @@ export default function HomePage() {
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Fabian Rosenthal",
-          // image: authorLargeImage.src,
+          image: `https://${host}${profileLargeImage}`,
           jobTitle: "Software Engineer",
           url: `https://${host}`,
           sameAs: collections.socialLinks.map((l) => l.href),

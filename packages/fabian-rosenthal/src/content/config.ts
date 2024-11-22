@@ -1,3 +1,7 @@
+// Images
+export const profileLargeImage = "/profile-large.webp"
+
+// Pages
 export const slugPage = (slug: string) => `/${slug}`
 export const blogPage = "/blog"
 export const blogPagePost = (slug: string) => `/blog/${slug}`
@@ -14,6 +18,6 @@ export const brandColor = "#10b981"
 
 export const pageTitle = "Fabian Rosenthal"
 export const pageDescription =
-  "My site features articles and insight about solo software businesses and micro SaaS: Starting a business as a software developer. Finding and validating software ideas."
+  "Software Developer, Indie Hacker & Creator. Building large applications & micro SaaS. Sharing my knowledge on building software products."
 
 export const youtubeSubscribeLink = "https://youtube.com/@fabian.rosenthal?sub_confirmation=1"
