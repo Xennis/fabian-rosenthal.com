@@ -3,10 +3,9 @@ import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline"
 import { Metadata } from "next"
 import NextLink from "next/link"
 import { draftMode } from "next/headers"
-import { Article, WithContext } from "schema-dts"
+import { Article, BreadcrumbList, WithContext } from "schema-dts"
 import NextImage from "next/image"
 import "@xennis/react-notion-cms-render/dist/styles.css"
-
 import { getCachedBlogPosts, getCachedPageContent } from "@/lib/cms/fetchers"
 import { HeadlineBlog } from "@/components/layout/headline"
 import { apiDisableDraft, blogPage, pageTitle } from "@/content/config"
@@ -17,6 +16,7 @@ import { BlogTagList } from "@/components/blog-post-list"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
 import { fetchPageContent } from "@/lib/cms/fetch"
+import { host } from "@/lib/next"
 
 export async function generateStaticParams() {
   return (await getCachedBlogPosts()).map((p) => ({ slug: p.slug }))
@@ -83,7 +83,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
   }
 
   const content = isEnabled ? await fetchPageContent(post.notionId) : await getCachedPageContent(post.notionId)
-  const jsonLd: WithContext<Article> = {
+  const postJsonLd: WithContext<Article> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
@@ -94,6 +94,23 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
       "@type": "Person",
       name: "Fabian Rosenthal",
     },
+  }
+  const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Blog",
+        item: `https://${host}${blogPage}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: post.title,
+      },
+    ],
   }
 
   return (
@@ -157,7 +174,8 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
           }}
         />
       </div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(postJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
     </>
   )
 }
