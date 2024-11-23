@@ -11,12 +11,12 @@ export default async function middleware(req: NextRequest) {
   if (path.endsWith("/de") || path.endsWith("/en") || path.endsWith("/about")) {
     const newUrl = new URL("/", req.url)
     console.log(`redirect ${req.url} to ${newUrl}`)
-    return NextResponse.redirect(newUrl)
+    return NextResponse.redirect(newUrl, { status: 308 })
   }
 
   // Remove lang from URL.
   const newPath = req.nextUrl.pathname.replace("/de/", "/").replace("/en/", "/")
   const newUrl = new URL(newPath, req.url)
   console.log(`redirect ${req.url} to ${newUrl}`)
-  return NextResponse.redirect(newUrl)
+  return NextResponse.redirect(newUrl, { status: 308 })
 }
