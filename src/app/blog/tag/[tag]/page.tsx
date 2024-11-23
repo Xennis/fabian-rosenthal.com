@@ -4,7 +4,9 @@ import { getCachedBlogPosts, getCachedBlogTags } from "@/lib/cms/fetchers"
 import { Headline } from "@/components/layout/headline"
 import { tagToString } from "@/lib/cms/blog-posts"
 import { BlogPostList } from "@/components/blog-post-list"
-import { pageTitle } from "@/content/config"
+import { blogPage, pageTitle } from "@/content/config"
+import { BreadcrumbList, WithContext } from "schema-dts"
+import { host } from "@/lib/next"
 
 export async function generateStaticParams() {
   return (await getCachedBlogTags()).map((t) => ({ tag: t.name }))
@@ -36,10 +38,31 @@ export async function generateMetadata(props: { params: Promise<{ tag: string }>
 export default async function TagPage(props: { params: Promise<{ tag: string }> }) {
   const params = await props.params
   const postsWithTag = (await getCachedBlogPosts()).filter((p) => p.tags.includes(params.tag))
+  const tagName = tagToString(params.tag)
+
+  const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Blog",
+        item: `https://${host}${blogPage}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: tagName,
+      },
+    ],
+  }
+
   return (
     <div className="mx-auto max-w-screen-md">
-      <Headline subtitle="Blog articles with this tag.">Topic: {tagToString(params.tag)}</Headline>
+      <Headline subtitle="Blog articles with this tag.">Topic: {tagName}</Headline>
       <BlogPostList posts={postsWithTag} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
     </div>
   )
 }
