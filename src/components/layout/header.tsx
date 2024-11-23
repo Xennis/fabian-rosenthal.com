@@ -18,7 +18,7 @@ function Logo({ homeHref }: { homeHref: string }) {
           quality={100}
         />
         <div className="ps-3">
-          <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
+          <span className="text-xl font-semibold tracking-tight group-hover:text-primary-500">{pageTitle}</span>
           <br />
           <span>
             Software Engineer
@@ -43,7 +43,7 @@ function NavLink({
     <NextLink
       href={href}
       target={target}
-      className="decoration-primary-500 py-1 font-semibold text-slate-700 underline decoration-2 hover:no-underline"
+      className="py-1 font-semibold text-slate-700 underline decoration-primary-500 decoration-2 hover:no-underline"
     >
       {children}
     </NextLink>
