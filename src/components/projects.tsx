@@ -18,7 +18,7 @@ const projects = [
   },
   {
     name: "FabiTours",
-    href: "https://fabi-tours.vercel.app/en",
+    href: "https://tours.fabian-rosenthal.com",
     tags: ["Next.js", "PWA", "Mapbox"],
     shortDescription: "The interactive map shows the most beautiful places in Hamburg, Germany.",
     status: "active",
