@@ -6,8 +6,8 @@ import { getCollections } from "@/content/collections"
 import { classNames } from "@/lib/tw"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { Analytics } from "@vercel/analytics/react"
 import { Inter } from "next/font/google"
+import { UmamiAnalytics } from "@/components/umami-analytics"
 
 export const metadata: Metadata = {
   description: pageDescription,
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="pxcontent pb-12 pt-10">{children}</main>
           <Footer socialLinks={collections.socialLinks} navLinks={collections.footer.navLinks} />
         </div>
-        <Analytics />
+        <UmamiAnalytics />
       </body>
     </html>
   )
