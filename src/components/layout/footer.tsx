@@ -18,7 +18,7 @@ export function Footer({
           </li>
         ))}
       </ul>
-      <div className="pt-4 text-start text-slate-700 md:pt-0 md:text-end">
+      <div className="pt-4 text-start text-onbackground-700 md:pt-0 md:text-end">
         <span className="text-sm">© 2024 Fabian Rosenthal</span>
         <br />
         <span className="text-xs">

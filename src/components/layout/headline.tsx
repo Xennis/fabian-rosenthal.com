@@ -7,7 +7,7 @@ export function Headline({ subtitle, children }: { subtitle?: string; children: 
         {children}
         <Dot />
       </h1>
-      {subtitle && <div className="pt-1.5 text-lg leading-8 tracking-tight text-slate-600">{subtitle}</div>}
+      {subtitle && <div className="pt-1.5 text-lg leading-8 tracking-tight text-onbackground-600">{subtitle}</div>}
     </div>
   )
 }
@@ -28,7 +28,9 @@ export function HeadlineBlog({ subtitle, children }: { subtitle?: string; childr
         {children}
         <Dot />
       </h1>
-      {subtitle && <div className="pt-2.5 text-lg leading-8 tracking-tight text-slate-600 sm:text-xl">{subtitle}</div>}
+      {subtitle && (
+        <div className="pt-2.5 text-lg leading-8 tracking-tight text-onbackground-900 sm:text-xl">{subtitle}</div>
+      )}
     </>
   )
 }

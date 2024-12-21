@@ -43,7 +43,7 @@ function NavLink({
     <NextLink
       href={href}
       target={target}
-      className="py-1 font-semibold text-slate-700 underline decoration-primary-500 decoration-2 hover:no-underline"
+      className="py-1 font-semibold underline decoration-primary-500 decoration-2 hover:no-underline"
     >
       {children}
     </NextLink>

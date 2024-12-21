@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: colors.emerald,
+        onbackground: colors.slate,
       },
     },
   },

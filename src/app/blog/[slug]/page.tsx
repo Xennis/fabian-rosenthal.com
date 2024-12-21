@@ -52,7 +52,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 
 const BlogMeta = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="flex flex-col gap-y-3 text-sm text-slate-600">
+    <div className="flex flex-col gap-y-3 text-sm text-onbackground-600">
       <div className="flex flex-row space-x-2">
         <CalendarIcon title="Publish date" aria-hidden={true} className="h-5 w-5" />
         <div>
