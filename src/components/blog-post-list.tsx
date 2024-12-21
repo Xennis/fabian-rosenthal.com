@@ -9,7 +9,7 @@ import { formatDate } from "@/lib/date"
 const TagChip = ({ tag }: { tag: Tag }) => {
   return (
     <NextLink
-      className={"rounded-xl bg-slate-800 px-2 py-1 text-xs text-white hover:bg-slate-600"}
+      className="rounded-xl bg-onbackground-800 px-2 py-1 text-xs text-white hover:bg-primary-500 hover:text-onbackground-900"
       href={blogTagPage(tag)}
     >
       {tagToString(tag)}
@@ -31,41 +31,36 @@ export const BlogTagList = ({ tags }: { tags: Array<Tag> }) => {
 
 const BlogPostCard = ({ post }: { post: BlogPost }) => {
   return (
-    <>
-      <NextLink href={blogPagePost(post.slug)}>
-        <div className="group flex flex-col-reverse justify-between gap-5 sm:flex-row sm:gap-7">
-          <div className="flex-1">
-            <h2 className="pb-2 text-xl font-semibold group-hover:text-primary-500 sm:text-2xl">{post.title}</h2>
-            <p className="leading-7 text-gray-700">{post.metaDescription}</p>
-          </div>
-          <div>
-            <div className="relative aspect-[1.91/1] w-full sm:w-[267px]">
-              {post.ogImage && (
-                <NextImage
-                  src={post.ogImage}
-                  alt="Post image"
-                  className="rounded-md sm:rounded-lg"
-                  fill
-                  quality={100}
-                />
-              )}
-            </div>
-          </div>
+    <div>
+      <NextLink
+        href={blogPagePost(post.slug)}
+        className="group flex flex-col-reverse justify-between gap-5 sm:flex-row sm:gap-7"
+      >
+        <div className="flex-1">
+          <h2 className="pb-2 text-xl font-semibold group-hover:text-primary-500 sm:text-2xl">{post.title}</h2>
+          <p className="leading-7 text-gray-700">{post.metaDescription}</p>
         </div>
-        <div className="gap-3 pt-4 text-sm text-gray-600 md:flex md:flex-row">
-          <div className="flex gap-1">
-            <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
-            <span className="sr-only">Published: </span>
-            <span>{formatDate(post.publishDate)}</span>
-          </div>
-          <div className="flex gap-1.5 pt-3 md:pt-0">
-            <TagIcon title="Tags" aria-hidden={true} className="h-5 w-5" />
-            {/* The list itself has an aria label */}
-            <BlogTagList tags={post.tags} />
+        <div>
+          <div className="relative aspect-[1.91/1] w-full sm:w-[267px]">
+            {post.ogImage && (
+              <NextImage src={post.ogImage} alt="Post image" className="rounded-md sm:rounded-lg" fill quality={100} />
+            )}
           </div>
         </div>
       </NextLink>
-    </>
+      <div className="gap-3 pt-4 text-sm text-gray-600 md:flex md:flex-row">
+        <div className="flex gap-1">
+          <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
+          <span className="sr-only">Published: </span>
+          <span>{formatDate(post.publishDate)}</span>
+        </div>
+        <div className="flex gap-1.5 pt-3 md:pt-0">
+          <TagIcon title="Tags" aria-hidden={true} className="h-5 w-5" />
+          {/* The list itself has an aria label */}
+          <BlogTagList tags={post.tags} />
+        </div>
+      </div>
+    </div>
   )
 }
 

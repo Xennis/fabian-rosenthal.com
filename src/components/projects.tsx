@@ -82,7 +82,7 @@ export function Projects() {
   return (
     <div className="pt-10 md:pt-12">
       <Headline2>Current Projects</Headline2>
-      <ul className="ms-6 list-outside list-disc py-1 leading-7 text-gray-700">
+      <ul className="ms-6 list-outside list-disc py-1 leading-7">
         {projects.map((p, index) => (
           <li key={index} className="pt-2">
             <ProjectItem project={p} />
