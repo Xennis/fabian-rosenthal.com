@@ -19,7 +19,7 @@ export function Footer({
         ))}
       </ul>
       <div className="pt-4 text-start text-onbackground-700 md:pt-0 md:text-end">
-        <span className="text-sm">© 2024 Fabian Rosenthal</span>
+        <span className="text-sm">© {new Date().getFullYear()} Fabian Rosenthal</span>
         <br />
         <span className="text-xs">
           {navLinks.map((l, index) => (
