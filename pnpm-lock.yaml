@@ -22,8 +22,8 @@ importers:
         specifier: ^0.27.1
         version: 0.27.1
       '@xennis/react-notion-cms-fetch':
-        specifier: 1.0.0-beta.2
-        version: 1.0.0-beta.2
+        specifier: 1.0.0-beta.3
+        version: 1.0.0-beta.3
       '@xennis/react-notion-cms-render':
         specifier: 1.0.0-beta.3
         version: 1.0.0-beta.3
@@ -41,8 +41,8 @@ importers:
         version: 19.0.0(react@19.0.0)
     devDependencies:
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.12.0
+        version: 22.12.0
       '@types/prismjs':
         specifier: ^1.26.5
         version: 1.26.5
@@ -68,8 +68,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.10
-        version: 0.6.10(prettier@3.4.2)
+        specifier: ^0.6.11
+        version: 0.6.11(prettier@3.4.2)
       schema-dts:
         specifier: ^1.1.2
         version: 1.1.2(typescript@5.7.3)
@@ -384,8 +384,8 @@ packages:
   '@types/node-fetch@2.6.12':
     resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
 
-  '@types/node@22.10.7':
-    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
+  '@types/node@22.12.0':
+    resolution: {integrity: sha512-Fll2FZ1riMjNmlmJOdAyY5pUbkftXslB5DgEzlIuNaiWhXd00FhWxVC/r4yV/4wBb9JfImTu+jiSvXTkJ7F/gA==}
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
@@ -441,8 +441,8 @@ packages:
     resolution: {integrity: sha512-X5EG9W1cZW+Nbt/XdrJJSl5DzCXXn1JRP5nfFwkpFD03nB6uh6BldwX4syElHcciM4Pih8CS7Ri1mtLCJvxSHA==}
     engines: {node: '>=16.14'}
 
-  '@xennis/react-notion-cms-fetch@1.0.0-beta.2':
-    resolution: {integrity: sha512-3g/NQXn5ytxmsSVtUNqy8AJI5PYvDR0iwd5Nv3YkqwA/fNhPPnih6YaqqrLAro5AHzVcZtnuuwS3GuA7NQ8u2Q==}
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.3':
+    resolution: {integrity: sha512-bXvYlaumUCCpA18Ls8JRcWBekhY1depLm4DTdZ5VxY9Xj7tXEGXvmnTQvr8nIRJOWtMhHmg/L1ZVCZLszAbgJQ==}
 
   '@xennis/react-notion-cms-render@1.0.0-beta.3':
     resolution: {integrity: sha512-kqhtAe4jqrcIYMdQ8NfJwgP5QHV0DQ/fAxODlPbvoh/KF59f5e1nbXgm/I2foeRQGyLaHRGgMX2Z9pjuNpGhrQ==}
@@ -1478,8 +1478,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-tailwindcss@0.6.10:
-    resolution: {integrity: sha512-ndj2WLDaMzACnr1gAYZiZZLs5ZdOeBYgOsbBmHj3nvW/6q8h8PymsXiEnKvj/9qgCCAoHyvLOisoQdIcsDvIgw==}
+  prettier-plugin-tailwindcss@0.6.11:
+    resolution: {integrity: sha512-YxaYSIvZPAqhrrEpRtonnrXdghZg1irNg4qrjboCXrpybLWVs55cW2N3juhspVJiO0JBvYJT8SYsJpc8OQSnsA==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -2153,10 +2153,10 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 22.10.7
+      '@types/node': 22.12.0
       form-data: 4.0.1
 
-  '@types/node@22.10.7':
+  '@types/node@22.12.0':
     dependencies:
       undici-types: 6.20.0
 
@@ -2247,7 +2247,7 @@ snapshots:
       throttleit: 2.1.0
       undici: 5.28.5
 
-  '@xennis/react-notion-cms-fetch@1.0.0-beta.2':
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.3':
     dependencies:
       '@notionhq/client': 2.2.15
     transitivePeerDependencies:
@@ -3450,7 +3450,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.6.10(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.11(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
 
