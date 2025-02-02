@@ -10,7 +10,7 @@ function Logo({ homeHref }: { homeHref: string }) {
     <div>
       <NextLink title="Home" aria-label="Home" href={homeHref} className="group flex items-center">
         <NextImage
-          className="rounded"
+          className="rounded-sm"
           src={authorImage}
           alt="Profile picture of Fabian"
           width={75}
@@ -18,7 +18,7 @@ function Logo({ homeHref }: { homeHref: string }) {
           quality={100}
         />
         <div className="ps-3">
-          <span className="text-xl font-semibold tracking-tight group-hover:text-primary-500">{pageTitle}</span>
+          <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
           <br />
           <span>
             Software Engineer
@@ -43,7 +43,7 @@ function NavLink({
     <NextLink
       href={href}
       target={target}
-      className="py-1 font-semibold underline decoration-primary-500 decoration-2 hover:no-underline"
+      className="decoration-primary-500 py-1 font-semibold underline decoration-2 hover:no-underline"
     >
       {children}
     </NextLink>
@@ -59,7 +59,7 @@ export function Header({
 }) {
   return (
     <header className="w-full bg-gray-100">
-      <nav className="pxcontent mx-auto max-w-screen-xl py-7 md:flex md:items-center md:justify-between">
+      <nav className="pxcontent mx-auto max-w-(--breakpoint-xl) py-7 md:flex md:items-center md:justify-between">
         <Logo homeHref={homeHref} />
         <div className="flex items-center justify-center space-x-6 pt-5 md:justify-normal md:space-x-4 md:pt-0">
           {navLinks.map((l, index) => (

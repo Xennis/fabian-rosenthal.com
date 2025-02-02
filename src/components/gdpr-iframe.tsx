@@ -49,11 +49,11 @@ export function GdprIframe({
     return <div className="min-h-[500px]">{children}</div>
   }
   if (enabled === "loading") {
-    return <div className="h-[500px] w-full animate-pulse rounded bg-gray-100"></div>
+    return <div className="h-[500px] w-full animate-pulse rounded-sm bg-gray-100"></div>
   }
 
   return (
-    <div className="flex h-[500px] w-full rounded bg-green-200">
+    <div className="flex h-[500px] w-full rounded-sm bg-green-200">
       <div className="m-auto p-4">
         <p className="pb-4">
           {config.firstLine}
@@ -69,7 +69,7 @@ export function GdprIframe({
         </p>
         <button
           type="button"
-          className="rounded bg-onbackground-900 px-3 py-1.5 font-semibold text-white shadow"
+          className="bg-onbackground-900 rounded-sm px-3 py-1.5 font-semibold text-white shadow-sm"
           onClick={onClick}
         >
           Load external content

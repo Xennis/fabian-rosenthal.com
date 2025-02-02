@@ -52,7 +52,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 
 const BlogMeta = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="flex flex-col gap-y-3 text-sm text-onbackground-600">
+    <div className="text-onbackground-600 flex flex-col gap-y-3 text-sm">
       <div className="flex flex-row space-x-2">
         <CalendarIcon title="Publish date" aria-hidden={true} className="h-5 w-5" />
         <div>
@@ -136,7 +136,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
           </div>
         </div>
       )}
-      <div className="mx-auto max-w-screen-md">
+      <div className="mx-auto max-w-(--breakpoint-md)">
         <HeadlineBlog subtitle={post.pageSubtitle ?? undefined}>{post.title}</HeadlineBlog>
         <div className="my-5 border-y border-gray-100 py-4">
           <BlogMeta post={post} />
@@ -153,7 +153,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
           />
         </div>
       )}
-      <div className="mx-auto max-w-screen-md">
+      <div className="mx-auto max-w-(--breakpoint-md)">
         <Render
           blocks={content}
           options={{
@@ -169,7 +169,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
               a: (props) => <Link href={props.href ?? "#"} {...props} />,
               code: (props) => <Code {...props} />,
               // eslint-disable-next-line @next/next/no-img-element
-              img: (props) => <img alt={props.alt} {...props} className="mx-auto rounded" />,
+              img: (props) => <img alt={props.alt} {...props} className="mx-auto rounded-sm" />,
             },
           }}
         />

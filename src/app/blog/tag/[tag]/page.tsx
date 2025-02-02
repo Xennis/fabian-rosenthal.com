@@ -59,7 +59,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   }
 
   return (
-    <div className="mx-auto max-w-screen-md">
+    <div className="mx-auto max-w-(--breakpoint-md)">
       <Headline subtitle="Blog articles with this tag.">Topic: {tagName}</Headline>
       <BlogPostList posts={postsWithTag} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />

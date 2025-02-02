@@ -58,7 +58,7 @@ export default async function SlugPage(props: { params: Promise<{ slug: string }
   }
 
   return (
-    <div className="mx-auto max-w-screen-md">
+    <div className="mx-auto max-w-(--breakpoint-md)">
       <Headline subtitle={page.pageSubtitle ?? undefined}>{page.title}</Headline>
       <Render
         blocks={content}
@@ -69,7 +69,7 @@ export default async function SlugPage(props: { params: Promise<{ slug: string }
       />
       {!page.homePage && (
         <div className="mt-14 border-t border-gray-100 py-4">
-          <div className="text-sm text-onbackground-600">
+          <div className="text-onbackground-600 text-sm">
             Last updated: {formatDate(page.lastEdited)}
             <span className="px-2">·</span>
             Published in <Link href={businessIdeas}>Business Ideas</Link>

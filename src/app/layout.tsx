@@ -42,10 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang={locale} className={classNames("h-full bg-white", inter.className)} suppressHydrationWarning>
-      <body className="h-full min-w-[280px] border-t-8 border-primary-500" suppressHydrationWarning>
+      <body className="border-primary-500 h-full min-w-[280px] border-t-8" suppressHydrationWarning>
         <Header homeHref={homePage} navLinks={collections.header.navLinks} />
-        <div className="mx-auto max-w-screen-xl">
-          <main className="pxcontent pb-12 pt-10">{children}</main>
+        <div className="mx-auto max-w-(--breakpoint-xl)">
+          <main className="pxcontent pt-10 pb-12">{children}</main>
           <Footer socialLinks={collections.socialLinks} navLinks={collections.footer.navLinks} />
         </div>
         <UmamiAnalytics />
