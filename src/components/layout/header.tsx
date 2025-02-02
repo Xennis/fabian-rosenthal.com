@@ -76,7 +76,7 @@ export function Header({
 
 const HeroButton = () => {
   return (
-    <div className="border-s-2 ps-6 hover:grayscale md:ps-3">
+    <div className="border-onbackground-200 border-s-2 ps-6 hover:grayscale md:ps-3">
       <SocialLink label="Subscribe" href={youtubeSubscribeLink} imageSrc={youtubeIcon} />
     </div>
   )
