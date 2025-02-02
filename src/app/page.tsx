@@ -30,7 +30,7 @@ export default function HomePage() {
           sameAs: collections.socialLinks.map((l) => l.href),
         }}
       />
-      <div className="mx-auto max-w-screen-md pt-14 sm:pt-16">
+      <div className="mx-auto max-w-(--breakpoint-md) pt-14 sm:pt-16">
         <Headline2>Short Bio</Headline2>
         <div className="flex flex-col py-2">
           {collections.shortBio.map((s, index) => {

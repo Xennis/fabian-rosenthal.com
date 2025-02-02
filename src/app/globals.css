@@ -1,6 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source '../../node_modules/@xennis/react-notion-cms-render/**/*.{js,jsx}';
+
+@theme {
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  --color-primary-950: #022c22;
+
+  --color-onbackground-50: #f8fafc;
+  --color-onbackground-100: #f1f5f9;
+  --color-onbackground-200: #e2e8f0;
+  --color-onbackground-300: #cbd5e1;
+  --color-onbackground-400: #94a3b8;
+  --color-onbackground-500: #64748b;
+  --color-onbackground-600: #475569;
+  --color-onbackground-700: #334155;
+  --color-onbackground-800: #1e293b;
+  --color-onbackground-900: #0f172a;
+  --color-onbackground-950: #020617;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 html {
   @apply text-onbackground-900;
@@ -11,7 +55,7 @@ html {
 }
 
 .max-width-regular {
-  @apply mx-auto max-w-screen-lg;
+  @apply mx-auto max-w-(--breakpoint-lg);
 }
 
 /* Select color */
@@ -21,7 +65,7 @@ html {
 }
 
 .default a {
-  @apply font-semibold underline decoration-primary-500 decoration-2 underline-offset-2 hover:no-underline;
+  @apply decoration-primary-500 font-semibold underline decoration-2 underline-offset-2 hover:no-underline;
 }
 .default p {
   @apply py-2 leading-7;

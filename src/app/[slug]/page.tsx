@@ -86,7 +86,7 @@ const EndComponent = ({ params }: { params: { slug: string } }) => {
   switch (params.slug) {
     case "blog":
       return (
-        <div className="mx-auto max-w-screen-md">
+        <div className="mx-auto max-w-(--breakpoint-md)">
           <Blog />
         </div>
       )
@@ -109,7 +109,7 @@ const Blog = async () => {
     <>
       <BlogPostList posts={postsByDate} />
       <div className="mt-4 border-t border-gray-100">
-        <h2 className="pb-5 pt-7 text-3xl font-semibold tracking-tight sm:pb-6 sm:pt-8 sm:text-4xl">
+        <h2 className="pt-7 pb-5 text-3xl font-semibold tracking-tight sm:pt-8 sm:pb-6 sm:text-4xl">
           Collections of Articles
           <Dot />
         </h2>

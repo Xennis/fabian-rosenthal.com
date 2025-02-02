@@ -9,7 +9,7 @@ import { formatDate } from "@/lib/date"
 const TagChip = ({ tag }: { tag: Tag }) => {
   return (
     <NextLink
-      className="rounded-xl bg-onbackground-800 px-2 py-1 text-xs text-white hover:bg-primary-500 hover:text-onbackground-900"
+      className="bg-onbackground-800 hover:bg-primary-500 hover:text-onbackground-900 rounded-xl px-2 py-1 text-xs text-white"
       href={blogTagPage(tag)}
     >
       {tagToString(tag)}
@@ -37,7 +37,7 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
         className="group flex flex-col-reverse justify-between gap-5 sm:flex-row sm:gap-7"
       >
         <div className="flex-1">
-          <h2 className="pb-2 text-xl font-semibold group-hover:text-primary-500 sm:text-2xl">{post.title}</h2>
+          <h2 className="group-hover:text-primary-500 pb-2 text-xl font-semibold sm:text-2xl">{post.title}</h2>
           <p className="leading-7 text-gray-700">{post.metaDescription}</p>
         </div>
         <div>

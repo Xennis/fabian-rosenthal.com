@@ -18,7 +18,7 @@ export function Footer({
           </li>
         ))}
       </ul>
-      <div className="pt-4 text-start text-onbackground-700 md:pt-0 md:text-end">
+      <div className="text-onbackground-700 pt-4 text-start md:pt-0 md:text-end">
         <span className="text-sm">© {new Date().getFullYear()} Fabian Rosenthal</span>
         <br />
         <span className="text-xs">
