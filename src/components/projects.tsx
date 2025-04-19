@@ -3,6 +3,14 @@ import { Headline2 } from "@/components/layout/headline"
 
 const projects = [
   {
+    name: "Cookli",
+    href: "https://cookli.app",
+    tags: ["Next.js", "PWA", "GCP"],
+    shortDescription:
+      "Create a personalized digital cookbook with your friends and partners! Collect, organize, and share your favorite recipes in one place.",
+    status: "active",
+  },
+  {
     name: "Green Walking: Walk & Hike Map",
     href: "https://xennis.github.io/green-walking/",
     tags: ["AndroidApp", "Flutter"],
@@ -23,31 +31,19 @@ const projects = [
     shortDescription: "The interactive map shows the most beautiful places in Hamburg, Germany.",
     status: "active",
   },
-  {
-    name: "IDP (Integrating Digital Papyrology) Data Sheet",
-    href: "https://docs.google.com/spreadsheets/d/19b-uGsyhmQ7lpqvoEPA7eFzCNz8HowDbdq1PzqDaxuM/",
-    tags: ["Python", "Epigraphy"],
-    shortDescription: "Transform and join the IPD data into a single CSV sheet.",
-    status: "active",
-  },
+  // {
+  //   name: "IDP (Integrating Digital Papyrology) Data Sheet",
+  //   href: "https://docs.google.com/spreadsheets/d/19b-uGsyhmQ7lpqvoEPA7eFzCNz8HowDbdq1PzqDaxuM/",
+  //   tags: ["Python", "Epigraphy"],
+  //   shortDescription: "Transform and join the IPD data into a single CSV sheet.",
+  //   status: "active",
+  // },
   {
     name: "EpiDoc Parser",
     href: "https://xennis.github.io/epidoc-parser/",
     tags: ["PythonLibrary", "Epigraphy"],
     shortDescription: "Python parser for EpiDoc (epigraphic documents in TEI XML).",
     status: "active",
-  },
-  {
-    name: "WunderDesk",
-    tags: ["SaaS"],
-    shortDescription: "The easiest way to build your help center with Notion.",
-    status: "discontinued",
-  },
-  {
-    name: "Life Clock App",
-    tags: ["AndroidApp", "Flutter"],
-    shortDescription: "A clock to visualize your life to encourage making the most out of it.",
-    status: "discontinued",
   },
 ]
 
