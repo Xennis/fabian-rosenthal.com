@@ -1,13 +1,12 @@
 import { type MetadataRoute } from "next"
 
-import { homePage } from "@/content/config"
 import { getCachedBlogPosts, getCachedBlogTags, getCachedPages } from "@/lib/cms/fetchers"
 import { host } from "@/lib/next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sites: MetadataRoute.Sitemap = [
     {
-      url: `https://${host}${homePage}`,
+      url: `https://${host}`,
       lastModified: new Date(),
       priority: 1,
     },
