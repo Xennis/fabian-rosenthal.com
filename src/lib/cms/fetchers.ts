@@ -1,9 +1,8 @@
 import { unstable_cache } from "next/cache"
 
-import { blogTagPage, businessIdeasPage } from "@/content/config"
+import { blogTagPage } from "@/content/config"
 import { BlogPost, tagToString } from "@/lib/cms/blog-posts"
-import { fetchBlogPosts, fetchBusinessIdeasPages, fetchPageContent, fetchPages } from "@/lib/cms/fetch"
-import { Page as BiPage } from "@/lib/cms/business-ideas"
+import { fetchBlogPosts, fetchPageContent, fetchPages } from "@/lib/cms/fetch"
 import { Page } from "@/lib/cms/pages"
 
 export const tagPageContent = (blockId: string) => `cms-page-${blockId}`
@@ -41,26 +40,6 @@ export const getCachedPageContent = async (blockId: string) => {
     },
   )()
 }
-
-export const getCachedBusinessIdeasPages = unstable_cache(
-  async (): Promise<Array<BiPage & { canonical: string }>> => {
-    const pages = await fetchBusinessIdeasPages()
-    console.debug(
-      `fetched ${pages.length} pages from notion database ${process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!}`,
-    )
-    return pages.map((p) => {
-      return {
-        ...p,
-        canonical: businessIdeasPage(p.slug),
-      }
-    })
-  },
-  ["cms-business-ideas-pages"],
-  {
-    revalidate: false,
-    tags: [tagCmsData],
-  },
-)
 
 export const getCachedBlogPosts = unstable_cache(
   async (): Promise<Array<BlogPost & { canonical: string }>> => {

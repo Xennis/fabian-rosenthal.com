@@ -1,8 +1,6 @@
 import { type Metadata } from "next"
 import { Render } from "@xennis/react-notion-cms-render"
 import { draftMode } from "next/headers"
-import NextImage from "next/image"
-import NextLink from "next/link"
 
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
@@ -16,7 +14,6 @@ import { Link } from "@/components/layout/link"
 import "./page.css"
 import { fetchBlogPosts } from "@/lib/cms/fetch"
 import bussinessIdeasOgImage from "@/app/guides/business-ideas/[slug]/opengraph-image.png"
-import { Dot } from "@/components/dot"
 
 export async function generateStaticParams() {
   return (await getCachedPages()).map((p) => ({ slug: p.slug }))
@@ -108,23 +105,6 @@ const Blog = async () => {
   return (
     <>
       <BlogPostList posts={postsByDate} />
-      <div className="mt-4 border-t border-gray-100">
-        <h2 className="pt-7 pb-5 text-3xl font-semibold tracking-tight sm:pt-8 sm:pb-6 sm:text-4xl">
-          Collections of Articles
-          <Dot />
-        </h2>
-        <NextLink href={businessIdeas} className="hover:grayscale">
-          <div className="relative aspect-[1.91/1] w-full sm:max-w-96">
-            <NextImage
-              src={bussinessIdeasOgImage}
-              alt="How to Find Business Ideas - A Practical Guide"
-              className="rounded-md sm:rounded-lg"
-              fill
-              quality={100}
-            />
-          </div>
-        </NextLink>
-      </div>
     </>
   )
 }

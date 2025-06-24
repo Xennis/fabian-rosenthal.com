@@ -1,7 +1,7 @@
 import { type MetadataRoute } from "next"
 
 import { homePage } from "@/content/config"
-import { getCachedBlogPosts, getCachedBlogTags, getCachedBusinessIdeasPages, getCachedPages } from "@/lib/cms/fetchers"
+import { getCachedBlogPosts, getCachedBlogTags, getCachedPages } from "@/lib/cms/fetchers"
 import { host } from "@/lib/next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -35,13 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })
   })
-  ;(await getCachedBusinessIdeasPages()).forEach((p) =>
-    sites.push({
-      url: `https://${host}${p.canonical}`,
-      lastModified: p.lastEdited,
-      priority: 0.6,
-    }),
-  )
 
   return sites
 }
