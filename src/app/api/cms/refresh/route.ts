@@ -3,7 +3,6 @@ import { revalidateTag } from "next/cache"
 import {
   getCachedBlogPosts,
   getCachedBlogTags,
-  getCachedBusinessIdeasPages,
   getCachedPageContent,
   getCachedPages,
   tagCmsData,
@@ -31,12 +30,8 @@ export async function POST(request: Request) {
   }
 
   revalidateTag(tagCmsData)
-  const [pages, blogPosts, businessIdeasPages] = await Promise.all([
-    getCachedPages(),
-    getCachedBlogPosts(),
-    getCachedBusinessIdeasPages(),
-  ])
-  for (const p of [...pages, ...blogPosts, ...businessIdeasPages]) {
+  const [pages, blogPosts] = await Promise.all([getCachedPages(), getCachedBlogPosts()])
+  for (const p of [...pages, ...blogPosts]) {
     if (p.lastEdited >= date) {
       const tag = tagPageContent(p.notionId)
       console.debug(`revalidate tag ${tag}`)
@@ -52,7 +47,6 @@ export async function POST(request: Request) {
     databasePages: {
       pages: pages.length,
       blogPosts: blogPosts.length,
-      businessIdeasPages: businessIdeasPages.length,
     },
     other: {
       blogTags: tags.length,

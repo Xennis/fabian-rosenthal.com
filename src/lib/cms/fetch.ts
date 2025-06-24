@@ -4,7 +4,6 @@ import { Client } from "@notionhq/client"
 import type { QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints"
 
 import { Page, processPages } from "@/lib/cms/pages"
-import { Page as BiPage, processBusinessIdeasPages } from "@/lib/cms/business-ideas"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 import { BlogPost, processBlogPosts } from "@/lib/cms/blog-posts"
 import { blogPagePost } from "@/content/config"
@@ -39,19 +38,6 @@ export const fetchPages = (): Promise<Array<Page>> =>
       type: "checkbox",
       checkbox: {
         equals: false,
-      },
-    },
-  })
-
-export const fetchBusinessIdeasPages = (): Promise<Array<BiPage>> =>
-  fetchDatabasePages(notionClient, processBusinessIdeasPages, {
-    database_id: process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!,
-    page_size: 100,
-    filter: {
-      property: "public",
-      type: "checkbox",
-      checkbox: {
-        equals: true,
       },
     },
   })
