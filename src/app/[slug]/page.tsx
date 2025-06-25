@@ -123,6 +123,7 @@ const Newsletter = () => {
         src="https://fabianrosenthal.substack.com/embed"
         className="h-[500px] w-full border-0 bg-none"
         scrolling="no"
+        title="Substack newsletter"
       />
     </GdprIframe>
   )

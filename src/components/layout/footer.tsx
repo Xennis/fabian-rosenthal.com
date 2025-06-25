@@ -13,7 +13,7 @@ export function Footer({
     <footer className="pxcontent border-t-[1px] border-gray-100 py-6 md:flex md:justify-between">
       <ul aria-label="Links to social media profiles" className="flex items-center space-x-4">
         {socialLinks.map((l, index) => (
-          <li key={index} role="listitem">
+          <li key={index}>
             <SocialLink {...l} className="group-hover:grayscale" />
           </li>
         ))}
