@@ -18,17 +18,17 @@
     "@xennis/react-notion-cms-render": "1.0.0-beta.5",
     "next": "15.4.5",
     "prismjs": "^1.30.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.1.0",
     "@types/prismjs": "^1.26.5",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "eslint": "^9.31.0",
-    "eslint-config-next": "15.3.5",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "15.4.5",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
@@ -36,7 +36,7 @@
     "schema-dts": "^1.1.5",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "pnpm": {
     "overrides": {
