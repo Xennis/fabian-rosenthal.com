@@ -22,11 +22,11 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       '@xennis/react-notion-cms-fetch':
-        specifier: 1.0.0-beta.5
-        version: 1.0.0-beta.5
+        specifier: 1.0.0-beta.6
+        version: 1.0.0-beta.6
       '@xennis/react-notion-cms-render':
-        specifier: 1.0.0-beta.5
-        version: 1.0.0-beta.5
+        specifier: 1.0.0-beta.6
+        version: 1.0.0-beta.6
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -382,10 +382,6 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@notionhq/client@4.0.2':
-    resolution: {integrity: sha512-4pk3dm4umhjsRI0umCnJ8lCZh0TMiaMdkY0rz6FV4OqVuTsmYFV3pk+YTR5S8792ZY2Rm4lJHlLj05HQVKDuIg==}
-    engines: {node: '>=18'}
-
   '@notionhq/client@5.0.0':
     resolution: {integrity: sha512-eXq0bZTXN8+xwT6e3qlrH9QCUn8mQLJ9UkNgKSew2NKNV/hyKb2wmIzQAuass8a2Q6F1aMjMPi+EGLQwgbVlOA==}
     engines: {node: '>=18'}
@@ -663,11 +659,11 @@ packages:
     resolution: {integrity: sha512-heiJGj2qt5qTv6yiShH9f6KRAoZGj+lz61GQ+lBRL4lhvUmKI9A51KYlQTnsUd9ymdFlKHBlvmPeG+yGz2Qsbg==}
     engines: {node: '>=16.14'}
 
-  '@xennis/react-notion-cms-fetch@1.0.0-beta.5':
-    resolution: {integrity: sha512-IUmIG6t4ybzHcsQKuQ/b7+NKd6M8rToh77XqxALxhOlkEykWLS+kx1B+v0CawmSo+OwxRQa8Imgf+V47Wwqv/g==}
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.6':
+    resolution: {integrity: sha512-83OohEhzn86zOe9U+cuF3o/GWs3TgOU7yOyRLHcMQPX+qboCSWlgROZ8WeqW/b47WnPqQhewH6UWMe2aAPE9xQ==}
 
-  '@xennis/react-notion-cms-render@1.0.0-beta.5':
-    resolution: {integrity: sha512-eXfIBD+wFetGYQA+4TSbvdJKqYwmXdzKPJ69uNMEqBMfeIavIHzVer/xPhNx0m6oCtHs/gBM7OlP+B8Ni2D6KA==}
+  '@xennis/react-notion-cms-render@1.0.0-beta.6':
+    resolution: {integrity: sha512-rZenwOZpVcJMrjO9ieQCxMnGu8GPRyHtULOkYOFQKJ/1viwr2TQneXCNGmuX0WjUGZhfYyFDtFO4EdMSRzmccA==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2205,8 +2201,6 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@notionhq/client@4.0.2': {}
-
   '@notionhq/client@5.0.0': {}
 
   '@rtsao/scc@1.1.0': {}
@@ -2466,13 +2460,13 @@ snapshots:
       throttleit: 2.1.0
       undici: 5.29.0
 
-  '@xennis/react-notion-cms-fetch@1.0.0-beta.5':
+  '@xennis/react-notion-cms-fetch@1.0.0-beta.6':
     dependencies:
-      '@notionhq/client': 4.0.2
+      '@notionhq/client': 5.0.0
 
-  '@xennis/react-notion-cms-render@1.0.0-beta.5':
+  '@xennis/react-notion-cms-render@1.0.0-beta.6':
     dependencies:
-      '@notionhq/client': 4.0.2
+      '@notionhq/client': 5.0.0
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
@@ -2856,7 +2850,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.35.0(jiti@2.5.1)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -2878,7 +2872,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.35.0(jiti@2.5.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.35.0(jiti@2.5.1))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
