@@ -2,8 +2,8 @@ import "server-only"
 
 import youtubeIcon from "@/content/images/social/youtube.svg"
 import githubIcon from "@/content/images/social/github.svg"
-import linkedinIcon from "@/content/images/social/linkedin.svg"
 import instagramIcon from "@/content/images/social/instagram.svg"
+import stravaIcon from "@/content/images/social/strava.svg"
 
 import { blogPage, legalPage } from "@/content/config"
 
@@ -24,10 +24,15 @@ const socialLinks = [
     imageSrc: instagramIcon,
   },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/fabian-rosenthal",
-    imageSrc: linkedinIcon,
+    label: "Strava",
+    href: "https://www.strava.com/athletes/fabian-rosenthal",
+    imageSrc: stravaIcon,
   },
+  // {
+  //   label: "LinkedIn",
+  //   href: "https://www.linkedin.com/in/fabian-rosenthal",
+  //   imageSrc: linkedinIcon,
+  // },
   {
     label: "GitHub",
     href: "https://github.com/Xennis",
@@ -59,9 +64,9 @@ const collections = {
     navLinks: [{ label: "Articles", href: blogPage }],
   },
   shortBio: [
-    { emoji: "👨‍💻", text: "Software Engineer" },
-    { emoji: "🏗️", text: "Building large applications & micro SaaS" },
-    { emoji: "📖", text: "Sharing my knowledge on building software products" },
+    { emoji: "👨‍💻", text: "Software Engineer by profession" },
+    { emoji: "🏃", text: "Athlete by hobby" },
+    { emoji: "🎯", text: "Current mission: Building apps for myself to live healthier and get fitter" },
   ],
   socialLinks: socialLinks,
 }

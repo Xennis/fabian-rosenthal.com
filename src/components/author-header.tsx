@@ -22,7 +22,7 @@ export function AuthorHeader({
           </h1>
           <div>
             I <span aria-hidden={true}>🖤</span>
-            <span className="sr-only">love</span> travelling, software development & hiking.
+            <span className="sr-only">love</span> software development & sports.
           </div>
           <ul aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
             {socialLinks.map((l, index) => (

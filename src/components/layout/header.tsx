@@ -20,10 +20,7 @@ function Logo({ homeHref }: { homeHref: string }) {
         <div className="ps-3">
           <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
           <br />
-          <span>
-            Software Engineer
-            <span className="hidden sm:inline"> & Indie Hacker</span>
-          </span>
+          <span>Software Engineer</span>
         </div>
       </NextLink>
     </div>
