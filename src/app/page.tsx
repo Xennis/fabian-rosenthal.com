@@ -49,7 +49,8 @@ export default function HomePage() {
           <Link href="https://cc.systems/en/" target="_blank">
             cc.systems
           </Link>
-          , building software applications for clients. Alongside, I run a solo business creating micro SaaS products.
+          , building software applications for clients. Alongside, I run a solo business creating apps and SaaS
+          products.
         </div>
         <Projects />
       </div>

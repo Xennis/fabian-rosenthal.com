@@ -3,6 +3,13 @@ import { Headline2 } from "@/components/layout/headline"
 
 const projects = [
   {
+    name: "More Than Kudos",
+    tags: ["Flutter", "Firebase", "Strava", "GCP"],
+    shortDescription:
+      "Turn your workouts into motivation! Track your progress with Strava and enjoy a personal reward when you reach your goals.",
+    status: "in progress",
+  },
+  {
     name: "Cookli",
     href: "https://cookli.app",
     tags: ["Next.js", "PWA", "GCP"],
@@ -17,13 +24,13 @@ const projects = [
     shortDescription: "The map shows all kinds of trails for walking and hiking.",
     status: "active",
   },
-  {
-    name: "Restore Leveling After G28",
-    href: "https://plugins.octoprint.org/plugins/restorelevelingafterg28/",
-    tags: ["OctoPrintPlugin", "3DPrinting"],
-    shortDescription: "Automatically keeps bed leveling on after G28 (Auto Home).",
-    status: "active",
-  },
+  // {
+  //   name: "Restore Leveling After G28",
+  //   href: "https://plugins.octoprint.org/plugins/restorelevelingafterg28/",
+  //   tags: ["OctoPrintPlugin", "3DPrinting"],
+  //   shortDescription: "Automatically keeps bed leveling on after G28 (Auto Home).",
+  //   status: "active",
+  // },
   {
     name: "FabiTours",
     href: "https://tours.fabian-rosenthal.com",
