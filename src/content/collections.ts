@@ -4,6 +4,7 @@ import youtubeIcon from "@/content/images/social/youtube.svg"
 import githubIcon from "@/content/images/social/github.svg"
 import instagramIcon from "@/content/images/social/instagram.svg"
 import stravaIcon from "@/content/images/social/strava.svg"
+import threadsIcon from "@/content/images/social/threads.svg"
 
 import { blogPage, legalPage } from "@/content/config"
 
@@ -13,15 +14,15 @@ const socialLinks = [
     href: "https://www.youtube.com/@fabian.rosenthal",
     imageSrc: youtubeIcon,
   },
-  // {
-  //   label: "Threads",
-  //   href: "https://www.threads.net/@the.fabian.rosenthal",
-  //   imageSrc: threadsIcon,
-  // },
   {
     label: "Instagram",
     href: "https://www.instagram.com/fabianrosenthal.dev",
     imageSrc: instagramIcon,
+  },
+  {
+    label: "Threads",
+    href: "https://www.threads.net/@the.fabian.rosenthal",
+    imageSrc: threadsIcon,
   },
   {
     label: "Strava",
