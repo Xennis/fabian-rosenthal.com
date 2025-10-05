@@ -2,8 +2,6 @@ import "server-only"
 
 import youtubeIcon from "@/content/images/social/youtube.svg"
 import githubIcon from "@/content/images/social/github.svg"
-import instagramIcon from "@/content/images/social/instagram.svg"
-import stravaIcon from "@/content/images/social/strava.svg"
 import threadsIcon from "@/content/images/social/threads.svg"
 
 import { blogPage, legalPage } from "@/content/config"
@@ -14,20 +12,15 @@ const socialLinks = [
     href: "https://www.youtube.com/@fabian.rosenthal",
     imageSrc: youtubeIcon,
   },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/fabianrosenthal.dev",
-    imageSrc: instagramIcon,
-  },
+  //{
+  //  label: "Instagram",
+  //  href: "https://www.instagram.com/fabianrosenthal.dev",
+  //  imageSrc: instagramIcon,
+  //},
   {
     label: "Threads",
-    href: "https://www.threads.net/@the.fabian.rosenthal",
+    href: "https://www.threads.net/ahoyfabian",
     imageSrc: threadsIcon,
-  },
-  {
-    label: "Strava",
-    href: "https://www.strava.com/athletes/fabian-rosenthal",
-    imageSrc: stravaIcon,
   },
   // {
   //   label: "LinkedIn",
