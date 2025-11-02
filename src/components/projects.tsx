@@ -25,20 +25,6 @@ const projects = [
     status: "active",
   },
   // {
-  //   name: "Restore Leveling After G28",
-  //   href: "https://plugins.octoprint.org/plugins/restorelevelingafterg28/",
-  //   tags: ["OctoPrintPlugin", "3DPrinting"],
-  //   shortDescription: "Automatically keeps bed leveling on after G28 (Auto Home).",
-  //   status: "active",
-  // },
-  {
-    name: "FabiTours",
-    href: "https://tours.fabian-rosenthal.com",
-    tags: ["Next.js", "PWA", "Mapbox"],
-    shortDescription: "The interactive map shows the most beautiful places in Hamburg, Germany.",
-    status: "active",
-  },
-  // {
   //   name: "IDP (Integrating Digital Papyrology) Data Sheet",
   //   href: "https://docs.google.com/spreadsheets/d/19b-uGsyhmQ7lpqvoEPA7eFzCNz8HowDbdq1PzqDaxuM/",
   //   tags: ["Python", "Epigraphy"],
