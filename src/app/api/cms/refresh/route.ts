@@ -29,13 +29,13 @@ export async function POST(request: Request) {
     return NextResponse.json({}, { status: 400 })
   }
 
-  revalidateTag(tagCmsData)
+  revalidateTag(tagCmsData, "max")
   const [pages, blogPosts] = await Promise.all([getCachedPages(), getCachedBlogPosts()])
   for (const p of [...pages, ...blogPosts]) {
     if (p.lastEdited >= date) {
       const tag = tagPageContent(p.notionId)
       console.debug(`revalidate tag ${tag}`)
-      revalidateTag(tag)
+      revalidateTag(tag, "max")
       await getCachedPageContent(p.notionId)
       count++
     }
