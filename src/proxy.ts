@@ -5,7 +5,7 @@ export const config = {
 }
 
 // Forward links with the old lang pattern.
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname
   // The content of the about page is now on the home page.
   if (path.endsWith("/de") || path.endsWith("/en") || path.endsWith("/about")) {
