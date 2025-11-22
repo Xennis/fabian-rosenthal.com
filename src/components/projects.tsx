@@ -19,7 +19,7 @@ const projects = [
   },
   {
     name: "Green Walking: Walk & Hike Map",
-    href: "https://xennis.github.io/green-walking/",
+    href: "https://play.google.com/store/apps/details?id=org.xennis.apps.green_walking",
     tags: ["AndroidApp", "Flutter"],
     shortDescription: "The map shows all kinds of trails for walking and hiking.",
     status: "active",
