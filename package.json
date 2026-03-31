@@ -12,31 +12,31 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@notionhq/client": "^5.13.0",
-    "@vercel/blob": "^2.3.1",
+    "@notionhq/client": "^5.16.0",
+    "@vercel/blob": "^2.3.2",
     "@xennis/react-notion-cms-fetch": "1.0.0-beta.6",
     "@xennis/react-notion-cms-render": "1.0.0-beta.6",
-    "next": "16.1.7",
+    "next": "16.2.1",
     "prismjs": "^1.30.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^25.5.0",
     "@types/prismjs": "^1.26.6",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "eslint": "^10.0.3",
-    "eslint-config-next": "16.1.7",
+    "eslint": "^10.1.0",
+    "eslint-config-next": "16.2.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "schema-dts": "^1.1.5",
+    "schema-dts": "^2.0.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2"
   },
   "pnpm": {
     "overrides": {
