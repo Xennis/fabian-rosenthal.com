@@ -19,8 +19,8 @@ importers:
         specifier: ^5.16.0
         version: 5.16.0
       '@vercel/blob':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@xennis/react-notion-cms-fetch':
         specifier: 1.0.0-beta.6
         version: 1.0.0-beta.6
@@ -729,8 +729,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vercel/blob@2.3.2':
-    resolution: {integrity: sha512-FjlTJ5ffGj0RssrU0dJ90Zgr83AdhpIs2y9f3x386w+q9sM0P8m8Ouxsm3fqsjr4IyqTTo7Ioc2PJqxxOKNhjA==}
+  '@vercel/blob@2.3.3':
+    resolution: {integrity: sha512-MtD7VLo6hU07eHR7bmk5SIMD290q574UaNYTe46qeyRT+hWrCy26CoAqfd7PnIefVXvRehRZBzukxuTO9iGTVg==}
     engines: {node: '>=20.0.0'}
 
   '@xennis/react-notion-cms-fetch@1.0.0-beta.6':
@@ -2601,7 +2601,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vercel/blob@2.3.2':
+  '@vercel/blob@2.3.3':
     dependencies:
       async-retry: 1.3.3
       is-buffer: 2.0.5
