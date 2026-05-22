@@ -1,6 +1,6 @@
 import { type Metadata, type Viewport } from "next"
 import "./globals.css"
-import { brandColor, homePage, locale, pageDescription, pageTitle } from "@/content/config"
+import { brandColor, homePage, locale, pageDescription, pageTitle, podcastFeedUrl, podcastName } from "@/content/config"
 import { host } from "@/lib/next"
 import { getCollections } from "@/content/collections"
 import { classNames } from "@/lib/tw"
@@ -10,6 +10,16 @@ import { Inter } from "next/font/google"
 import { UmamiAnalytics } from "@/components/umami-analytics"
 
 export const metadata: Metadata = {
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        {
+          url: podcastFeedUrl,
+          title: podcastName,
+        },
+      ],
+    },
+  },
   description: pageDescription,
   openGraph: {
     description: pageDescription,

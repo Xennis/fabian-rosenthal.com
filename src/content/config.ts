@@ -20,4 +20,5 @@ export const pageDescription =
   "Softwareentwickler, Indie Hacker & Creator. Ich entwickle große Anwendungen & Micro SaaS. Hier teile ich mein Wissen über die Entwicklung von Softwareprodukten."
 
 export const podcastName = "Der Feierabend-Commit"
+export const podcastFeedUrl = "https://anchor.fm/s/112e48794/podcast/rss"
 export const youtubeSubscribeLink = "https://youtube.com/@fabian.rosenthal?sub_confirmation=1"
