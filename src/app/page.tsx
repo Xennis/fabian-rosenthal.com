@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       <AuthorHeader
-        socialLinks={collections.socialLinks}
+        socialLinks={collections.homeSocialLinks}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Person",
@@ -28,7 +28,7 @@ export default function HomePage() {
           image: `https://${host}${profileLargeImage}`,
           jobTitle: "Softwareentwickler",
           url: `https://${host}`,
-          sameAs: collections.socialLinks.map((l) => l.href),
+          sameAs: collections.authorSameAsLinks.map((l) => l.href),
         }}
       />
       <div className="mx-auto max-w-(--breakpoint-md) pt-14 sm:pt-16">
