@@ -155,7 +155,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
           />
         </div>
       )}
-      <div className="mx-auto max-w-(--breakpoint-md)">
+      <div className="mx-auto max-w-(--breakpoint-md) text-justify hyphens-auto">
         <Render
           blocks={content}
           options={{
