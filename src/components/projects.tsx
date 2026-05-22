@@ -3,11 +3,12 @@ import { Headline2 } from "@/components/layout/headline"
 
 const projects = [
   {
-    name: "More Than Kudos",
-    tags: ["Flutter", "Firebase", "Strava", "GCP"],
+    name: "Fitminder",
+    href: "https://play.google.com/store/apps/details?id=org.xennis.apps.fitminder",
+    tags: ["Flutter", "Firebase", "HealthConnect", "GCP"],
     shortDescription:
-      "Verwandle deine Workouts in Motivation! Verfolge deinen Fortschritt mit Strava und freue dich über eine persönliche Belohnung, wenn du deine Ziele erreichst.",
-    status: "in Arbeit",
+      "Verwandle dein Training in Motivation! Setze dir Ziele, lass deine Aktivitäten automatisch über Health Connect synchronisieren und freue dich über eine selbstgewählte Belohnung, wenn du sie erreichst.",
+    status: "active",
   },
   {
     name: "Cookli",
