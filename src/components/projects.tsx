@@ -1,18 +1,28 @@
 import { Link } from "@/components/layout/link"
 import { Headline2 } from "@/components/layout/headline"
 
-const projects = [
+type ProjectLink = { label?: string; href: string }
+
+type Project = {
+  name: string
+  links: Array<ProjectLink>
+  tags: Array<string>
+  shortDescription: string
+  status: string
+}
+
+const projects: Array<Project> = [
   {
     name: "Fitminder",
-    href: "https://play.google.com/store/apps/details?id=org.xennis.apps.fitminder",
-    tags: ["Flutter", "Firebase", "HealthConnect", "GCP"],
+    links: [{ label: "Android", href: "https://play.google.com/store/apps/details?id=org.xennis.apps.fitminder" }],
+    tags: ["Android", "Flutter", "Firebase", "HealthConnect", "GCP"],
     shortDescription:
       "Verwandle dein Training in Motivation! Setze dir Ziele, lass deine Aktivitäten automatisch über Health Connect synchronisieren und freue dich über eine selbstgewählte Belohnung, wenn du sie erreichst.",
     status: "active",
   },
   {
     name: "Cookli",
-    href: "https://cookli.app",
+    links: [{ href: "https://cookli.app" }],
     tags: ["Next.js", "PWA", "GCP"],
     shortDescription:
       "Erstelle gemeinsam mit Freunden und Partnern ein personalisiertes digitales Kochbuch! Sammle, organisiere und teile deine Lieblingsrezepte an einem Ort.",
@@ -20,8 +30,11 @@ const projects = [
   },
   {
     name: "Green Walking: Walk & Hike Map",
-    href: "https://play.google.com/store/apps/details?id=org.xennis.apps.green_walking",
-    tags: ["AndroidApp", "Flutter"],
+    links: [
+      { label: "Android", href: "https://play.google.com/store/apps/details?id=org.xennis.apps.green_walking" },
+      { label: "iOS", href: "https://apps.apple.com/de/app/green-walking/id6759345196" },
+    ],
+    tags: ["Android", "iOS", "Flutter"],
     shortDescription: "Die Karte zeigt verschiedenste Wege zum Spazieren und Wandern.",
     status: "active",
   },
@@ -34,21 +47,36 @@ const projects = [
   // },
   {
     name: "EpiDoc Parser",
-    href: "https://xennis.github.io/epidoc-parser/",
+    links: [{ href: "https://xennis.github.io/epidoc-parser/" }],
     tags: ["PythonLibrary", "Epigraphy"],
     shortDescription: "Python-Parser für EpiDoc (epigraphische Dokumente in TEI XML).",
     status: "active",
   },
 ]
 
-function ProjectItem({ project }: { project: (typeof projects)[number] }) {
+function ProjectItem({ project }: { project: Project }) {
   return (
     <>
       <div className="sm:flex sm:gap-2">
         {project.status === "active" ? (
-          <Link href={project.href ?? "#"} target="_blank">
-            {project.name}
-          </Link>
+          project.links.length === 1 ? (
+            <Link href={project.links[0].href} target="_blank">
+              {project.name}
+            </Link>
+          ) : (
+            <span>
+              <span className="font-semibold">{project.name}</span> (
+              {project.links.map((l, i) => (
+                <span key={i}>
+                  {i > 0 && ", "}
+                  <Link href={l.href} target="_blank">
+                    {l.label ?? "Link"}
+                  </Link>
+                </span>
+              ))}
+              )
+            </span>
+          )
         ) : (
           <span>
             <span className="font-semibold">{project.name}</span> ({project.status})
