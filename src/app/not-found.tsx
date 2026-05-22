@@ -5,7 +5,7 @@ import { homePage } from "@/content/config"
 import { Headline } from "@/components/layout/headline"
 
 export const metadata: Metadata = {
-  title: "Not Found",
+  title: "Nicht gefunden",
   robots: {
     index: false,
   },
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="max-width-regular">
-      <Headline>Page Not Found</Headline>
+      <Headline>Seite nicht gefunden</Headline>
       <p>
-        This page could not be found. Return to <NextLink href={homePage}>Home</NextLink>.
+        Diese Seite konnte nicht gefunden werden. Zurück zur <NextLink href={homePage}>Startseite</NextLink>.
       </p>
     </div>
   )

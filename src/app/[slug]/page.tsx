@@ -5,7 +5,7 @@ import { draftMode } from "next/headers"
 import { Headline } from "@/components/layout/headline"
 import { getCachedBlogPosts, getCachedPageContent, getCachedPages } from "@/lib/cms/fetchers"
 import { notFound } from "next/navigation"
-import { businessIdeas, pageTitle } from "@/content/config"
+import { pageTitle } from "@/content/config"
 import { GdprIframe } from "@/components/gdpr-iframe"
 import { getCollections } from "@/content/collections"
 import { BlogPostList } from "@/components/blog-post-list"
@@ -13,7 +13,6 @@ import { formatDate } from "@/lib/date"
 import { Link } from "@/components/layout/link"
 import "./page.css"
 import { fetchBlogPosts } from "@/lib/cms/fetch"
-import bussinessIdeasOgImage from "@/app/guides/business-ideas/[slug]/opengraph-image.png"
 
 export async function generateStaticParams() {
   return (await getCachedPages()).map((p) => ({ slug: p.slug }))
@@ -123,7 +122,7 @@ const Newsletter = () => {
         src="https://fabianrosenthal.substack.com/embed"
         className="h-[500px] w-full border-0 bg-none"
         scrolling="no"
-        title="Substack newsletter"
+        title="Substack Newsletter"
       />
     </GdprIframe>
   )

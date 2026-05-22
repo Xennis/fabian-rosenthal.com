@@ -72,7 +72,7 @@ export function GdprIframe({
           className="bg-onbackground-900 rounded-sm px-3 py-1.5 font-semibold text-white shadow-sm"
           onClick={onClick}
         >
-          Load external content
+          Externen Inhalt laden
         </button>
       </div>
     </div>

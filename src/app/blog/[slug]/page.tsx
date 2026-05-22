@@ -54,18 +54,18 @@ const BlogMeta = ({ post }: { post: BlogPost }) => {
   return (
     <div className="text-onbackground-600 flex flex-col gap-y-3 text-sm">
       <div className="flex flex-row space-x-2">
-        <CalendarIcon title="Publish date" aria-hidden={true} className="h-5 w-5" />
+        <CalendarIcon title="Veröffentlichungsdatum" aria-hidden={true} className="h-5 w-5" />
         <div>
-          <span className="sr-only">Publish date: </span>
+          <span className="sr-only">Veröffentlichungsdatum: </span>
           {formatDate(post.publishDate)}
           <span className="px-2">·</span>
-          Published in <Link href={blogPage}>Blog</Link>
+          Veröffentlicht im <Link href={blogPage}>Blog</Link>
         </div>
       </div>
       <div className="flex flex-row space-x-2">
-        <TagIcon title="Topics" aria-hidden={true} className="h-5 w-5" />
+        <TagIcon title="Themen" aria-hidden={true} className="h-5 w-5" />
         <div>
-          <span className="sr-only">Topics: </span>
+          <span className="sr-only">Themen: </span>
           <BlogTagList tags={post.tags} />
         </div>
       </div>
@@ -118,14 +118,14 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
       {isEnabled && (
         <div className="mb-10 rounded-lg bg-red-300 p-4 text-center">
           <div className="text-lg">
-            Draft Mode (
+            Entwurfsmodus (
             <NextLink className="underline hover:no-underline" href={apiDisableDraft} target="_blank">
-              disable
+              deaktivieren
             </NextLink>
             )
           </div>
           <div>
-            Page:{" "}
+            Seite:{" "}
             <a
               className="underline hover:no-underline"
               href={`https://www.notion.so/${post.notionId.replaceAll("-", "")}`}
@@ -146,7 +146,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
         <div className="relative mx-auto my-8 aspect-[1.91/1] w-full sm:my-10 md:max-w-[825px]">
           <NextImage
             src={post.ogImage}
-            alt="Blog image"
+            alt="Blog-Bild"
             fill
             className="rounded-lg shadow-md sm:rounded-xl sm:shadow-lg"
             quality={100}

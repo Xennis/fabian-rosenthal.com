@@ -6,22 +6,22 @@ const projects = [
     name: "More Than Kudos",
     tags: ["Flutter", "Firebase", "Strava", "GCP"],
     shortDescription:
-      "Turn your workouts into motivation! Track your progress with Strava and enjoy a personal reward when you reach your goals.",
-    status: "in progress",
+      "Verwandle deine Workouts in Motivation! Verfolge deinen Fortschritt mit Strava und freue dich über eine persönliche Belohnung, wenn du deine Ziele erreichst.",
+    status: "in Arbeit",
   },
   {
     name: "Cookli",
     href: "https://cookli.app",
     tags: ["Next.js", "PWA", "GCP"],
     shortDescription:
-      "Create a personalized digital cookbook with your friends and partners! Collect, organize, and share your favorite recipes in one place.",
+      "Erstelle gemeinsam mit Freunden und Partnern ein personalisiertes digitales Kochbuch! Sammle, organisiere und teile deine Lieblingsrezepte an einem Ort.",
     status: "active",
   },
   {
     name: "Green Walking: Walk & Hike Map",
     href: "https://play.google.com/store/apps/details?id=org.xennis.apps.green_walking",
     tags: ["AndroidApp", "Flutter"],
-    shortDescription: "The map shows all kinds of trails for walking and hiking.",
+    shortDescription: "Die Karte zeigt verschiedenste Wege zum Spazieren und Wandern.",
     status: "active",
   },
   // {
@@ -35,7 +35,7 @@ const projects = [
     name: "EpiDoc Parser",
     href: "https://xennis.github.io/epidoc-parser/",
     tags: ["PythonLibrary", "Epigraphy"],
-    shortDescription: "Python parser for EpiDoc (epigraphic documents in TEI XML).",
+    shortDescription: "Python-Parser für EpiDoc (epigraphische Dokumente in TEI XML).",
     status: "active",
   },
 ]
@@ -70,7 +70,7 @@ function ProjectItem({ project }: { project: (typeof projects)[number] }) {
 export function Projects() {
   return (
     <div className="pt-10 md:pt-12">
-      <Headline2>Current Projects</Headline2>
+      <Headline2>Aktuelle Projekte</Headline2>
       <ul className="ms-6 list-outside list-disc py-1 leading-7">
         {projects.map((p, index) => (
           <li key={index} className="pt-2">
