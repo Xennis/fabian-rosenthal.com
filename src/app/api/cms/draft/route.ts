@@ -4,7 +4,7 @@ import { APIResponseError, isFullPage } from "@notionhq/client"
 import { propsPlainTexts } from "@xennis/react-notion-cms-fetch"
 
 import { fetchPage } from "@/lib/cms/fetch"
-import { blogPagePost, businessIdeasPage, slugPage } from "@/content/config"
+import { blogPagePost, slugPage } from "@/content/config"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -53,8 +53,6 @@ const canonicalPathname = ({ slug, parentDbId }: { slug: string | null; parentDb
   switch (parentDbId) {
     case "0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4":
       return blogPagePost(slug)
-    case process.env.NOTION_GUIDE_BUSINESS_IDEAS_DB_ID!:
-      return businessIdeasPage(slug)
     case process.env.NOTION_PAGES_DB_ID!:
       return slugPage(slug)
   }

@@ -36,31 +36,34 @@ const socialLinks = [
 
 const collections = {
   footer: {
-    navLinks: [{ label: "Legal Notice", href: legalPage }],
+    navLinks: [{ label: "Impressum", href: legalPage }],
   },
   gdprIframe: {
     calcom: {
-      firstLine: "I use the external calendar from Cal.com for scheduling calls.",
-      secondLine: "By clicking the button, you consent to the use of cookies by Cal.com.",
-      gdprLinkPrefix: "For details, please see their",
-      gdprLinkLabel: "privacy policy",
+      firstLine: "Ich nutze den externen Kalender von Cal.com, um Telefonate zu vereinbaren.",
+      secondLine: "Mit einem Klick auf den Button stimmst du der Verwendung von Cookies durch Cal.com zu.",
+      gdprLinkPrefix: "Details findest du in deren",
+      gdprLinkLabel: "Datenschutzerklärung",
       gdprLinkHref: "https://cal.com/privacy",
     },
     substack: {
-      firstLine: "I use the external service Substack for my newsletter.",
-      secondLine: "By clicking the button, you consent to the use of cookies by Substack.",
-      gdprLinkPrefix: "For details, please see their",
-      gdprLinkLabel: "privacy policy",
+      firstLine: "Ich nutze den externen Dienst Substack für meinen Newsletter.",
+      secondLine: "Mit einem Klick auf den Button stimmst du der Verwendung von Cookies durch Substack zu.",
+      gdprLinkPrefix: "Details findest du in deren",
+      gdprLinkLabel: "Datenschutzerklärung",
       gdprLinkHref: "https://substack.com/privacy",
     },
   },
   header: {
-    navLinks: [{ label: "Articles", href: blogPage }],
+    navLinks: [{ label: "Artikel", href: blogPage }],
   },
   shortBio: [
-    { emoji: "👨‍💻", text: "Software Engineer by profession" },
-    { emoji: "🏃", text: "Athlete by hobby" },
-    { emoji: "🎯", text: "Current mission: Building apps for myself to live healthier and get fitter" },
+    { emoji: "👨‍💻", text: "Softwareentwickler von Beruf" },
+    { emoji: "🏃", text: "Sportler aus Leidenschaft" },
+    {
+      emoji: "🎯",
+      text: "Aktuelle Mission: Apps für mich selbst entwickeln, um gesünder zu leben und fitter zu werden",
+    },
   ],
   socialLinks: socialLinks,
 }

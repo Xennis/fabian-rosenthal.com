@@ -17,14 +17,14 @@ export function AuthorHeader({
       <div className="md:flex md:items-center md:justify-center md:space-x-16">
         <div className="pb-8 text-center md:pb-0">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Ahoy, I&apos;m Fabian
+            Ahoi, ich bin Fabian
             <Dot />
           </h1>
           <div>
-            I <span aria-hidden={true}>🖤</span>
-            <span className="sr-only">love</span> software development & sports.
+            Ich <span aria-hidden={true}>🖤</span>
+            <span className="sr-only">liebe</span> Softwareentwicklung & Sport.
           </div>
-          <ul aria-label="Links to social media profiles" className="flex justify-center space-x-4 pt-8">
+          <ul aria-label="Links zu Social-Media-Profilen" className="flex justify-center space-x-4 pt-8">
             {socialLinks.map((l, index) => (
               <li key={index}>
                 <SocialLink {...l} className="duration-500 group-hover:scale-110" />
@@ -38,7 +38,7 @@ export function AuthorHeader({
           height={350}
           width={350}
           src={profileLargeImage}
-          alt="Profile picture of Fabian"
+          alt="Profilbild von Fabian"
           unoptimized
           priority
         />

@@ -8,11 +8,11 @@ import { SocialLink } from "@/components/social-links"
 function Logo({ homeHref }: { homeHref: string }) {
   return (
     <div>
-      <NextLink title="Home" aria-label="Home" href={homeHref} className="group flex items-center">
+      <NextLink title="Startseite" aria-label="Startseite" href={homeHref} className="group flex items-center">
         <NextImage
           className="rounded-sm"
           src={authorImage}
-          alt="Profile picture of Fabian"
+          alt="Profilbild von Fabian"
           width={75}
           height={75}
           quality={100}
@@ -20,7 +20,7 @@ function Logo({ homeHref }: { homeHref: string }) {
         <div className="ps-3">
           <span className="group-hover:text-primary-500 text-xl font-semibold tracking-tight">{pageTitle}</span>
           <br />
-          <span>Software Engineer</span>
+          <span>Softwareentwickler</span>
         </div>
       </NextLink>
     </div>
@@ -74,7 +74,7 @@ export function Header({
 const HeroButton = () => {
   return (
     <div className="border-onbackground-200 border-s-2 ps-6 hover:grayscale md:ps-3">
-      <SocialLink label="Subscribe" href={youtubeSubscribeLink} imageSrc={youtubeIcon} />
+      <SocialLink label="Abonnieren" href={youtubeSubscribeLink} imageSrc={youtubeIcon} />
     </div>
   )
 }

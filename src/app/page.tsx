@@ -25,13 +25,13 @@ export default function HomePage() {
           "@type": "Person",
           name: "Fabian Rosenthal",
           image: `https://${host}${profileLargeImage}`,
-          jobTitle: "Software Engineer",
+          jobTitle: "Softwareentwickler",
           url: `https://${host}`,
           sameAs: collections.socialLinks.map((l) => l.href),
         }}
       />
       <div className="mx-auto max-w-(--breakpoint-md) pt-14 sm:pt-16">
-        <Headline2>Short Bio</Headline2>
+        <Headline2>Kurzbiografie</Headline2>
         <div className="flex flex-col py-2">
           {collections.shortBio.map((s, index) => {
             return (
@@ -45,12 +45,12 @@ export default function HomePage() {
           })}
         </div>
         <div className="pt-2.5">
-          I work four days a week at{" "}
+          Ich arbeite vier Tage pro Woche bei{" "}
           <Link href="https://cc.systems/en/" target="_blank">
             cc.systems
-          </Link>
-          , building software applications for clients. Alongside, I run a solo business creating apps and SaaS
-          products.
+          </Link>{" "}
+          und entwickle dort Software-Anwendungen für Kunden. Daneben führe ich ein Solo-Unternehmen und entwickle Apps
+          und SaaS-Produkte.
         </div>
         <Projects />
       </div>

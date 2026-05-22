@@ -43,15 +43,21 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
         <div>
           <div className="relative aspect-[1.91/1] w-full sm:w-[267px]">
             {post.ogImage && (
-              <NextImage src={post.ogImage} alt="Post image" className="rounded-md sm:rounded-lg" fill quality={100} />
+              <NextImage
+                src={post.ogImage}
+                alt="Beitragsbild"
+                className="rounded-md sm:rounded-lg"
+                fill
+                quality={100}
+              />
             )}
           </div>
         </div>
       </NextLink>
       <div className="gap-3 pt-4 text-sm text-gray-600 md:flex md:flex-row">
         <div className="flex gap-1">
-          <CalendarIcon title="Published" aria-hidden={true} className="h-5 w-5" />
-          <span className="sr-only">Published: </span>
+          <CalendarIcon title="Veröffentlicht" aria-hidden={true} className="h-5 w-5" />
+          <span className="sr-only">Veröffentlicht: </span>
           <span>{formatDate(post.publishDate)}</span>
         </div>
         <div className="flex gap-1.5 pt-3 md:pt-0">

@@ -19,7 +19,7 @@ export async function generateMetadata(props: { params: Promise<{ tag: string }>
   if (!tag) {
     return null
   }
-  const description = `All blog articles with the tag ${tag.label}.`
+  const description = `Alle Blog-Artikel mit dem Tag ${tag.label}.`
   return {
     alternates: {
       canonical: tag.canonical,
@@ -60,7 +60,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
 
   return (
     <div className="mx-auto max-w-(--breakpoint-md)">
-      <Headline subtitle="Blog articles with this tag.">Topic: {tagName}</Headline>
+      <Headline subtitle="Blog-Artikel mit diesem Tag.">Thema: {tagName}</Headline>
       <BlogPostList posts={postsWithTag} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
     </div>

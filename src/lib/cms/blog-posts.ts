@@ -63,7 +63,7 @@ const propsFirstInternalFilesUrl = (properties: PageObjectResponse["properties"]
 export const tagToString = (tag: Tag) => {
   switch (tag) {
     case "accessibility":
-      return "Accessibility"
+      return "Barrierefreiheit"
     case "frontend":
       return "Frontend"
     case "nextjs":
