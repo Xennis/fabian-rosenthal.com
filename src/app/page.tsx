@@ -5,6 +5,7 @@ import { getCollections } from "@/content/collections"
 import { AuthorHeader } from "@/components/author-header"
 import { host } from "@/lib/next"
 import { Projects } from "@/components/projects"
+import { Podcast } from "@/components/podcast"
 import { Headline2 } from "@/components/layout/headline"
 import { Link } from "@/components/layout/link"
 
@@ -52,6 +53,7 @@ export default function HomePage() {
           und entwickle dort Software-Anwendungen für Kunden. Daneben führe ich ein Solo-Unternehmen und entwickle Apps
           und SaaS-Produkte.
         </div>
+        <Podcast />
         <Projects />
       </div>
     </>
