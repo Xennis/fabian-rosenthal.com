@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header homeHref={homePage} navLinks={collections.header.navLinks} />
         <div className="mx-auto max-w-(--breakpoint-xl)">
           <main className="pxcontent pt-10 pb-12">{children}</main>
-          <Footer socialLinks={collections.socialLinks} navLinks={collections.footer.navLinks} />
+          <Footer socialLinks={collections.footerSocialLinks} navLinks={collections.footer.navLinks} />
         </div>
         <UmamiAnalytics />
       </body>

@@ -2,37 +2,47 @@ import "server-only"
 
 import youtubeIcon from "@/content/images/social/youtube.svg"
 import githubIcon from "@/content/images/social/github.svg"
-import threadsIcon from "@/content/images/social/threads.svg"
+// import threadsIcon from "@/content/images/social/threads.svg"
+import spotifyIcon from "@/content/images/podcast/spotify.svg"
+import applePodcastsIcon from "@/content/images/podcast/apple-podcasts.svg"
 
 import { blogPage, legalPage } from "@/content/config"
 
-const socialLinks = [
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/@fabian.rosenthal",
-    imageSrc: youtubeIcon,
-  },
-  //{
-  //  label: "Instagram",
-  //  href: "https://www.instagram.com/fabianrosenthal.dev",
-  //  imageSrc: instagramIcon,
-  //},
-  {
-    label: "Threads",
-    href: "https://www.threads.net/ahoyfabian",
-    imageSrc: threadsIcon,
-  },
-  // {
-  //   label: "LinkedIn",
-  //   href: "https://www.linkedin.com/in/fabian-rosenthal",
-  //   imageSrc: linkedinIcon,
-  // },
-  {
-    label: "GitHub",
-    href: "https://github.com/Xennis",
-    imageSrc: githubIcon,
-  },
-]
+const spotifyLink = {
+  label: "Spotify",
+  href: "https://open.spotify.com/show/033l9Xf9LtcTxJWx8OvRgG",
+  imageSrc: spotifyIcon,
+}
+const applePodcastsLink = {
+  label: "Apple Podcasts",
+  href: "https://podcasts.apple.com/de/podcast/der-feierabend-commit/id1896796759",
+  imageSrc: applePodcastsIcon,
+}
+const youtubeLink = {
+  label: "YouTube",
+  href: "https://www.youtube.com/@fabian.rosenthal",
+  imageSrc: youtubeIcon,
+}
+const githubLink = {
+  label: "GitHub",
+  href: "https://github.com/Xennis",
+  imageSrc: githubIcon,
+}
+//{
+//  label: "Instagram",
+//  href: "https://www.instagram.com/fabianrosenthal.dev",
+//  imageSrc: instagramIcon,
+//},
+// {
+//   label: "Threads",
+//   href: "https://www.threads.net/ahoyfabian",
+//   imageSrc: threadsIcon,
+// },
+// {
+//   label: "LinkedIn",
+//   href: "https://www.linkedin.com/in/fabian-rosenthal",
+//   imageSrc: linkedinIcon,
+// },
 
 const collections = {
   footer: {
@@ -65,7 +75,9 @@ const collections = {
       text: "Aktuelle Mission: Apps für mich selbst entwickeln, um gesünder zu leben und fitter zu werden",
     },
   ],
-  socialLinks: socialLinks,
+  homeSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink],
+  footerSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink, githubLink],
+  authorSameAsLinks: [youtubeLink, githubLink],
 }
 
 export const getCollections = () => {
