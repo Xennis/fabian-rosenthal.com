@@ -1,11 +1,9 @@
 import { Link } from "@/components/layout/link"
 import { Headline2 } from "@/components/layout/headline"
 
-type ProjectLink = { label?: string; href: string }
-
 type Project = {
   name: string
-  links: Array<ProjectLink>
+  links: Array<{ label?: string; href: string }>
   tags: Array<string>
   shortDescription: string
   status: string
