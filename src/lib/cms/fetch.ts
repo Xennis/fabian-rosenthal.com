@@ -30,29 +30,36 @@ export const fetchPageContent = async (blockId: string) => {
 
 export const fetchPage = (pageId: string) => notionClient.pages.retrieve({ page_id: pageId })
 
+const notArchivedFilter = {
+  property: "archived",
+  type: "checkbox" as const,
+  checkbox: {
+    equals: false,
+  },
+}
+
 export const fetchPages = async (): Promise<Array<Page>> =>
   fetchDatabasePages(notionClient, processPages, {
     data_source_id: await mustGetFirstDataSourceId(process.env.NOTION_PAGES_DB_ID!),
     page_size: 100,
-    filter: {
-      property: "archived",
-      type: "checkbox",
-      checkbox: {
-        equals: false,
-      },
-    },
+    filter: notArchivedFilter,
   })
 
 export const fetchBlogPosts = async (draftMode?: boolean): Promise<Array<BlogPost & { canonical: string }>> => {
   const filter: QueryDataSourceParameters["filter"] =
     draftMode === true
-      ? undefined
+      ? notArchivedFilter
       : {
-          property: "public",
-          type: "checkbox",
-          checkbox: {
-            equals: true,
-          },
+          and: [
+            {
+              property: "public",
+              type: "checkbox",
+              checkbox: {
+                equals: true,
+              },
+            },
+            notArchivedFilter,
+          ],
         }
   const posts = await fetchDatabasePages(notionClient, processBlogPosts, {
     data_source_id: await mustGetFirstDataSourceId("0decc798-b1fd-4d76-87c8-2ffc8f5e5fa4"),
