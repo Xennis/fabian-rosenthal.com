@@ -13,6 +13,7 @@ import { Render } from "@xennis/react-notion-cms-render"
 import { Code } from "@/components/cms/code"
 import { Link } from "@/components/layout/link"
 import { BlogTagList } from "@/components/blog-post-list"
+import { BlogPostPodcastTile } from "@/components/blog-post-podcast-tile"
 import { formatDate } from "@/lib/date"
 import { type BlogPost } from "@/lib/cms/blog-posts"
 import { fetchPageContent } from "@/lib/cms/fetch"
@@ -141,6 +142,7 @@ export default async function BlogSlugPage(props: { params: Promise<{ slug: stri
         <div className="my-5 border-y border-gray-100 py-4">
           <BlogMeta post={post} />
         </div>
+        <BlogPostPodcastTile spotifyUrl={post.spotifyUrl} applePodcastUrl={post.applePodcastUrl} />
       </div>
       {post.ogImage !== null && (
         <div className="relative mx-auto my-8 aspect-[1.91/1] w-full sm:my-10 md:max-w-[825px]">

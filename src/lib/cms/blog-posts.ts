@@ -1,10 +1,11 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-import { propsPlainTexts, propsMultiSelectNames, propsStartDate } from "@xennis/react-notion-cms-fetch"
+import { propsPlainTexts, propsMultiSelectNames, propsStartDate, propsUrl } from "@xennis/react-notion-cms-fetch"
 import { downloadImageToPublicDir } from "@/lib/cms/image"
 
 export type Tag = string
 
 export type BlogPost = {
+  applePodcastUrl: string | null
   lastEdited: Date
   metaDescription: string
   notionId: string
@@ -12,6 +13,7 @@ export type BlogPost = {
   pageSubtitle: string | null
   publishDate: Date
   slug: string
+  spotifyUrl: string | null
   tags: Array<Tag>
   title: string
 }
@@ -34,8 +36,11 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
     ogImage = await downloadImageToPublicDir(ogImage, `page-og-image-${page.id}`, lastEdited)
   }
   const pageSubtitle = propsPlainTexts(page.properties, "page-subtitle")
+  const applePodcastUrl = propsUrl(page.properties, "apple-podcast")
+  const spotifyUrl = propsUrl(page.properties, "spotify")
 
   return {
+    applePodcastUrl: applePodcastUrl,
     lastEdited: lastEdited,
     metaDescription: metaDescription,
     notionId: page.id,
@@ -43,6 +48,7 @@ export const processBlogPosts = async (page: PageObjectResponse): Promise<BlogPo
     pageSubtitle: pageSubtitle,
     publishDate: publishDate,
     slug: slug,
+    spotifyUrl: spotifyUrl,
     tags: tags,
     title: title,
   }
@@ -62,12 +68,16 @@ const propsFirstInternalFilesUrl = (properties: PageObjectResponse["properties"]
 
 export const tagToString = (tag: Tag) => {
   switch (tag) {
+    case "ai":
+      return "KI"
     case "accessibility":
       return "Barrierefreiheit"
     case "frontend":
       return "Frontend"
     case "nextjs":
       return "Next.js"
+    case "podcast":
+      return "Podcast"
     case "react":
       return "React"
     case "micro-saas":
