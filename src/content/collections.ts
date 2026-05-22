@@ -55,7 +55,7 @@ const collections = {
     },
   },
   header: {
-    navLinks: [{ label: "Artikel", href: blogPage }],
+    navLinks: [{ label: "Blog", href: blogPage }],
   },
   shortBio: [
     { emoji: "👨‍💻", text: "Softwareentwickler von Beruf" },
