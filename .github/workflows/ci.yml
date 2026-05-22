@@ -14,6 +14,6 @@ jobs:
       - name: Set up mise
         uses: jdx/mise-action@v2
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       - name: Check code format
-        run: pnpm run format:check
+        run: npm run format:check
