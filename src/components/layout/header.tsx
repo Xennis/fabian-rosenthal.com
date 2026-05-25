@@ -1,9 +1,9 @@
 import NextLink from "next/link"
 import NextImage from "next/image"
 import authorImage from "@/content/images/author-512x512.png"
-import { pageTitle, youtubeSubscribeLink } from "@/content/config"
-import youtubeIcon from "@/content/images/social/youtube.svg"
+import { pageTitle } from "@/content/config"
 import { SocialLink } from "@/components/social-links"
+import { instagramLink } from "@/content/collections"
 
 function Logo({ homeHref }: { homeHref: string }) {
   return (
@@ -74,7 +74,7 @@ export function Header({
 const HeroButton = () => {
   return (
     <div className="border-onbackground-200 border-s-2 ps-6 hover:grayscale md:ps-3">
-      <SocialLink label="Abonnieren" href={youtubeSubscribeLink} imageSrc={youtubeIcon} />
+      <SocialLink label={instagramLink.label} href={instagramLink.href} imageSrc={instagramLink.imageSrc} />
     </div>
   )
 }

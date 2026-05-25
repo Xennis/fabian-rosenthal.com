@@ -2,7 +2,7 @@ import "server-only"
 
 import youtubeIcon from "@/content/images/social/youtube.svg"
 import githubIcon from "@/content/images/social/github.svg"
-// import threadsIcon from "@/content/images/social/threads.svg"
+import instagramIcon from "@/content/images/social/instagram.svg"
 import spotifyIcon from "@/content/images/podcast/spotify.svg"
 import applePodcastsIcon from "@/content/images/podcast/apple-podcasts.svg"
 
@@ -21,6 +21,7 @@ const applePodcastsLink = {
 const youtubeLink = {
   label: "YouTube",
   href: "https://www.youtube.com/@fabian.rosenthal",
+  // subHref: "https://youtube.com/@fabian.rosenthal?sub_confirmation=1",
   imageSrc: youtubeIcon,
 }
 const githubLink = {
@@ -28,11 +29,11 @@ const githubLink = {
   href: "https://github.com/Xennis",
   imageSrc: githubIcon,
 }
-//{
-//  label: "Instagram",
-//  href: "https://www.instagram.com/fabianrosenthal.dev",
-//  imageSrc: instagramIcon,
-//},
+export const instagramLink = {
+  label: "Instagram",
+  href: "https://www.instagram.com/fabianrosenthal.dev",
+  imageSrc: instagramIcon,
+}
 // {
 //   label: "Threads",
 //   href: "https://www.threads.net/ahoyfabian",
@@ -76,8 +77,8 @@ const collections = {
     },
   ],
   homeSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink],
-  footerSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink, githubLink],
-  authorSameAsLinks: [youtubeLink, githubLink],
+  footerSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink, instagramLink, githubLink],
+  authorSameAsLinks: [youtubeLink, instagramLink, githubLink],
 }
 
 export const getCollections = () => {
