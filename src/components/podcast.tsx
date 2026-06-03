@@ -92,7 +92,7 @@ export function PodcastReferenceTile({
 
 export function Podcast() {
   return (
-    <section className="pt-10 md:pt-12">
+    <section id="podcast" className="pt-10 md:pt-12">
       <Headline2>Podcast: {podcast.name}</Headline2>
       <PodcastReferenceTile
         headline={`Podcast: ${podcast.name}`}

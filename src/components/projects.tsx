@@ -96,7 +96,7 @@ function ProjectItem({ project }: { project: Project }) {
 
 export function Projects() {
   return (
-    <div className="pt-10 md:pt-12">
+    <section id="projekte" className="pt-10 md:pt-12">
       <Headline2>Aktuelle Projekte</Headline2>
       <ul className="ms-6 list-outside list-disc py-1 leading-7">
         {projects.map((p, index) => (
@@ -105,6 +105,6 @@ export function Projects() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
