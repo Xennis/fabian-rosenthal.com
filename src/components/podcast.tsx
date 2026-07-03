@@ -2,12 +2,12 @@ import NextImage from "next/image"
 import { type PodcastSeries, type WithContext } from "schema-dts"
 import spotifyIcon from "@/content/images/podcast/spotify.svg"
 import applePodcastsIcon from "@/content/images/podcast/apple-podcasts.svg"
-import rssIcon from "@/content/images/podcast/rss.svg"
 import podcastCover from "@/content/images/podcast/logo-512x512.png"
 import { Headline2 } from "@/components/layout/headline"
 import { SocialLink } from "@/components/social-links"
 import { podcastFeedUrl, podcastName } from "@/content/config"
 import { host } from "@/lib/next"
+import { getCollections } from "@/content/collections"
 
 const podcast = {
   name: podcastName,
@@ -17,23 +17,7 @@ const podcast = {
   feedUrl: podcastFeedUrl,
   originalImageUrl:
     "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/46019341/46019341-1779459878789-95e060b532ce5.jpg",
-  platforms: [
-    {
-      label: "Spotify",
-      href: "https://open.spotify.com/show/033l9Xf9LtcTxJWx8OvRgG",
-      imageSrc: spotifyIcon,
-    },
-    {
-      label: "Apple Podcasts",
-      href: "https://podcasts.apple.com/de/podcast/der-feierabend-commit/id1896796759",
-      imageSrc: applePodcastsIcon,
-    },
-    {
-      label: "RSS-Feed",
-      href: podcastFeedUrl,
-      imageSrc: rssIcon,
-    },
-  ],
+  platforms: getCollections().podcastPlatforms,
 }
 
 const jsonLd: WithContext<PodcastSeries> = {
