@@ -5,8 +5,10 @@ import githubIcon from "@/content/images/social/github.svg"
 import instagramIcon from "@/content/images/social/instagram.svg"
 import spotifyIcon from "@/content/images/podcast/spotify.svg"
 import applePodcastsIcon from "@/content/images/podcast/apple-podcasts.svg"
+import podcastdeIcon from "@/content/images/podcast/podcastde.png"
+import rssIcon from "@/content/images/podcast/rss.svg"
 
-import { blogPage, legalPage } from "@/content/config"
+import { blogPage, legalPage, podcastFeedUrl } from "@/content/config"
 
 const spotifyLink = {
   label: "Spotify",
@@ -33,6 +35,11 @@ export const instagramLink = {
   label: "Instagram",
   href: "https://www.instagram.com/fabianrosenthal.dev",
   imageSrc: instagramIcon,
+}
+const podcastdeLink = {
+  label: "Podcast.de",
+  href: "https://www.podcast.de/podcast/3739192/der-feierabend-commit-tech-ki",
+  imageSrc: podcastdeIcon,
 }
 // {
 //   label: "Threads",
@@ -79,6 +86,16 @@ const collections = {
   homeSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink],
   footerSocialLinks: [spotifyLink, applePodcastsLink, youtubeLink, instagramLink, githubLink],
   authorSameAsLinks: [youtubeLink, instagramLink, githubLink],
+  podcastPlatforms: [
+    spotifyLink,
+    applePodcastsLink,
+    podcastdeLink,
+    {
+      label: "RSS-Feed",
+      href: podcastFeedUrl,
+      imageSrc: rssIcon,
+    },
+  ],
 }
 
 export const getCollections = () => {
