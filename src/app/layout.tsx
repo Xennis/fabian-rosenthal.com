@@ -54,10 +54,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={locale} className={classNames("h-full bg-white", inter.className)} suppressHydrationWarning>
       <body className="border-primary-500 h-full min-w-[280px] border-t-8" suppressHydrationWarning>
         <Header homeHref={homePage} navLinks={collections.header.navLinks} />
-        <div className="mx-auto max-w-(--breakpoint-xl)">
-          <main className="pxcontent pt-10 pb-12">{children}</main>
-          <Footer socialLinks={collections.footerSocialLinks} navLinks={collections.footer.navLinks} />
-        </div>
+        <main className="pxcontent mx-auto max-w-(--breakpoint-xl) pt-10 pb-12">{children}</main>
+        <Footer socialLinks={collections.footerSocialLinks} navLinks={collections.footer.navLinks} />
         <UmamiAnalytics />
       </body>
     </html>
