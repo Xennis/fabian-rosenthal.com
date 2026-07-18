@@ -80,7 +80,7 @@ function ProjectItem({ project }: { project: Project }) {
             <span className="font-semibold">{project.name}</span> ({project.status})
           </span>
         )}
-        <ul className="flex gap-1" aria-label="Tags">
+        <ul className="flex flex-wrap gap-1" aria-label="Tags">
           {project.tags.map((t, index) => (
             <li key={index}>
               <span aria-hidden={true}>#</span>
