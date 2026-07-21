@@ -30,7 +30,7 @@
     "eslint": "^10.6.0",
     "eslint-config-next": "16.2.9",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.17",
     "prettier": "^3.9.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "schema-dts": "^2.0.0",
