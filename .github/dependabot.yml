@@ -10,3 +10,23 @@ updates:
           - "*"
     cooldown:
       default-days: 3
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      all:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 3
+  - package-ecosystem: "mise"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      all:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 3
